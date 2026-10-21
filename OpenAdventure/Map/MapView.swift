@@ -1,12 +1,16 @@
 import SwiftUI
 
-/// The explorer's map, pencilled Trizbort-style onto graph paper.
+/// The explorer's map, sketched in pen and ink in a notebook.
 ///
-/// - Rooms appear once you've seen them (lit). Boxes are named; lines leave
-///   each box from the side matching the exit's direction, so "north" really
-///   is the top edge. Beside each end of a line is the command that takes
-///   you along it, the game's way: N, NE, U, IN… ("N/D" when both work).
-/// - Arrowheads mark one-way passages. Short dotted stubs are exits you
+/// - Places appear once you've seen them (lit): caves as chambers joined by
+///   tunnels, the surface as clearings joined by trails. Passages leave each
+///   room from the side matching the exit's direction, so "north" really is
+///   the top. Beside each end is the command that takes you along it, the
+///   game's way: N, NE, U, IN… ("N/D" when both work).
+/// - Round each place is a sketch of what the game describes there and the
+///   things lying there when the game starts, plus rocks, trees or water.
+///   The drawings come from map_art.json (see Tools/make_art.py).
+/// - Arrowheads mark one-way passages. Short dashed stubs are exits you
 ///   haven't followed yet.
 /// - The pulsing red ring is you.
 /// - Tap a room to list its exits. Pinch to zoom, drag to pan, double-tap
@@ -25,17 +29,20 @@ struct MapView: View {
     @State private var selected: Int?
 
     private let map = CaveMap.shared
+    private let art = MapArt.shared
     /// Points per grid unit at zoom 1.
-    private let unit: CGFloat = 96
+    private var unit: CGFloat { art.unit }
 
-    private let paper = Color(red: 0.975, green: 0.965, blue: 0.93)
-    private let gridLine = Color(red: 0.55, green: 0.68, blue: 0.85)
-    /// Graphite: a soft, slightly warm dark grey.
-    private let ink = Color(red: 0.22, green: 0.22, blue: 0.25)
-    private let pencil = Color(red: 0.45, green: 0.45, blue: 0.48)
-    private let wordInk = Color(red: 0.32, green: 0.32, blue: 0.36)
-    private let here = Color(red: 0.82, green: 0.14, blue: 0.12)   // red pencil
-    private let portalInk = Color(red: 0.32, green: 0.32, blue: 0.36)
+    /// Sketchbook paper and the ink on it.
+    private let paper = Color(red: 0.965, green: 0.945, blue: 0.898)
+    private let ink = MapArt.Ink.ink.color
+    private let pencil = MapArt.Ink.soft.color
+    private let wordInk = Color(red: 0.27, green: 0.25, blue: 0.24)
+    private let here = Color(red: 0.77, green: 0.16, blue: 0.13)   // red pencil
+    /// How a passage shows: as a tunnel (or trail), a stub out of the one
+    /// end you've seen, off-page stubs, or not at all.
+    private enum Show { case tunnel, stub(Int), portal([Int]), none }
+
     private let hand = "Noteworthy-Light"
     private let handBold = "Noteworthy-Bold"
 
@@ -141,168 +148,242 @@ struct MapView: View {
     private func canvas(size: CGSize) -> some View {
         let toScreen = transform(size: size)
         let s = scale
+        let z = zoom
         let showStubs = settings.showUnexploredExits
         let seen = Set(map.rooms.filter(isSeen).map(\.id))
         let current = map.room(forLocation: engine.location)
         let detail = zoom >= 0.55
+        let fine = zoom >= 0.4          // hatching and terrain marks
+        let selectedID = selected
+        // Art is in points at zoom 1; this puts it on screen.
+        let origin = toScreen(.zero)
+        let artToScreen = CGAffineTransform(a: z, b: 0, c: 0, d: z, tx: origin.x, ty: origin.y)
+        // Pen widths grow with zoom, but less than the drawing does.
+        let pen = min(max(z, 0.55), 1.5)
 
         return Canvas { ctx, canvasSize in
-            // Graph paper
-            let minor = s / 4
-            if minor > 6 {
-                let origin = toScreen(.zero)
-                var path = Path()
-                var x = origin.x.truncatingRemainder(dividingBy: minor)
-                while x < canvasSize.width {
-                    path.move(to: CGPoint(x: x, y: 0))
-                    path.addLine(to: CGPoint(x: x, y: canvasSize.height))
-                    x += minor
-                }
-                var y = origin.y.truncatingRemainder(dividingBy: minor)
-                while y < canvasSize.height {
-                    path.move(to: CGPoint(x: 0, y: y))
-                    path.addLine(to: CGPoint(x: canvasSize.width, y: y))
-                    y += minor
-                }
-                ctx.stroke(path, with: .color(gridLine.opacity(0.18)), lineWidth: 0.5)
-            }
+            let screen = CGRect(origin: .zero, size: canvasSize).insetBy(dx: -30, dy: -30)
+            let visible = screen.applying(artToScreen.inverted())
 
-            // Region outlines, once any room inside has been seen
-            for region in map.regions {
-                guard map.rooms.contains(where: { $0.region == region.region && seen.contains($0.id) })
-                else { continue }
-                let p0 = toScreen(CGPoint(x: region.x0, y: region.y0))
-                let p1 = toScreen(CGPoint(x: region.x1, y: region.y1))
-                let rect = CGRect(x: p0.x, y: p0.y, width: p1.x - p0.x, height: p1.y - p0.y)
-                let corners = [CGPoint(x: rect.minX, y: rect.minY), CGPoint(x: rect.maxX, y: rect.minY),
-                               CGPoint(x: rect.maxX, y: rect.maxY), CGPoint(x: rect.minX, y: rect.maxY),
-                               CGPoint(x: rect.minX, y: rect.minY)]
-                Pencil.stroke(ctx, corners, seed: region.title.count &* 31, width: 1,
-                              color: pencil.opacity(0.7), dash: [6, 5])
-                if detail {
-                    ctx.draw(Text(region.title)
-                                .font(.custom(hand, size: 12 * min(zoom, 1.3)))
-                                .foregroundColor(pencil),
-                             at: CGPoint(x: rect.minX + 8, y: rect.minY + 4), anchor: .topLeading)
+            // One context drawing in art coordinates.
+            var ink = ctx
+            ink.concatenate(artToScreen)
+            func stroke(_ path: Path, _ color: Color, _ width: CGFloat, dash: [CGFloat] = []) {
+                ink.stroke(path, with: .color(color),
+                           style: StrokeStyle(lineWidth: width * pen / z, lineCap: .round, lineJoin: .round,
+                                              dash: dash))
+            }
+            func draw(_ groups: [MapArt.Group], in c: GraphicsContext? = nil) {
+                let g = c ?? ink
+                for group in groups {
+                    g.stroke(group.path, with: .color(group.ink.color),
+                             style: StrokeStyle(lineWidth: group.width * pen / z, lineCap: .round,
+                                                lineJoin: .round, dash: group.dash))
                 }
             }
 
-            // Passages
-            let lineWidth = max(1, 1.3 * min(zoom, 1.4))
-            // Command tags: (text, port point, direction out of the box, which side of the line).
-            var tags: [(text: String, at: CGPoint, out: CGVector, flip: Bool)] = []
-            for c in map.connections {
-                guard let ra = map.room(c.a), let rb = map.room(c.b) else { continue }
-                let seenA = seen.contains(ra.id), seenB = seen.contains(rb.id)
-                let seed = c.a &* 1009 &+ c.b
+            // Which passages show, and how.
+            var shows: [(CaveMap.Connection, MapArt.PassageArt, Show)] = []
+            for (i, c) in map.connections.enumerated() where i < art.passages.count {
+                let pa = art.passages[i]
+                guard pa.bounds.isNull || pa.bounds.intersects(visible) else { continue }
+                let sa = seen.contains(c.a), sb = seen.contains(c.b)
+                let show: Show
                 if c.portal {
-                    // Off-page connector: a stub at each known end, saying
-                    // where it leads.
-                    for (room, port, other, seenHere, seenThere) in [(ra, c.aPort, rb, seenA, seenB),
-                                                                     (rb, c.bPort, ra, seenB, seenA)] where seenHere {
-                        let p = map.portPoint(room, port)
+                    let ends = [sa ? 0 : nil, sb ? 1 : nil].compactMap { $0 }
+                    show = ends.isEmpty ? .none : .portal(ends)
+                } else if c.isLoop {
+                    show = .none
+                } else if sa && sb {
+                    show = .tunnel
+                } else if showStubs && ((sa && c.aToB) || (sb && c.bToA)) {
+                    show = .stub(sa ? 0 : 1)
+                } else {
+                    show = .none
+                }
+                shows.append((c, pa, show))
+            }
+            func surface(_ id: Int) -> Bool { art.rooms[id]?.surface ?? false }
+            let roomsShown = map.rooms.filter { room in
+                (seen.contains(room.id) || room.id == current?.id)
+                    && (art.rooms[room.id]?.bounds.intersects(visible) ?? true)
+            }
+
+            // 1. Walls: tunnels, stubs and chamber outlines.
+            for (c, pa, show) in shows {
+                switch show {
+                case .tunnel:
+                    if let w = pa.walls { stroke(w, MapArt.Ink.ink.color, 1.15) }
+                case .stub(let end):
+                    if !surface(end == 0 ? c.a : c.b), pa.ends.indices.contains(end) {
+                        stroke(pa.ends[end].walls, MapArt.Ink.ink.color.opacity(0.8), 1.15, dash: [4, 3])
+                    }
+                case .portal(let ends):
+                    for e in ends where pa.ends.indices.contains(e) {
+                        stroke(pa.ends[e].walls, MapArt.Ink.ink.color, 1.15)
+                    }
+                case .none: break
+                }
+            }
+            for room in roomsShown {
+                guard let ra = art.rooms[room.id] else { continue }
+                if ra.surface {
+                    stroke(ra.outline, MapArt.Ink.soft.color, 1.1, dash: [5, 3])
+                } else {
+                    stroke(ra.outline, MapArt.Ink.ink.color, room.id == current?.id ? 1.9 : 1.5)
+                }
+            }
+
+            // 2. Clean paper inside tunnels and chambers opens the walls
+            //    where a passage meets a room.
+            for (c, pa, show) in shows {
+                switch show {
+                case .tunnel:
+                    if let f = pa.fill { ink.fill(f, with: .color(paper)) }
+                case .stub(let end):
+                    if !surface(end == 0 ? c.a : c.b), pa.ends.indices.contains(end) {
+                        ink.fill(pa.ends[end].fill, with: .color(paper))
+                    }
+                case .portal(let ends):
+                    for e in ends where pa.ends.indices.contains(e) { ink.fill(pa.ends[e].fill, with: .color(paper)) }
+                case .none: break
+                }
+            }
+            for room in roomsShown {
+                guard let ra = art.rooms[room.id] else { continue }
+                if room.id == selectedID {
+                    ink.fill(ra.fill, with: .color(Color(red: 1, green: 0.93, blue: 0.45).opacity(0.55)))
+                } else if !ra.surface {
+                    ink.fill(ra.fill, with: .color(paper))
+                }
+            }
+
+            // 3. Trails above ground, loops, one-way arrows, hatching.
+            let lineWidth = max(1, 1.2 * pen)
+            var tags: [(text: String, at: CGPoint, out: CGVector, flip: Bool, outdoor: Bool)] = []
+            for (c, pa, show) in shows {
+                guard let ra = map.room(c.a), let rb = map.room(c.b) else { continue }
+                let seed = c.a &* 1009 &+ c.b
+                switch show {
+                case .tunnel:
+                    if let t = pa.trail { stroke(t, MapArt.Ink.soft.color, 1.0, dash: [4, 3]) }
+                    if fine { draw(pa.hatch) }
+                    guard let pts = map.route(c)?.map(toScreen) else { continue }
+                    if c.oneWay { drawArrow(ctx, pts: pts, toB: c.aToB, size: 0.045 * s, seed: seed) }
+                    if detail {
+                        let outdoor = pa.trail != nil
+                        if !c.aTag.isEmpty { tags.append((c.aTag, pts[0], direction(pts[0], pts[1]), false, outdoor)) }
+                        if !c.bTag.isEmpty { tags.append((c.bTag, pts[3], direction(pts[3], pts[2]), true, outdoor)) }
+                    }
+                case .stub(let end):
+                    let (room, port) = end == 0 ? (ra, c.aPort) : (rb, c.bPort)
+                    let p = toScreen(map.portPoint(room, port))
+                    if surface(room.id), pa.ends.indices.contains(end) {
+                        var trail = Path()
+                        trail.move(to: p)
+                        trail.addLine(to: pa.ends[end].tip.applying(artToScreen))
+                        ctx.stroke(trail, with: .color(MapArt.Ink.soft.color),
+                                   style: StrokeStyle(lineWidth: pen, lineCap: .round, dash: [3, 3]))
+                    }
+                    if detail {
                         let v = CaveMap.vector(port)
                         let len = hypot(v.dx, v.dy)
-                        let q = CGPoint(x: p.x + v.dx / len * 0.26, y: p.y + v.dy / len * 0.26)
-                        Pencil.stroke(ctx, [toScreen(p), toScreen(q)], seed: seed &+ room.id,
-                                      width: lineWidth, color: ink)
-                        if detail {
-                            let name = seenThere ? other.label : "?"
-                            ctx.draw(Text("to " + name)
-                                        .font(.custom(hand, size: 10.5 * min(max(zoom, 0.8), 1.5)))
-                                        .foregroundColor(portalInk),
-                                     at: toScreen(CGPoint(x: q.x + v.dx / len * 0.08, y: q.y + v.dy / len * 0.08)),
-                                     anchor: v.dx > 0 ? .leading : (v.dx < 0 ? .trailing : .center))
-                        }
-                    }
-                    continue
-                }
-
-                if c.isLoop {
-                    guard seenA else { continue }
-                    let p = toScreen(map.portPoint(ra, c.aPort))
-                    let v = CaveMap.vector(c.aPort)
-                    let r = 0.09 * s
-                    let center = CGPoint(x: p.x + v.dx * r, y: p.y + v.dy * r)
-                    Pencil.stroke(ctx, Pencil.loop(center: center, rx: r, ry: r, seed: seed),
-                                  seed: seed, width: lineWidth, color: ink)
-                    continue
-                }
-
-                if seenA && seenB {
-                    guard let pts = map.route(c)?.map(toScreen) else { continue }
-                    Pencil.stroke(ctx, pts, seed: seed, width: lineWidth, color: ink)
-                    if c.oneWay { drawArrow(ctx, pts: pts, toB: c.aToB, size: 0.07 * s, seed: seed) }
-                    if detail {
-                        // The command at each end, on opposite sides of the
-                        // line so two tags never land on each other.
-                        if !c.aTag.isEmpty { tags.append((c.aTag, pts[0], unit(pts[0], pts[1]), false)) }
-                        if !c.bTag.isEmpty { tags.append((c.bTag, pts[3], unit(pts[3], pts[2]), true)) }
-                    }
-                } else if showStubs && ((seenA && c.aToB) || (seenB && c.bToA)) {
-                    // An exit from a known room into the unknown.
-                    let (room, port) = seenA ? (ra, c.aPort) : (rb, c.bPort)
-                    let p = map.portPoint(room, port)
-                    let v = CaveMap.vector(port)
-                    let len = hypot(v.dx, v.dy)
-                    let q = CGPoint(x: p.x + v.dx / len * 0.3, y: p.y + v.dy / len * 0.3)
-                    Pencil.stroke(ctx, [toScreen(p), toScreen(q)], seed: seed &+ room.id,
-                                  width: lineWidth, color: ink.opacity(0.7), dash: [3, 3])
-                    if detail {
-                        ctx.draw(Text("?").font(.custom(handBold, size: 12 * min(zoom, 1.4)))
-                                    .foregroundColor(ink.opacity(0.7)),
-                                 at: toScreen(CGPoint(x: q.x + v.dx / len * 0.07, y: q.y + v.dy / len * 0.07)))
-                        let tag = seenA ? c.aTag : c.bTag
+                        let q = map.portPoint(room, port)
+                        ctx.draw(Text("?").font(.custom(handBold, size: 12 * min(z, 1.4)))
+                                    .foregroundColor(MapArt.Ink.ink.color.opacity(0.75)),
+                                 at: toScreen(CGPoint(x: q.x + v.dx / len * 0.36, y: q.y + v.dy / len * 0.36)))
+                        let tag = end == 0 ? c.aTag : c.bTag
                         if !tag.isEmpty {
-                            let a = toScreen(p)
-                            tags.append((tag, a, unit(a, toScreen(q)), false))
+                            let tip = toScreen(CGPoint(x: q.x + v.dx / len * 0.3, y: q.y + v.dy / len * 0.3))
+                            tags.append((tag, p, direction(p, tip), false, surface(room.id)))
                         }
+                    }
+                case .portal(let ends):
+                    guard detail else { continue }
+                    for e in ends {
+                        let (room, port, other) = e == 0 ? (ra, c.aPort, rb) : (rb, c.bPort, ra)
+                        let v = CaveMap.vector(port)
+                        let len = hypot(v.dx, v.dy)
+                        let q = map.portPoint(room, port)
+                        let name = seen.contains(other.id) ? other.label : "?"
+                        ctx.draw(Text("to " + name)
+                                    .font(.custom(hand, size: 10.5 * min(max(z, 0.8), 1.5)))
+                                    .foregroundColor(wordInk),
+                                 at: toScreen(CGPoint(x: q.x + v.dx / len * 0.3, y: q.y + v.dy / len * 0.3)),
+                                 anchor: v.dx > 0 ? .leading : (v.dx < 0 ? .trailing : .center))
+                    }
+                case .none:
+                    if c.isLoop, seen.contains(c.a) {
+                        let p = toScreen(map.portPoint(ra, c.aPort))
+                        let v = CaveMap.vector(c.aPort)
+                        let r = 0.07 * s
+                        let center = CGPoint(x: p.x + v.dx * r, y: p.y + v.dy * r)
+                        Pencil.stroke(ctx, Pencil.loop(center: center, rx: r, ry: r, seed: seed),
+                                      seed: seed, width: lineWidth, color: MapArt.Ink.ink.color)
                     }
                 }
             }
 
-            // Commands go on last, beside their lines just outside the box,
-            // on a scrap of clean paper so no line ever runs through them.
+            // 4. The sketches: hatching round the walls, what's there, and
+            //    the lie of the land.
+            for room in roomsShown {
+                guard let ra = art.rooms[room.id] else { continue }
+                if fine {
+                    draw(ra.hatch)
+                    for m in ra.marks where art.symbols.indices.contains(m.symbol) {
+                        let sym = art.symbols[m.symbol]
+                        guard sym.bounds.offsetBy(dx: m.at.x, dy: m.at.y).intersects(visible) else { continue }
+                        var c = ink
+                        c.translateBy(x: m.at.x, y: m.at.y)
+                        draw(sym.groups, in: c)
+                    }
+                }
+                draw(ra.art)
+                if detail {
+                    for l in ra.labels {
+                        var c = ink
+                        c.translateBy(x: l.at.x, y: l.at.y)
+                        c.rotate(by: l.rotation)
+                        // Noteworthy runs wider than the tool's stand-in hand.
+                        c.draw(Text(l.text)
+                                .font(.custom(l.bold ? handBold : hand, size: l.size * 1.1))
+                                .foregroundColor(l.ink.color),
+                               at: .zero)
+                    }
+                }
+            }
+
+            // 5. Commands beside each end of a passage, on a scrap of
+            //    clean paper, clear of the tunnel walls.
+            let tunnelHalf = art.tunnelHalfWidth * z
             for tag in tags {
                 let text = ctx.resolve(Text(tag.text)
-                                        .font(.custom(hand, size: 10.5 * min(max(zoom, 0.8), 1.5)))
+                                        .font(.custom(hand, size: 10.5 * min(max(z, 0.8), 1.5)))
                                         .foregroundColor(wordInk))
                 let size = text.measure(in: CGSize(width: 200, height: 40))
                 let ux = tag.out.dx, uy = tag.out.dy
-                // Along the line: far enough out that the text clears the box.
-                let along = 3 + abs(ux) * size.width / 2 + abs(uy) * size.height / 2
-                // Across the line: to one side, far enough to clear the line.
+                let along = 4 + abs(ux) * size.width / 2 + abs(uy) * size.height / 2
                 var nx = -uy, ny = ux
                 if ny > 0.2 || (abs(ny) <= 0.2 && nx < 0) { nx = -nx; ny = -ny }   // above / right
                 if tag.flip { nx = -nx; ny = -ny }                                 // other end: below / left
-                let clear = abs(nx) * (size.width / 2 + 3) + abs(ny) * (size.height / 2 + 1)
+                let wall = tag.outdoor ? 3 : tunnelHalf + 1.5
+                let clear = wall + abs(nx) * size.width / 2 + abs(ny) * size.height / 2
                 let center = CGPoint(x: tag.at.x + ux * along + nx * clear,
                                      y: tag.at.y + uy * along + ny * clear)
                 let backing = CGRect(x: center.x - size.width / 2 - 2, y: center.y - size.height / 2,
                                      width: size.width + 4, height: size.height)
-                ctx.fill(Path(roundedRect: backing, cornerRadius: 3), with: .color(paper.opacity(0.92)))
+                ctx.fill(Path(roundedRect: backing, cornerRadius: 3), with: .color(paper.opacity(0.9)))
                 ctx.draw(text, at: center)
             }
 
-            // Rooms
-            let w = map.boxW * s, h = map.boxH * s
-            for room in map.rooms where seen.contains(room.id) || room.id == current?.id {
-                let c = toScreen(room.center)
-                let rect = CGRect(x: c.x - w / 2, y: c.y - h / 2, width: w, height: h)
-                guard rect.intersects(CGRect(origin: .zero, size: canvasSize).insetBy(dx: -20, dy: -20))
-                else { continue }
-                let isHere = room.id == current?.id
-                let isSelected = room.id == selected
-                // Paper inside the box (the grid shows faintly through);
-                // a yellow highlighter wash when the room is selected.
-                ctx.fill(Path(rect), with: .color(isSelected ? Color(red: 1, green: 0.93, blue: 0.45).opacity(0.55)
-                                                            : paper.opacity(0.8)))
-                Pencil.box(ctx, rect, seed: room.id, width: isHere ? 2.0 : 1.3, color: ink)
-                if detail {
-                    let size = 10.5 * min(max(zoom, 0.85), 1.7)
-                    // In the dark, an unseen room's name stays a mystery.
+            // 6. Names.
+            if detail {
+                let w = map.boxW * s
+                for room in roomsShown {
+                    let c = toScreen(room.center)
+                    let size = 10.5 * min(max(z, 0.85), 1.7)
                     let label = seen.contains(room.id) ? room.label : "?"
-                    let lines = wrapLabel(label, maxWidth: w - 8, ctx: ctx, size: size, bold: isHere)
+                    let lines = wrapLabel(label, maxWidth: w - 6, ctx: ctx, size: size, bold: room.id == current?.id)
                     let lineH = size * 1.12
                     let top = c.y - lineH * CGFloat(lines.count - 1) / 2
                     for (i, line) in lines.enumerated() {
@@ -310,6 +391,8 @@ struct MapView: View {
                     }
                 }
             }
+
+            compassRose(ctx, at: CGPoint(x: 34, y: canvasSize.height - 40))
 
             let hereSeen = current.map({ seen.contains($0.id) }) ?? false
             if engine.isDark && !hereSeen {
@@ -326,6 +409,20 @@ struct MapView: View {
                          at: CGPoint(x: canvasSize.width / 2, y: canvasSize.height / 2 + 70))
             }
         }
+    }
+
+    /// A small hand-drawn compass in the corner: north is up.
+    private func compassRose(_ ctx: GraphicsContext, at c: CGPoint) {
+        let r: CGFloat = 17
+        let color = MapArt.Ink.ink.color
+        Pencil.stroke(ctx, [CGPoint(x: c.x, y: c.y + r), CGPoint(x: c.x, y: c.y - r)], seed: 901, width: 1, color: color)
+        Pencil.stroke(ctx, [CGPoint(x: c.x - r, y: c.y), CGPoint(x: c.x + r, y: c.y)], seed: 902, width: 1, color: color)
+        Pencil.stroke(ctx, [CGPoint(x: c.x - 4, y: c.y - r + 6), CGPoint(x: c.x, y: c.y - r - 2),
+                            CGPoint(x: c.x + 4, y: c.y - r + 6)], seed: 903, width: 1.1, color: color)
+        Pencil.stroke(ctx, Pencil.loop(center: c, rx: r * 0.4, ry: r * 0.4, seed: 904), seed: 904,
+                      width: 0.8, color: MapArt.Ink.soft.color)
+        ctx.draw(Text("N").font(.custom(handBold, size: 11)).foregroundColor(color),
+                 at: CGPoint(x: c.x, y: c.y - r - 10))
     }
 
     /// The pulsing ring and "YOU ARE HERE" tag, drawn on its own layer.
@@ -355,7 +452,7 @@ struct MapView: View {
     }
 
     /// Unit vector from a to b (zero if they coincide).
-    private func unit(_ a: CGPoint, _ b: CGPoint) -> CGVector {
+    private func direction(_ a: CGPoint, _ b: CGPoint) -> CGVector {
         let d = hypot(b.x - a.x, b.y - a.y)
         return d > 0.001 ? CGVector(dx: (b.x - a.x) / d, dy: (b.y - a.y) / d) : CGVector(dx: 0, dy: -1)
     }

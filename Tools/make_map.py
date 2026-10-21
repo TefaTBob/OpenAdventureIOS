@@ -24,7 +24,7 @@ LAYOUT = HERE / "map_layout.txt"
 OUT_JSON = HERE.parent / "OpenAdventure" / "Resources" / "cave_map.json"
 
 # Geometry in grid units: a room box inside each cell.
-BOX_W, BOX_H = 0.74, 0.52
+BOX_W, BOX_H = 0.56, 0.39   # 72 x 50 pt at 128 pt per grid unit
 PORT_ORDER = ["n", "ne", "e", "se", "s", "sw", "w", "nw"]
 
 
@@ -65,7 +65,8 @@ def snap_dir(dx, dy):
 
 def port_offset(port):
     vx, vy = VEC[port]
-    return vx * BOX_W / 2, vy * BOX_H / 2
+    f = 0.5 ** (1 / 3.2) if vx and vy else 1.0   # diagonal ports sit on the rounded chamber, not the corner
+    return vx * BOX_W / 2 * f, vy * BOX_H / 2 * f
 
 
 DIR_WORDS = {"n": "north", "s": "south", "e": "east", "w": "west",

@@ -1,8 +1,8 @@
 {
  "source": "Generated from Open Adventure 1.22 adventure.yaml by Tools/make_map.py",
  "box": {
-  "w": 0.74,
-  "h": 0.52
+  "w": 0.56,
+  "h": 0.39
  },
  "bounds": {
   "x0": -19.0,

@@ -29,9 +29,13 @@ details, not design problems. The C engine is verified (see *Tests*).
 | **Gear key** (bottom left) | Settings: save/load slots, new game, text size, screen look, controls |
 | Hardware keyboard | Works on iPad / with a Bluetooth keyboard; arrows walk N/S/E/W, Tab recalls, Esc clears |
 
-- **Map** is pencilled Trizbort-style onto graph paper: hand-drawn boxes
-  with handwritten names, and each line leaves a box from the side matching
-  its direction (north = top edge). Beside each end of a line is the command
+- **Map** is sketched in pen and ink, like an explorer's notebook: caves
+  are chambers joined by tunnels with rock hatching along their walls, the
+  surface is clearings joined by trails. Each passage leaves a room from the
+  side matching its direction (north = top). Round every place is a sketch
+  of what the game describes there (the locked grate, the snake, the
+  dragon on its rug…) and the items lying there when the game starts, with
+  rocks, trees or water round about. Beside each end of a passage is the command
   that takes you along it, the game's way — `N`, `NE`, `U`, `IN`, or `N/D`
   when both work, or a word like `climb` or `fly`. A pencilled chevron marks
   a one-way passage (only its starting end has a command). Dotted `?` stubs
@@ -92,7 +96,10 @@ can't disagree with the engine. Only the room *positions*
 (`Tools/map_layout.txt`) are a design choice: found with an annealing helper
 (`solve_layout.py` + `layout_sa.c`) and then tuned by hand. `make_map.py`
 checks them every run — currently no overlaps, no line through a box, no
-compass exit drawn backwards, 13 line crossings in the whole cave.
+compass exit drawn backwards, 14 line crossings in the whole cave.
+The drawings are baked by `make_art.py` from `sketches.py` (one small
+drawing function per scene and item) into `map_art.json`: each sketch is
+placed once, for the whole cave, so nothing moves as the map fills in.
 
 ## Regenerating files
 
@@ -102,6 +109,7 @@ cd Tools && python3 make_dungeon.py && mv dungeon.c dungeon.h ../Engine/upstream
 # map (needs PyYAML; Pillow for the optional picture), after editing
 # Tools/map_layout.txt or updating upstream:
 python3 Tools/make_map.py --preview map.png
+cd Tools && python3 make_art.py && cd ..   # the ink sketches (needs NumPy, Pillow)
 # project file, after adding/removing source files:
 python3 Tools/make_xcodeproj.py
 ```

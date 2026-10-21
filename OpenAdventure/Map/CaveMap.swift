@@ -87,8 +87,8 @@ final class CaveMap: Sendable {
         } else {
             file = nil
         }
-        boxW = file?.box.w ?? 0.74
-        boxH = file?.box.h ?? 0.52
+        boxW = file?.box.w ?? 0.56
+        boxH = file?.box.h ?? 0.39
         if let b = file?.bounds {
             bounds = CGRect(x: b.x0, y: b.y0, width: b.x1 - b.x0, height: b.y1 - b.y0)
         } else {
@@ -127,10 +127,15 @@ final class CaveMap: Sendable {
         }
     }
 
+    /// Where a diagonal port sits along the half box: on the chamber's
+    /// rounded corner (a superellipse with exponent 3.2), not the corner.
+    static let diagonal = pow(0.5, 1 / 3.2)
+
     /// Where a port sits on a room's box, in grid units.
     func portPoint(_ room: Room, _ port: String) -> CGPoint {
         let v = Self.vector(port)
-        return CGPoint(x: room.x + v.dx * boxW / 2, y: room.y + v.dy * boxH / 2)
+        let f = (v.dx != 0 && v.dy != 0) ? Self.diagonal : 1
+        return CGPoint(x: room.x + v.dx * boxW / 2 * f, y: room.y + v.dy * boxH / 2 * f)
     }
 
     /// The polyline for a connection: out of each port a short way, then

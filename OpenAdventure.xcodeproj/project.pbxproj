@@ -76,9 +76,9 @@
 		8F2E4B461139201B68A6D1CD /* mapdata.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = mapdata.py; path = Tools/mapdata.py; sourceTree = SOURCE_ROOT; };
 		9891CE8172DA92B76065EA18 /* advent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = advent.h; path = Engine/upstream/advent.h; sourceTree = SOURCE_ROOT; };
 		9B072105DF4FF6063C82C358 /* adventure.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = adventure.yaml; path = Tools/adventure.yaml; sourceTree = SOURCE_ROOT; };
-		9C8B55673089770B00B810E7 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
-		9C8B55693089772A00B810E7 /* MapArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapArt.swift; sourceTree = "<group>"; };
-		9C8B556B3089774300B810E7 /* map_art.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = map_art.json; sourceTree = "<group>"; };
+		9C8B55673089770B00B810E7 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InventoryView.swift; path = OpenAdventure/Map/InventoryView.swift; sourceTree = SOURCE_ROOT; };
+		9C8B55693089772A00B810E7 /* MapArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapArt.swift; path = OpenAdventure/Map/MapArt.swift; sourceTree = SOURCE_ROOT; };
+		9C8B556B3089774300B810E7 /* map_art.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = map_art.json; path = OpenAdventure/Resources/map_art.json; sourceTree = SOURCE_ROOT; };
 		9EB473B5D1521EF835CF1EB0 /* NotepadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotepadView.swift; path = OpenAdventure/Notes/NotepadView.swift; sourceTree = SOURCE_ROOT; };
 		A6805743A97917D1BB16C6A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = OpenAdventure/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		A86C05322D543587384F86CB /* cave_map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = cave_map.json; path = OpenAdventure/Resources/cave_map.json; sourceTree = SOURCE_ROOT; };

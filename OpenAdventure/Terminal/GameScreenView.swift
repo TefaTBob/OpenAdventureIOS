@@ -15,6 +15,10 @@ struct GameScreenView: View {
 
     /// Characters are drawn a touch taller than wide, like on a real CRT.
     private static let pixelAspect: CGFloat = 1.15
+    /// Dark border inside the picture, as on the real machine, so text stays
+    /// clear of the tube's bent, rounded edges (fraction of width / height).
+    private static let sideMargin: CGFloat = 0.055
+    private static let topMargin: CGFloat = 0.025
 
     var body: some View {
         let crt = settings.crt
@@ -22,9 +26,11 @@ struct GameScreenView: View {
             // Fit as many whole rows as the monitor holds at this text size,
             // so text is never stretched or squashed.
             let columns = CGFloat(crt.columns)
-            let rowHeight = geo.size.width / columns / CGFloat(PixelFont.cellWidth)
+            let textWidth = geo.size.width * (1 - 2 * Self.sideMargin)
+            let usableHeight = geo.size.height * (1 - 2 * Self.topMargin)
+            let rowHeight = textWidth / columns / CGFloat(PixelFont.cellWidth)
                 * CGFloat(PixelFont.cellHeight) * Self.pixelAspect
-            let rows = max(4, Int(geo.size.height / max(rowHeight, 1)))
+            let rows = max(4, Int(usableHeight / max(rowHeight, 1)))
             let textHeight = CGFloat(rows) * rowHeight
 
             TimelineView(.periodic(from: .now, by: 0.5)) { context in
@@ -35,7 +41,7 @@ struct GameScreenView: View {
                         Image(decorative: image, scale: 1)
                             .resizable()
                             .interpolation(.none)
-                            .frame(width: geo.size.width, height: textHeight)
+                            .frame(width: textWidth, height: textHeight)
                     }
                 }
                 .frame(width: geo.size.width, height: geo.size.height)

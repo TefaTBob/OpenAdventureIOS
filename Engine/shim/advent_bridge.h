@@ -25,6 +25,7 @@ extern "C" {
 #endif
 
 #define ADVENT_MAX_LOCATIONS 256
+#define ADVENT_MAX_CARRIED 80
 
 typedef struct {
 	int location;          /* current room index (LOC_*) */
@@ -35,6 +36,9 @@ typedef struct {
 	int max_score;         /* 430 (Adventure 2.5) */
 	int turns;
 	unsigned char seen[ADVENT_MAX_LOCATIONS]; /* 1 = room has been seen lit */
+	int carried_count;     /* objects being carried, as INVENTORY lists them */
+	int carried[ADVENT_MAX_CARRIED];          /* object indices (OBJ order in adventure.yaml) */
+	bool bear_following;   /* the tame bear is tagging along */
 } advent_snapshot_t;
 
 typedef void (*advent_output_cb)(void *ctx, const char *text, long length);
@@ -56,6 +60,13 @@ void advent_set_save_directory(const char *path);
  * Returns false if a game is already running.
  */
 bool advent_start(const char *restore_path);
+
+/*
+ * The game's own inventory wording for an object ("Brass lantern",
+ * "Water in the bottle"), or NULL if it has none. Static data, safe to
+ * call from any thread.
+ */
+const char *advent_object_inventory(int obj);
 
 /* Answer the pending prompt. NULL means end-of-input (the engine quits). */
 void advent_submit(const char *line);

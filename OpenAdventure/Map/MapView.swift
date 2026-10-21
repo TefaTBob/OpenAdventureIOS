@@ -13,6 +13,7 @@ import SwiftUI
 /// - Arrowheads mark one-way passages. Short dashed stubs are exits you
 ///   haven't followed yet.
 /// - The pulsing red ring is you.
+/// - The backpack button lists what you're carrying.
 /// - Tap a room to list its exits. Pinch to zoom, drag to pan, double-tap
 ///   to re-center. Swipe in from the right edge (or ▶) to return.
 struct MapView: View {
@@ -27,6 +28,7 @@ struct MapView: View {
     @State private var pan: CGSize = .zero
     @State private var panBase: CGSize = .zero
     @State private var selected: Int?
+    @State private var showInventory = false
 
     private let map = CaveMap.shared
     private let art = MapArt.shared
@@ -81,6 +83,11 @@ struct MapView: View {
         }
         .background(paper.ignoresSafeArea())
         .onAppear { recenter(animated: false) }
+        .sheet(isPresented: $showInventory) {
+            InventoryView()
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
+        }
         .onChange(of: engine.location) { selected = nil }
     }
 
@@ -96,6 +103,13 @@ struct MapView: View {
                     .foregroundStyle(pencil)
             }
             Spacer()
+            Button {
+                showInventory = true
+            } label: {
+                Image(systemName: "backpack")
+            }
+            .accessibilityLabel("Inventory")
+            .padding(.trailing, 16)
             Button {
                 recenter(animated: true)
             } label: {

@@ -140,6 +140,25 @@ static void fill_snapshot(advent_snapshot_t *s) {
 	s->score = score(quitgame); /* silent in this mode */
 	s->max_score = 430; /* Adventure 2.5 total; see score.c */
 	s->turns = game.turns;
+	/* What you're carrying, the way the INVENTORY command reports it. */
+	for (obj_t i = 1; i < NOBJECTS && s->carried_count < ADVENT_MAX_CARRIED; i++) {
+		if (i == BEAR || !TOTING(i)) {
+			continue;
+		}
+		const char *name = objects[i].inventory;
+		if (name == NULL || name[0] == '*' || name[0] == '\0') {
+			continue;
+		}
+		s->carried[s->carried_count++] = i;
+	}
+	s->bear_following = TOTING(BEAR);
+}
+
+const char *advent_object_inventory(int obj) {
+	if (obj <= 0 || obj >= NOBJECTS) {
+		return NULL;
+	}
+	return objects[obj].inventory;
 }
 
 char *readline(const char *prompt) {

@@ -29,6 +29,9 @@
 		768C33532C5D37F8237E8CB3 /* CRTEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19841BF4EBF0F8D4A07AF31D /* CRTEffect.swift */; };
 		8E00C17A34613942E7135C97 /* dungeon_ios.c in Sources */ = {isa = PBXBuildFile; fileRef = 7906652F6F4CC5F5AD484E1F /* dungeon_ios.c */; };
 		99ECD75E617C6D1531EC6292 /* CRTSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4AB8FF0992D44E3C928F3 /* CRTSettings.swift */; };
+		9C8B5562308972E900B810E7 /* MapArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B5561308972E900B810E7 /* MapArt.swift */; };
+		9C8B55643089732A00B810E7 /* map_art.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C8B55633089732A00B810E7 /* map_art.json */; };
+		9C8B55663089744000B810E7 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B55653089744000B810E7 /* InventoryView.swift */; };
 		A0D680A921E7312C1EC6439B /* PixelFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394DF7ED7B7E8F2E8496B48 /* PixelFont.swift */; };
 		A78C481B95EC6F9D856FB78A /* NotepadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB473B5D1521EF835CF1EB0 /* NotepadView.swift */; };
 		CF8F1310D016348382C612C3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09F22E8D0A6DF0D7BD4E60 /* MapView.swift */; };
@@ -73,6 +76,9 @@
 		8F2E4B461139201B68A6D1CD /* mapdata.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = mapdata.py; path = Tools/mapdata.py; sourceTree = SOURCE_ROOT; };
 		9891CE8172DA92B76065EA18 /* advent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = advent.h; path = Engine/upstream/advent.h; sourceTree = SOURCE_ROOT; };
 		9B072105DF4FF6063C82C358 /* adventure.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = adventure.yaml; path = Tools/adventure.yaml; sourceTree = SOURCE_ROOT; };
+		9C8B5561308972E900B810E7 /* MapArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapArt.swift; sourceTree = "<group>"; };
+		9C8B55633089732A00B810E7 /* map_art.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = map_art.json; sourceTree = "<group>"; };
+		9C8B55653089744000B810E7 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
 		9EB473B5D1521EF835CF1EB0 /* NotepadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotepadView.swift; path = OpenAdventure/Notes/NotepadView.swift; sourceTree = SOURCE_ROOT; };
 		A6805743A97917D1BB16C6A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = OpenAdventure/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		A86C05322D543587384F86CB /* cave_map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = cave_map.json; path = OpenAdventure/Resources/cave_map.json; sourceTree = SOURCE_ROOT; };
@@ -186,6 +192,8 @@
 		6959B3ED2D68051A82B73673 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				9C8B55653089744000B810E7 /* InventoryView.swift */,
+				9C8B5561308972E900B810E7 /* MapArt.swift */,
 				C6F4C40FC94ED7CD3E3D4492 /* CaveMap.swift */,
 				7D09F22E8D0A6DF0D7BD4E60 /* MapView.swift */,
 			);
@@ -315,6 +323,7 @@
 		FE8ED862C3436A39D68A89EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9C8B55633089732A00B810E7 /* map_art.json */,
 				FFE5CB7571A7B7EA1DD618D4 /* OpenAdventure-LICENSE.txt */,
 				A86C05322D543587384F86CB /* cave_map.json */,
 			);
@@ -379,6 +388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C8B55643089732A00B810E7 /* map_art.json in Resources */,
 				E9D9684244400A42BB3F7024 /* Assets.xcassets in Resources */,
 				46571267216219B605047220 /* OpenAdventure-LICENSE.txt in Resources */,
 				0067FD67CA3D45FA780970B5 /* cave_map.json in Resources */,
@@ -404,6 +414,7 @@
 				99ECD75E617C6D1531EC6292 /* CRTSettings.swift in Sources */,
 				3FF3715DC3A6FBCB851FC19B /* MonitorView.swift in Sources */,
 				A78C481B95EC6F9D856FB78A /* NotepadView.swift in Sources */,
+				9C8B5562308972E900B810E7 /* MapArt.swift in Sources */,
 				2CFBE90FE66B5131DE3F8650 /* SettingsView.swift in Sources */,
 				63FC823CD9D0B9039474E71E /* GameScreenView.swift in Sources */,
 				A0D680A921E7312C1EC6439B /* PixelFont.swift in Sources */,
@@ -412,6 +423,7 @@
 				29556DEB2579895C8E83F05F /* advent_bridge.c in Sources */,
 				463EEF82A975252F8BC3ADE9 /* actions_ios.c in Sources */,
 				8E00C17A34613942E7135C97 /* dungeon_ios.c in Sources */,
+				9C8B55663089744000B810E7 /* InventoryView.swift in Sources */,
 				3FBD075C805794C05BEC168E /* init_ios.c in Sources */,
 				11CB9F94828297C2F0A05B63 /* main_ios.c in Sources */,
 				0C23DB4B050024327977A57E /* misc_ios.c in Sources */,

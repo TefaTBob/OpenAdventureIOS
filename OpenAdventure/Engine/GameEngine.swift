@@ -28,6 +28,10 @@ final class GameEngine {
     private(set) var maxScore = 430
     private(set) var turns = 0
     private(set) var isOver = false
+    /// What you're carrying, in the game's own words, as INVENTORY lists it.
+    private(set) var carried: [CarriedItem] = []
+    /// The tame bear is following you.
+    private(set) var bearFollowing = false
     private(set) var askingFilename = false
 
     private var history: [String] = []
@@ -99,6 +103,8 @@ final class GameEngine {
         isOver = false
         askingFilename = false
         visited = known
+        carried = []
+        bearFollowing = false
         historyCursor = nil
         if let banner { append(banner + "\n") }
 
@@ -182,6 +188,8 @@ final class GameEngine {
         maxScore = snapshot.maxScore
         turns = snapshot.turns
         visited.formUnion(snapshot.seen)
+        carried = snapshot.carried
+        bearFollowing = snapshot.bearFollowing
     }
 
     fileprivate func receiveEnd(status: Int32, generation gen: Int) {
@@ -221,6 +229,13 @@ final class CallbackBox: @unchecked Sendable {
     init(generation: Int) { self.generation = generation }
 }
 
+/// One thing in your inventory: the engine's object index (which picks its
+/// sketch) and the game's wording for it.
+struct CarriedItem: Sendable, Identifiable, Equatable {
+    let id: Int
+    let name: String
+}
+
 struct EngineSnapshot: Sendable {
     var location: Int
     var dark: Bool
@@ -229,6 +244,8 @@ struct EngineSnapshot: Sendable {
     var maxScore: Int
     var turns: Int
     var seen: [Int]
+    var carried: [CarriedItem]
+    var bearFollowing: Bool
 }
 
 private func generation(of ctx: UnsafeMutableRawPointer?) -> Int? {
@@ -262,10 +279,20 @@ private func enginePrompt(_ ctx: UnsafeMutableRawPointer?,
             seen.append(i)
         }
     }
+    var carried: [CarriedItem] = []
+    withUnsafeBytes(of: s.carried) { raw in
+        let stride = MemoryLayout<Int32>.stride
+        for i in 0..<min(Int(s.carried_count), raw.count / stride) {
+            let obj = raw.load(fromByteOffset: i * stride, as: Int32.self)
+            guard let name = advent_object_inventory(obj) else { continue }
+            carried.append(CarriedItem(id: Int(obj), name: String(cString: name)))
+        }
+    }
     let snap = EngineSnapshot(location: Int(s.location), dark: s.dark,
                               askingFilename: s.asking_filename,
                               score: Int(s.score), maxScore: Int(s.max_score),
-                              turns: Int(s.turns), seen: seen)
+                              turns: Int(s.turns), seen: seen,
+                              carried: carried, bearFollowing: s.bear_following)
     DispatchQueue.main.async {
         MainActor.assumeIsolated {
             GameEngine.shared.receive(prompt: text, snapshot: snap, generation: gen)

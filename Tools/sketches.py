@@ -436,6 +436,97 @@ def it_tablet(p):
     p.ground(-12, 12, 8, tufts=False)
 
 
+
+def _bottle_with(p, c, dark):
+    it_bottle(p)
+    p.hatch([(-4.2, 1), (4.2, 1), (4.2, 7.7), (-4.2, 7.7)], 0 if not dark else 35, 1.0 if dark else 1.4, c=c, w=0.5)
+    p.line([(-4.2, 1), (4.2, 1)], 0.6, c, 0.2)
+
+
+def it_water(p):
+    _bottle_with(p, BLUE, False)
+
+
+def it_oil(p):
+    _bottle_with(p, BROWN, True)
+
+
+def it_amber(p):
+    pts = [(-7, 1), (-5, -5), (1, -7), (7, -3), (6, 4), (0, 7), (-5, 6)]
+    p.line(pts, 1.0, GOLD, 0.4, closed=True)
+    p.ell(-1, 0, 2.2, 1.4, w=0.6, c=BROWN, rot=30)    # something caught inside
+    p.seg(-2.5, -1.5, -3.5, -3, 0.4, BROWN)
+    p.seg(0.5, 1.5, 1.5, 3, 0.4, BROWN)
+    p.hatch([(2, -6), (7, -3), (6, 4), (2, 5.5)], 60, 1.4, c=GOLD)
+    p.sparkle(-6, -6)
+
+
+def it_pearl(p):
+    p.ell(0, 0, 6, 6, w=1.0)
+    p.ell(-2, -2, 1.6, 1.2, w=0.6, c=SOFT, rot=-30)
+    p.hatch([(2, 3.5), (5.5, 1), (5, 3.5), (3, 5.2)], 45, 0.9)
+    p.sparkle(6, -6, 2.4, SOFT)
+    p.shadow(0, 6.5, 10)
+
+
+def it_jade(p):
+    pts = [(math.cos(math.radians(a)) * 9, -5 + math.sin(math.radians(a)) * 9) for a in range(-10, 191, 12)]
+    p.line(pts, 0.5, SOFT, 0.1, step=2)
+    for x, y in pts[::2]:
+        p.ell(x, y, 1.4, 1.4, w=0.8, c=GREEN, n=7)
+    p.ell(0, 6, 3, 3.6, w=1.0, c=GREEN)
+    p.ell(0, 6, 1, 1.2, w=0.6, c=GREEN, n=6)
+
+
+def it_chest(p):
+    p.line([(-10, -2), (10, -2), (10, 8), (-10, 8)], 1.1, BROWN, 0.2, closed=True)
+    p.line([(-10, -2), (-9, -7), (-5, -9), (5, -9), (9, -7), (10, -2)], 1.1, BROWN, 0.3)
+    for x in (-6, 6):
+        p.line([(x, -9), (x, 8)], 0.8, GOLD, 0.1)
+    p.line([(-2, 0), (2, 0), (2, 4), (-2, 4)], 0.8, GOLD, 0.05, closed=True)
+    p.ell(0, 2, 0.5, 0.6, w=0.6, n=5)
+    p.hatch([(6.5, -1.6), (9.6, -1.6), (9.6, 7.6), (6.5, 7.6)], 75, 1.3)
+    p.sparkle(-12, -9)
+
+
+def it_rug(p):
+    # rolled-up Persian rug
+    p.line([(-12, -2), (8, -5), (10, 3), (-10, 6)], 1.0, RED, 0.3)
+    p.ell(-11, 2, 2.5, 4, w=1.0, c=RED, rot=-10)
+    p.ell(-11, 2, 1, 1.8, w=0.6, c=RED, rot=-10)
+    for k in range(4):
+        x = -6 + k * 4
+        p.line([(x, -3.5 + k * -0.6), (x + 1, 1 - k * 0.2), (x, 4.6 - k * 0.4)], 0.5, GOLD, 0.15)
+    for k in range(5):
+        p.seg(9 + k * 0.1, -4 + k * 1.6, 11.5, -4.5 + k * 1.6, 0.5, GOLD)
+
+
+def it_axe(p):
+    p.line([(-9, 10), (6, -8)], 1.4, BROWN, 0.2)
+    p.line([(3, -10), (10, -12), (12, -6), (9, -3), (6, -6)], 1.0, INK, 0.15, closed=True)
+    p.hatch([(8, -10.5), (11.5, -6), (9, -3.6), (7, -6)], 60, 1.2)
+
+
+def it_batteries(p):
+    for x in (-5, 1, 7):
+        p.line([(x - 2.5, -7), (x + 2.5, -7), (x + 2.5, 8), (x - 2.5, 8)], 0.9, closed=True, wob=0.1)
+        p.line([(x - 1, -7), (x - 1, -8.5), (x + 1, -8.5), (x + 1, -7)], 0.7, wob=0.05)
+        p.seg(x - 2.5, -3, x + 2.5, -3, 0.5, RED)
+        p.text('+', x, -5, 3.5, 0, RED)
+    p.shadow(1, 8, 16)
+
+
+def it_oyster(p):
+    p.line([(-11, 2), (-8, -5), (-1, -8), (7, -6), (11, 0), (6, 5), (-4, 6)], 1.1, wob=0.6, closed=True)
+    for k in range(4):
+        p.line([(-8 + k * 1.5, -3 + k * 2), (2 + k, -6 + k * 2.5), (8 - k, -2 + k * 1.6)], 0.5, SOFT, 0.5)
+    p.shadow(0, 6, 18)
+
+
+def it_sack(p):
+    it_spices(p)
+
+
 ITEMS = {
     'KEYS': it_keys, 'LAMP': it_lamp, 'FOOD': it_food, 'BOTTLE': it_bottle, 'CAGE': it_cage,
     'ROD': it_rod, 'BIRD': it_bird, 'PILLOW': it_pillow, 'CLAM': it_clam, 'MAGAZINE': it_magazine,
@@ -444,6 +535,12 @@ ITEMS = {
     'TRIDENT': it_trident, 'VASE': it_vase, 'EMERALD': it_emerald, 'PYRAMID': it_pyramid,
     'OBJ_63': it_spices, 'CHAIN': it_chain, 'RUBY': it_ruby, 'SAPPH': it_sapphire,
     'OBJ_69': it_statuette,
+}
+# Everything else you can carry: drawn in the inventory, not on the map.
+CARRY_ONLY = {
+    'WATER': it_water, 'OIL': it_oil, 'AMBER': it_amber, 'PEARL': it_pearl, 'JADE': it_jade,
+    'CHEST': it_chest, 'RUG': it_rug, 'AXE': it_axe, 'BATTERY': it_batteries, 'OYSTER': it_oyster,
+    'ROD2': it_rod, 'CHAIN': it_chain,
 }
 ITEM_CAPTION = {
     'KEYS': 'keys', 'LAMP': 'lamp', 'FOOD': 'food', 'BOTTLE': 'bottle', 'CAGE': 'cage', 'ROD': 'rod',

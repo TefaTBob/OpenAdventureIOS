@@ -46,6 +46,13 @@ final class MapArt: @unchecked Sendable {
         let bounds: CGRect
     }
 
+    /// A carryable thing, drawn on its own for the inventory.
+    struct ItemArt {
+        let groups: [Group]
+        let labels: [Label]
+        let bounds: CGRect
+    }
+
     struct Mark {
         let symbol: Int
         let at: CGPoint
@@ -90,12 +97,15 @@ final class MapArt: @unchecked Sendable {
     let rooms: [Int: RoomArt]
     /// Same order as CaveMap.connections.
     let passages: [PassageArt]
+    /// Inventory sketches by engine object index.
+    let items: [Int: ItemArt]
 
     private init() {
         var unit: CGFloat = 128, tunnel: CGFloat = 5
         var symbols: [Symbol] = []
         var rooms: [Int: RoomArt] = [:]
         var passages: [PassageArt] = []
+        var items: [Int: ItemArt] = [:]
         if let url = Bundle.main.url(forResource: "map_art", withExtension: "json"),
            let data = try? Data(contentsOf: url),
            let doc = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
@@ -167,12 +177,20 @@ final class MapArt: @unchecked Sendable {
                                            trail: trailPts.map { var p = Path(); p.addLines($0); return p },
                                            ends: ends, bounds: box))
             }
+            for (key, value) in doc["items"] as? [String: Any] ?? [:] {
+                guard let id = Int(key), let item = value as? [String: Any] else { continue }
+                let strokes = item["strokes"] as? [Any] ?? []
+                items[id] = ItemArt(groups: reader.groups(strokes),
+                                    labels: (item["text"] as? [Any] ?? []).compactMap { reader.label($0) },
+                                    bounds: reader.bounds(strokes))
+            }
         }
         self.unit = unit
         self.tunnelHalfWidth = tunnel
         self.symbols = symbols
         self.rooms = rooms
         self.passages = passages
+        self.items = items
     }
 
     fileprivate static func num(_ v: Any?) -> Double? {

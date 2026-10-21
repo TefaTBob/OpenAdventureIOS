@@ -42,6 +42,8 @@ details, not design problems. The C engine is verified (see *Tests*).
   are exits you haven't followed; "to …" stubs are off-page connectors for
   passages that would otherwise cross the whole map. Only places you have
   *seen* (lit) appear, and the red-pencil ring is you.
+  The **backpack** button at the top of the map lists what you're
+  carrying, each thing sketched beside the game's own name for it.
   **Tap a room** to list all its exits with the exact commands — including
   the forest and the all-different maze, which are drawn as blocks of boxes
   because their paths are a deliberate tangle. Pinch to zoom, drag to pan,

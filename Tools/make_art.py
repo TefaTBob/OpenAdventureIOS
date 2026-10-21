@@ -483,11 +483,20 @@ for e in conns:
     o['ends'] = [{'walls': [enc_pts(w) for w in end['walls']], 'fill': enc_pts(end['fill']),
                   'tip': enc_pts([end['q']])} for end in e['ends']]
     out_conns.append(o)
+# Every carryable thing, drawn plain, for the inventory (keyed by object index).
+inventory_art = {}
+for idx, o in enumerate(Y['objects']):
+    k = list(o.keys())[0] if isinstance(o, dict) else o[0]
+    fn = K.ITEMS.get(k) or K.CARRY_ONLY.get(k)
+    if fn:
+        pen = K.draw(fn, 900 + idx)
+        inventory_art[str(idx)] = {'strokes': [enc_stroke(*s) for s in pen.strokes], 'text': [enc_text(t) for t in pen.texts]}
 out = {
     'scale': 10, 'unit': UNIT, 'tunnel': TW, 'diag': DIAG, 'colors': COLORS,
     'symbols': [{'strokes': [enc_stroke(*s) for s in p.strokes], 'text': [enc_text(t) for t in p.texts]} for p in symbols],
     'rooms': out_rooms,
     'connections': out_conns,
+    'items': inventory_art,
 }
 path = RES / "map_art.json"
 path.write_text(json.dumps(out, separators=(',', ':')))

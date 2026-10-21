@@ -31,6 +31,13 @@ static void on_prompt(void *ctx, const char *prompt,
 	/* LOCLOG=1: trace where the player is at each prompt (map checks). */
 	if (getenv("LOCLOG"))
 		fprintf(stderr, "LOC %d %d\n", s->location, s->dark);
+	/* INVLOG=1: what the snapshot says you're carrying. */
+	if (getenv("INVLOG")) {
+		fprintf(stderr, "INV");
+		for (int i = 0; i < s->carried_count; i++)
+			fprintf(stderr, " [%s]", advent_object_inventory(s->carried[i]));
+		fprintf(stderr, s->bear_following ? " +bear\n" : "\n");
+	}
 	pthread_mutex_lock(&m);
 	prompts_pending++;
 	pthread_cond_signal(&c);

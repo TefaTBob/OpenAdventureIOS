@@ -127,8 +127,11 @@ struct KeyboardView: View {
     }
 }
 
-/// One sculpted key cap. Fires on release (so a swipe that starts on a key
-/// doesn't type), shows the press immediately.
+/// One sculpted key cap, shaped like the Apple IIe's: a tapered body whose
+/// sides and tall front skirt you can see, and a smaller top dished into a
+/// gentle concave curve that catches the light along its front lip.
+/// Fires on release (so a swipe that starts on a key doesn't type), shows
+/// the press immediately.
 struct KeyCap: View {
     let spec: KeySpec
     let unit: CGFloat
@@ -140,25 +143,59 @@ struct KeyCap: View {
 
     var body: some View {
         let down = pressed
-        let travel = max(1.5, height * 0.06)
+        let w = max(0, unit * spec.width - gap)
+        let travel = max(2, height * 0.07)
+        // The top is narrower than the base, and sits towards the back, so
+        // more of the front skirt shows than the sides — the view from a
+        // typist's seat.
+        let side = min(w * 0.11, 5.5)
+        let topH = height * 0.70
+        let topY = (down ? travel : 0) + height * 0.04
         ZStack(alignment: .top) {
-            // Skirt (the key's sides, seen from above)
-            RoundedRectangle(cornerRadius: 5, style: .continuous)
-                .fill(Retro.keySkirt)
-            // Top surface, slightly dished
-            RoundedRectangle(cornerRadius: 4, style: .continuous)
-                .fill(LinearGradient(colors: [Retro.keyTop, Retro.keyFace],
+            // Body: tapered sides and front skirt.
+            KeyBody(inset: side)
+                .fill(LinearGradient(colors: [Retro.keyFace, Retro.keySkirt],
                                      startPoint: .top, endPoint: .bottom))
                 .overlay(
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .stroke(Color.white.opacity(0.08), lineWidth: 0.5)
+                    // Light from the upper left: left wall lit, right in shade.
+                    KeyBody(inset: side)
+                        .fill(LinearGradient(colors: [.white.opacity(0.10), .clear, .black.opacity(0.28)],
+                                             startPoint: .leading, endPoint: .trailing))
                 )
-                .padding(.horizontal, unit * 0.07)
-                .padding(.top, down ? travel : 1)
-                .padding(.bottom, down ? 1 : travel + 1)
-                .overlay(alignment: .center) { legendView.offset(y: down ? travel / 2 : -travel / 2) }
+                .overlay(
+                    KeyBody(inset: side)
+                        .stroke(.black.opacity(0.55), lineWidth: 0.75)
+                )
+                .padding(.top, down ? travel : 0)
+                .shadow(color: .black.opacity(down ? 0.2 : 0.4), radius: down ? 0.5 : 1.5, y: down ? 0.5 : 2)
+
+            // Top: dished. Darker under the back rim, lighter where the
+            // curve turns up towards you, with a bright front lip.
+            let top = RoundedRectangle(cornerRadius: min(7, w * 0.16), style: .continuous)
+            top
+                .fill(LinearGradient(stops: [
+                    .init(color: Retro.keyFace.opacity(0.95), location: 0),
+                    .init(color: Retro.keyFace, location: 0.18),
+                    .init(color: Retro.keyTop, location: 0.72),
+                    .init(color: Retro.keyTop.opacity(0.9), location: 1),
+                ], startPoint: .top, endPoint: .bottom))
+                .overlay(
+                    // The dish: a soft sheen across the middle of the scoop.
+                    top.fill(EllipticalGradient(colors: [.white.opacity(0.09), .clear],
+                                                center: UnitPoint(x: 0.45, y: 0.62),
+                                                startRadiusFraction: 0, endRadiusFraction: 0.6))
+                )
+                .overlay(
+                    // Rim: shadowed at the back edge, catching light at the front lip.
+                    top.strokeBorder(LinearGradient(colors: [.black.opacity(0.45), .clear, .white.opacity(0.22)],
+                                                    startPoint: .top, endPoint: .bottom),
+                                     lineWidth: 1.2)
+                )
+                .overlay { legendView }
+                .frame(width: max(0, w - side * 2.4), height: topH)
+                .offset(y: topY)
         }
-        .frame(width: max(0, unit * spec.width - gap), height: height)
+        .frame(width: w, height: height, alignment: .top)
         .padding(.horizontal, gap / 2)
         .contentShape(Rectangle())
         .gesture(
@@ -172,6 +209,7 @@ struct KeyCap: View {
                     }
                 }
         )
+        .animation(.easeOut(duration: 0.06), value: pressed)
         .accessibilityElement()
         .accessibilityLabel(accessibilityName)
         .accessibilityAddTraits(.isButton)
@@ -181,11 +219,11 @@ struct KeyCap: View {
     @ViewBuilder private var legendView: some View {
         if let symbol = spec.symbol {
             Image(systemName: symbol)
-                .font(.system(size: min(20, height * 0.4), weight: .semibold))
+                .font(.system(size: min(18, height * 0.36), weight: .semibold))
                 .foregroundStyle(Retro.legend)
         } else {
             Text(spec.legend)
-                .font(.system(size: spec.small ? min(13, height * 0.28) : min(24, height * 0.5),
+                .font(.system(size: spec.small ? min(12, height * 0.25) : min(21, height * 0.44),
                               weight: spec.small ? .semibold : .medium,
                               design: .rounded))
                 .lineLimit(1)
@@ -206,5 +244,27 @@ struct KeyCap: View {
         case .notes: "Open notes"
         case .settings: "Settings"
         }
+    }
+}
+
+/// The key's body seen from above and in front: a rounded trapezoid whose
+/// top edge is pulled in by `inset` on each side.
+struct KeyBody: Shape {
+    var inset: CGFloat
+
+    func path(in r: CGRect) -> Path {
+        let rad = min(6, r.width * 0.18)
+        let tl = CGPoint(x: r.minX + inset, y: r.minY)
+        let tr = CGPoint(x: r.maxX - inset, y: r.minY)
+        let br = CGPoint(x: r.maxX, y: r.maxY)
+        let bl = CGPoint(x: r.minX, y: r.maxY)
+        var p = Path()
+        p.move(to: CGPoint(x: (tl.x + tr.x) / 2, y: r.minY))
+        p.addArc(tangent1End: tr, tangent2End: br, radius: rad)
+        p.addArc(tangent1End: br, tangent2End: bl, radius: rad)
+        p.addArc(tangent1End: bl, tangent2End: tl, radius: rad)
+        p.addArc(tangent1End: tl, tangent2End: tr, radius: rad)
+        p.closeSubpath()
+        return p
     }
 }

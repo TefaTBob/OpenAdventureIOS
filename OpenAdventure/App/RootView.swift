@@ -127,19 +127,32 @@ struct RootView: View {
         }
     }
 
+    /// Swipe between pages. The direction always comes from where your
+    /// finger actually went; the flick's momentum only helps a short swipe
+    /// count, and never turns it round. (Deciding by predicted end position
+    /// alone sent a swipe the wrong way whenever the finger eased back a
+    /// little before lifting.)
     private func pageSwipe(width: CGFloat) -> some Gesture {
         DragGesture(minimumDistance: 24)
             .onChanged { value in
                 let dx = value.translation.width
-                guard abs(dx) > abs(value.translation.height) * 1.4 else { return }
+                // Lock to horizontal once it's clearly a sideways swipe;
+                // vertical drags stay with the screen's scroll-back.
+                if dragX == 0 {
+                    guard abs(dx) > abs(value.translation.height) * 1.4 else { return }
+                }
                 dragX = dx
             }
             .onEnded { value in
-                let dx = value.predictedEndTranslation.width
-                if dragX == 0 { return }
-                if dx > width * 0.3 {
+                guard dragX != 0 else { return }
+                let dx = value.translation.width
+                let flick = value.predictedEndTranslation.width
+                // A flick counts only if it carries on the way you swiped.
+                let far = abs(dx) > width * 0.3
+                    || (abs(dx) > 30 && flick * dx > 0 && abs(flick) > width * 0.3)
+                if far && dx > 0 {
                     go(page == .notes ? .game : .map, width: width)
-                } else if dx < -width * 0.3 {
+                } else if far && dx < 0 {
                     go(page == .map ? .game : .notes, width: width)
                 } else {
                     go(page, width: width)
@@ -159,8 +172,13 @@ struct RootView: View {
                         dragX = closingFromTrailing ? min(0, dx) : max(0, dx)
                     }
                     .onEnded { value in
-                        let dx = value.predictedEndTranslation.width
-                        let far = closingFromTrailing ? dx < -width * 0.25 : dx > width * 0.25
+                        let dx = value.translation.width
+                        let flick = value.predictedEndTranslation.width
+                        // Closing needs a swipe the right way; momentum helps
+                        // but can't reverse it.
+                        let sign: CGFloat = closingFromTrailing ? -1 : 1
+                        let far = dx * sign > width * 0.25
+                            || (dx * sign > 20 && flick * sign > width * 0.25)
                         go(far ? .game : page, width: width)
                     }
             )

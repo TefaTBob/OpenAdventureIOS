@@ -38,12 +38,14 @@ struct MonitorView<Screen: View>: View {
 
             VStack(spacing: 4) {
                 // Recessed screen surround
+                // The opening in the case is generously rounded, like the
+                // Apple IIe monitor's molded bezel.
                 ZStack {
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    RoundedRectangle(cornerRadius: 34, style: .continuous)
                         .fill(Retro.screenSurround)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                                .stroke(LinearGradient(colors: [.black.opacity(0.8), .white.opacity(0.25)],
+                            RoundedRectangle(cornerRadius: 34, style: .continuous)
+                                .stroke(LinearGradient(colors: [.black.opacity(0.8), .white.opacity(0.3)],
                                                        startPoint: .top, endPoint: .bottom),
                                         lineWidth: 3)
                         )
@@ -70,7 +72,7 @@ struct MonitorView<Screen: View>: View {
 
     @ViewBuilder private var tube: some View {
         // Generous corner rounding sells the curved glass of the tube.
-        let shape = RoundedRectangle(cornerRadius: 22, style: .continuous)
+        let shape = RoundedRectangle(cornerRadius: 28, style: .continuous)
         let content = screen
             .clipShape(shape)
             .overlay(

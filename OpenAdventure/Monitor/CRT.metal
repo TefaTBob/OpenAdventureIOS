@@ -40,10 +40,16 @@ half4 crtMonitor(float2 position, SwiftUI::Layer layer,
     float r2 = dot(cc, cc) * 4.0;
     float2 cuv = float2(cc.x * (1.0 + k * r2), cc.y * (1.0 + ky * r2)) + 0.5;
 
-    // Outside the bent picture is the dark glass of the tube.
-    if (cuv.x < 0.0 || cuv.x > 1.0 || cuv.y < 0.0 || cuv.y > 1.0) {
-        return half4(half3(phosphor.rgb) * half(ambient * 0.02), 1.0h);
+    // The lit picture has rounded corners, like a real tube's raster:
+    // signed distance (in points) to a rounded rectangle in picture space.
+    half3 glass = half3(phosphor.rgb) * half(ambient * 0.02);
+    float cornerR = min(size.x, size.y) * 0.08;
+    float2 q = abs(cuv - 0.5) * size - (size * 0.5 - cornerR);
+    float edge = length(max(q, float2(0.0))) + min(max(q.x, q.y), 0.0) - cornerR;
+    if (edge > 1.0) {
+        return half4(glass, 1.0h);   // outside: the dark glass of the tube
     }
+    float rasterMask = 1.0 - smoothstep(-2.5, 1.0, edge);   // soft edge
 
     // --- Frame jitter: the whole picture twitches a little, 30 times a second.
     float frame = floor(time * 30.0);
@@ -110,6 +116,9 @@ half4 crtMonitor(float2 position, SwiftUI::Layer layer,
     // --- Vignette toward the tube edges.
     float2 vv = cuv - 0.5;
     col *= 1.0 - dot(vv, vv) * (0.6 + curvature * 0.8);
+
+    // --- Fade the raster's rounded edge into the glass.
+    col = mix(float3(glass), col, rasterMask);
 
     return half4(half3(clamp(col, float3(0.0), float3(1.2))), 1.0h);
 }

@@ -70,8 +70,8 @@ struct RootView: View {
             MonitorView {
                 // A little black margin so the first column clears the glass edge.
                 GameScreenView()
-                    .padding(.horizontal, 4)
-                    .padding(.vertical, 3)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 7)
                     .background(Color.black)
             }
             .padding(.horizontal, 4)

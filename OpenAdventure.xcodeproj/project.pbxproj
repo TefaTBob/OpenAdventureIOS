@@ -1,0 +1,628 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0067FD67CA3D45FA780970B5 /* cave_map.json in Resources */ = {isa = PBXBuildFile; fileRef = A86C05322D543587384F86CB /* cave_map.json */; };
+		03E3A250F2D1517173B26E2F /* CaveMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F4C40FC94ED7CD3E3D4492 /* CaveMap.swift */; };
+		05CF9A04EEBDC98646753839 /* CRT.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3385EFC0305ADC7CFAD8D9D9 /* CRT.metal */; };
+		090155F409A280D1AC0D12F0 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194ACF5BCD9181D67791E0A3 /* RootView.swift */; };
+		0C23DB4B050024327977A57E /* misc_ios.c in Sources */ = {isa = PBXBuildFile; fileRef = 16F332435F88F20E089D5417 /* misc_ios.c */; };
+		11CB9F94828297C2F0A05B63 /* main_ios.c in Sources */ = {isa = PBXBuildFile; fileRef = CF220765614F2497EF7B846B /* main_ios.c */; };
+		22F9CB4EB55CA2012E207651 /* ScreenRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4932B545B08E2C8B8C49FC /* ScreenRenderer.swift */; };
+		29556DEB2579895C8E83F05F /* advent_bridge.c in Sources */ = {isa = PBXBuildFile; fileRef = B0E90623BCEDB02AF8E20675 /* advent_bridge.c */; };
+		2CFBE90FE66B5131DE3F8650 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8ED0FB0A62AF07536C48F2 /* SettingsView.swift */; };
+		3FBD075C805794C05BEC168E /* init_ios.c in Sources */ = {isa = PBXBuildFile; fileRef = AAFDD4178322DBBFB74720EE /* init_ios.c */; };
+		3FF3715DC3A6FBCB851FC19B /* MonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5620EFE5D6A51F2D82F0D /* MonitorView.swift */; };
+		463EEF82A975252F8BC3ADE9 /* actions_ios.c in Sources */ = {isa = PBXBuildFile; fileRef = 82F9680D5ED96D5D8A9B9E54 /* actions_ios.c */; };
+		46571267216219B605047220 /* OpenAdventure-LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFE5CB7571A7B7EA1DD618D4 /* OpenAdventure-LICENSE.txt */; };
+		468675ABEE95A53491D6EE15 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B49AE82ABB6342AB8A657B /* KeyboardView.swift */; };
+		4C3E96D4105D54C64FE429EA /* SaveStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDB6D142CA80838DE803C /* SaveStore.swift */; };
+		511C1E28B1F5B2EFC569805B /* saveresume_ios.c in Sources */ = {isa = PBXBuildFile; fileRef = CAAFA22C6BD085FADD5B2024 /* saveresume_ios.c */; };
+		63FC823CD9D0B9039474E71E /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4068FED6221035712634FBB9 /* GameScreenView.swift */; };
+		69ADC82AFD61F497E8ECDF86 /* TextLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130EED8741B381B27DC383AD /* TextLayout.swift */; };
+		70B370F367710FC5DB115B40 /* OpenAdventureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22C7FE6B51519729C953F1D /* OpenAdventureApp.swift */; };
+		768C33532C5D37F8237E8CB3 /* CRTEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19841BF4EBF0F8D4A07AF31D /* CRTEffect.swift */; };
+		8E00C17A34613942E7135C97 /* dungeon_ios.c in Sources */ = {isa = PBXBuildFile; fileRef = 7906652F6F4CC5F5AD484E1F /* dungeon_ios.c */; };
+		99ECD75E617C6D1531EC6292 /* CRTSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4AB8FF0992D44E3C928F3 /* CRTSettings.swift */; };
+		A0D680A921E7312C1EC6439B /* PixelFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394DF7ED7B7E8F2E8496B48 /* PixelFont.swift */; };
+		A78C481B95EC6F9D856FB78A /* NotepadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB473B5D1521EF835CF1EB0 /* NotepadView.swift */; };
+		CF8F1310D016348382C612C3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09F22E8D0A6DF0D7BD4E60 /* MapView.swift */; };
+		D93459C20490A23FFDC1599E /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6FCA37C9A406CD7720CB2C /* GameEngine.swift */; };
+		E9D9684244400A42BB3F7024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6805743A97917D1BB16C6A0 /* Assets.xcassets */; };
+		EBB38CE39C6334AC4F9826C8 /* score_ios.c in Sources */ = {isa = PBXBuildFile; fileRef = 621CDC73A6AFA452F3E6AA40 /* score_ios.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0336240F925EF2FA3A0DB6ED /* make_xcodeproj.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = make_xcodeproj.py; path = Tools/make_xcodeproj.py; sourceTree = SOURCE_ROOT; };
+		03FAC85D561BC8862A9DB39A /* advent_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = advent_bridge.h; path = Engine/shim/advent_bridge.h; sourceTree = SOURCE_ROOT; };
+		06B2527508E2AC753AA555A2 /* misc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = misc.c; path = Engine/upstream/misc.c; sourceTree = SOURCE_ROOT; };
+		09A2904E4073BEF2609BD1CA /* readline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = readline.h; path = Engine/shim/editline/readline.h; sourceTree = SOURCE_ROOT; };
+		130EED8741B381B27DC383AD /* TextLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextLayout.swift; path = OpenAdventure/Terminal/TextLayout.swift; sourceTree = SOURCE_ROOT; };
+		161803DF0E7BEACB1249E648 /* check_map.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = check_map.py; path = Tools/check_map.py; sourceTree = SOURCE_ROOT; };
+		16F332435F88F20E089D5417 /* misc_ios.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = misc_ios.c; path = Engine/wrap/misc_ios.c; sourceTree = SOURCE_ROOT; };
+		194ACF5BCD9181D67791E0A3 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootView.swift; path = OpenAdventure/App/RootView.swift; sourceTree = SOURCE_ROOT; };
+		19841BF4EBF0F8D4A07AF31D /* CRTEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CRTEffect.swift; path = OpenAdventure/Monitor/CRTEffect.swift; sourceTree = SOURCE_ROOT; };
+		22E4AB8FF0992D44E3C928F3 /* CRTSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CRTSettings.swift; path = OpenAdventure/Monitor/CRTSettings.swift; sourceTree = SOURCE_ROOT; };
+		2394DF7ED7B7E8F2E8496B48 /* PixelFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PixelFont.swift; path = OpenAdventure/Terminal/PixelFont.swift; sourceTree = SOURCE_ROOT; };
+		2B3F09E51F708E2F0F05683B /* layout_sa.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = layout_sa.c; path = Tools/layout_sa.c; sourceTree = SOURCE_ROOT; };
+		2D1B4A7191B74A6ED7C450F9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		3385EFC0305ADC7CFAD8D9D9 /* CRT.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = CRT.metal; path = OpenAdventure/Monitor/CRT.metal; sourceTree = SOURCE_ROOT; };
+		3C4932B545B08E2C8B8C49FC /* ScreenRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScreenRenderer.swift; path = OpenAdventure/Terminal/ScreenRenderer.swift; sourceTree = SOURCE_ROOT; };
+		4068FED6221035712634FBB9 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameScreenView.swift; path = OpenAdventure/Terminal/GameScreenView.swift; sourceTree = SOURCE_ROOT; };
+		4499DC63CAA03C739BB8A689 /* map_layout.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = map_layout.txt; path = Tools/map_layout.txt; sourceTree = SOURCE_ROOT; };
+		4D8403086F91D2ECEAED7AD9 /* score.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = score.c; path = Engine/upstream/score.c; sourceTree = SOURCE_ROOT; };
+		4E29DDA53C6DAA27A629988A /* actions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = actions.c; path = Engine/upstream/actions.c; sourceTree = SOURCE_ROOT; };
+		533944016D1CDD0509B5C213 /* make_dungeon.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = make_dungeon.py; path = Tools/make_dungeon.py; sourceTree = SOURCE_ROOT; };
+		5830CF825005EE063CE10731 /* run_engine_tests.sh */ = {isa = PBXFileReference; lastKnownFileType = text; name = run_engine_tests.sh; path = Tools/run_engine_tests.sh; sourceTree = SOURCE_ROOT; };
+		5AA959A6C4425123452D9513 /* dungeon.h.tpl */ = {isa = PBXFileReference; lastKnownFileType = text; name = dungeon.h.tpl; path = Tools/templates/dungeon.h.tpl; sourceTree = SOURCE_ROOT; };
+		621CDC73A6AFA452F3E6AA40 /* score_ios.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = score_ios.c; path = Engine/wrap/score_ios.c; sourceTree = SOURCE_ROOT; };
+		6E5BDB6D142CA80838DE803C /* SaveStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaveStore.swift; path = OpenAdventure/Engine/SaveStore.swift; sourceTree = SOURCE_ROOT; };
+		70C47BCBA083C7851DE7EFF1 /* solve_layout.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = solve_layout.py; path = Tools/solve_layout.py; sourceTree = SOURCE_ROOT; };
+		7906652F6F4CC5F5AD484E1F /* dungeon_ios.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = dungeon_ios.c; path = Engine/wrap/dungeon_ios.c; sourceTree = SOURCE_ROOT; };
+		7A6FCA37C9A406CD7720CB2C /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameEngine.swift; path = OpenAdventure/Engine/GameEngine.swift; sourceTree = SOURCE_ROOT; };
+		7D09F22E8D0A6DF0D7BD4E60 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = OpenAdventure/Map/MapView.swift; sourceTree = SOURCE_ROOT; };
+		7F22922FE369AE4871886AE5 /* coverage_dungeon.html.tpl */ = {isa = PBXFileReference; lastKnownFileType = text; name = coverage_dungeon.html.tpl; path = Tools/templates/coverage_dungeon.html.tpl; sourceTree = SOURCE_ROOT; };
+		82F9680D5ED96D5D8A9B9E54 /* actions_ios.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = actions_ios.c; path = Engine/wrap/actions_ios.c; sourceTree = SOURCE_ROOT; };
+		83B49AE82ABB6342AB8A657B /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyboardView.swift; path = OpenAdventure/Keyboard/KeyboardView.swift; sourceTree = SOURCE_ROOT; };
+		8BE2FEA8274FAFA0F9440ADF /* dungeon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dungeon.h; path = Engine/upstream/dungeon.h; sourceTree = SOURCE_ROOT; };
+		8F2E4B461139201B68A6D1CD /* mapdata.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = mapdata.py; path = Tools/mapdata.py; sourceTree = SOURCE_ROOT; };
+		9891CE8172DA92B76065EA18 /* advent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = advent.h; path = Engine/upstream/advent.h; sourceTree = SOURCE_ROOT; };
+		9B072105DF4FF6063C82C358 /* adventure.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = adventure.yaml; path = Tools/adventure.yaml; sourceTree = SOURCE_ROOT; };
+		9EB473B5D1521EF835CF1EB0 /* NotepadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotepadView.swift; path = OpenAdventure/Notes/NotepadView.swift; sourceTree = SOURCE_ROOT; };
+		A6805743A97917D1BB16C6A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = OpenAdventure/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		A86C05322D543587384F86CB /* cave_map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = cave_map.json; path = OpenAdventure/Resources/cave_map.json; sourceTree = SOURCE_ROOT; };
+		AAFDD4178322DBBFB74720EE /* init_ios.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = init_ios.c; path = Engine/wrap/init_ios.c; sourceTree = SOURCE_ROOT; };
+		B0E90623BCEDB02AF8E20675 /* advent_bridge.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = advent_bridge.c; path = Engine/shim/advent_bridge.c; sourceTree = SOURCE_ROOT; };
+		C2588957BF7AB620A8564487 /* dungeon.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = dungeon.c; path = Engine/upstream/dungeon.c; sourceTree = SOURCE_ROOT; };
+		C6D068AE7E687CF02FD6C92E /* OpenAdventure-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "OpenAdventure-Bridging-Header.h"; path = "OpenAdventure/OpenAdventure-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		C6F4C40FC94ED7CD3E3D4492 /* CaveMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CaveMap.swift; path = OpenAdventure/Map/CaveMap.swift; sourceTree = SOURCE_ROOT; };
+		CAAFA22C6BD085FADD5B2024 /* saveresume_ios.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = saveresume_ios.c; path = Engine/wrap/saveresume_ios.c; sourceTree = SOURCE_ROOT; };
+		CF220765614F2497EF7B846B /* main_ios.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main_ios.c; path = Engine/wrap/main_ios.c; sourceTree = SOURCE_ROOT; };
+		D3A8B800FFD9386DC4A7AEC6 /* bridge_lifecycle_test.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = bridge_lifecycle_test.c; path = Tools/bridge_lifecycle_test.c; sourceTree = SOURCE_ROOT; };
+		D6553DAE4C8FC6D81BFC0A94 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = Engine/upstream/main.c; sourceTree = SOURCE_ROOT; };
+		DB946068163B1680A6B43A9E /* advent_override.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = advent_override.h; path = Engine/shim/advent_override.h; sourceTree = SOURCE_ROOT; };
+		DF77CDB6B70A2959136EB931 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; name = COPYING; path = Engine/upstream/COPYING; sourceTree = SOURCE_ROOT; };
+		ED7F9AAC750D7F4F784D6FA4 /* cheat.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cheat.c; path = Tools/cheat.c; sourceTree = SOURCE_ROOT; };
+		F22C7FE6B51519729C953F1D /* OpenAdventureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenAdventureApp.swift; path = OpenAdventure/App/OpenAdventureApp.swift; sourceTree = SOURCE_ROOT; };
+		F2A49D65CA41FE41B2F85D8F /* saveresume.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = saveresume.c; path = Engine/upstream/saveresume.c; sourceTree = SOURCE_ROOT; };
+		F2D5620EFE5D6A51F2D82F0D /* MonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonitorView.swift; path = OpenAdventure/Monitor/MonitorView.swift; sourceTree = SOURCE_ROOT; };
+		F53B343C0C70546624446317 /* bridge_harness.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = bridge_harness.c; path = Tools/bridge_harness.c; sourceTree = SOURCE_ROOT; };
+		F5BF48AA40CAD7891EB709FC /* OpenAdventure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenAdventure.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6BF63BF533CC98D1919DEF9 /* init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = init.c; path = Engine/upstream/init.c; sourceTree = SOURCE_ROOT; };
+		FBFD5468575F6FCA527790DB /* make_map.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = make_map.py; path = Tools/make_map.py; sourceTree = SOURCE_ROOT; };
+		FDA3C8856AC8C1CD3DD31C9D /* dungeon.c.tpl */ = {isa = PBXFileReference; lastKnownFileType = text; name = dungeon.c.tpl; path = Tools/templates/dungeon.c.tpl; sourceTree = SOURCE_ROOT; };
+		FF8ED0FB0A62AF07536C48F2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = OpenAdventure/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		FFE5CB7571A7B7EA1DD618D4 /* OpenAdventure-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "OpenAdventure-LICENSE.txt"; path = "OpenAdventure/Resources/OpenAdventure-LICENSE.txt"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C18F88D444D8FE65E18D39E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10877644A0E78CDC9475D5D9 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				83B49AE82ABB6342AB8A657B /* KeyboardView.swift */,
+			);
+			name = Keyboard;
+			sourceTree = "<group>";
+		};
+		2AC8BA37DAC32D5437812408 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5BF48AA40CAD7891EB709FC /* OpenAdventure.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4EAE695AD1F489F78EA3E1C6 = {
+			isa = PBXGroup;
+			children = (
+				60A923930ED4E57FBFCC0335 /* OpenAdventure */,
+				4FDE07D038078294F37C5375 /* Engine */,
+				CC885B3F9AD67AC85882FE92 /* Tools */,
+				2D1B4A7191B74A6ED7C450F9 /* README.md */,
+				2AC8BA37DAC32D5437812408 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4FDE07D038078294F37C5375 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				851114F347CF7B6557CC7F07 /* shim */,
+				67D969F9342CDB67EA8C7058 /* upstream */,
+				C2AD4C64566F09F1822FCB2E /* wrap */,
+			);
+			name = Engine;
+			sourceTree = "<group>";
+		};
+		60A923930ED4E57FBFCC0335 /* OpenAdventure */ = {
+			isa = PBXGroup;
+			children = (
+				C3394EC0DED203CBAA405FA3 /* App */,
+				A6805743A97917D1BB16C6A0 /* Assets.xcassets */,
+				729FDF377B3C8CD66878AE9D /* Engine */,
+				10877644A0E78CDC9475D5D9 /* Keyboard */,
+				6959B3ED2D68051A82B73673 /* Map */,
+				E5EA8C486BA962AB77F566E8 /* Monitor */,
+				CD66DC36D52D2A664FC86EE5 /* Notes */,
+				C6D068AE7E687CF02FD6C92E /* OpenAdventure-Bridging-Header.h */,
+				FE8ED862C3436A39D68A89EE /* Resources */,
+				E0AF4AA78E97F72284EE3912 /* Settings */,
+				CA9ED36493A5B6729FC9E8BA /* Terminal */,
+			);
+			name = OpenAdventure;
+			sourceTree = "<group>";
+		};
+		67D969F9342CDB67EA8C7058 /* upstream */ = {
+			isa = PBXGroup;
+			children = (
+				DF77CDB6B70A2959136EB931 /* COPYING */,
+				4E29DDA53C6DAA27A629988A /* actions.c */,
+				9891CE8172DA92B76065EA18 /* advent.h */,
+				C2588957BF7AB620A8564487 /* dungeon.c */,
+				8BE2FEA8274FAFA0F9440ADF /* dungeon.h */,
+				F6BF63BF533CC98D1919DEF9 /* init.c */,
+				D6553DAE4C8FC6D81BFC0A94 /* main.c */,
+				06B2527508E2AC753AA555A2 /* misc.c */,
+				F2A49D65CA41FE41B2F85D8F /* saveresume.c */,
+				4D8403086F91D2ECEAED7AD9 /* score.c */,
+			);
+			name = upstream;
+			sourceTree = "<group>";
+		};
+		6959B3ED2D68051A82B73673 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C6F4C40FC94ED7CD3E3D4492 /* CaveMap.swift */,
+				7D09F22E8D0A6DF0D7BD4E60 /* MapView.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		70C911C031266A7A07BB7FF8 /* editline */ = {
+			isa = PBXGroup;
+			children = (
+				09A2904E4073BEF2609BD1CA /* readline.h */,
+			);
+			name = editline;
+			sourceTree = "<group>";
+		};
+		729FDF377B3C8CD66878AE9D /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				7A6FCA37C9A406CD7720CB2C /* GameEngine.swift */,
+				6E5BDB6D142CA80838DE803C /* SaveStore.swift */,
+			);
+			name = Engine;
+			sourceTree = "<group>";
+		};
+		851114F347CF7B6557CC7F07 /* shim */ = {
+			isa = PBXGroup;
+			children = (
+				B0E90623BCEDB02AF8E20675 /* advent_bridge.c */,
+				03FAC85D561BC8862A9DB39A /* advent_bridge.h */,
+				DB946068163B1680A6B43A9E /* advent_override.h */,
+				70C911C031266A7A07BB7FF8 /* editline */,
+			);
+			name = shim;
+			sourceTree = "<group>";
+		};
+		C2AD4C64566F09F1822FCB2E /* wrap */ = {
+			isa = PBXGroup;
+			children = (
+				82F9680D5ED96D5D8A9B9E54 /* actions_ios.c */,
+				7906652F6F4CC5F5AD484E1F /* dungeon_ios.c */,
+				AAFDD4178322DBBFB74720EE /* init_ios.c */,
+				CF220765614F2497EF7B846B /* main_ios.c */,
+				16F332435F88F20E089D5417 /* misc_ios.c */,
+				CAAFA22C6BD085FADD5B2024 /* saveresume_ios.c */,
+				621CDC73A6AFA452F3E6AA40 /* score_ios.c */,
+			);
+			name = wrap;
+			sourceTree = "<group>";
+		};
+		C3394EC0DED203CBAA405FA3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F22C7FE6B51519729C953F1D /* OpenAdventureApp.swift */,
+				194ACF5BCD9181D67791E0A3 /* RootView.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		CA9ED36493A5B6729FC9E8BA /* Terminal */ = {
+			isa = PBXGroup;
+			children = (
+				4068FED6221035712634FBB9 /* GameScreenView.swift */,
+				2394DF7ED7B7E8F2E8496B48 /* PixelFont.swift */,
+				3C4932B545B08E2C8B8C49FC /* ScreenRenderer.swift */,
+				130EED8741B381B27DC383AD /* TextLayout.swift */,
+			);
+			name = Terminal;
+			sourceTree = "<group>";
+		};
+		CC885B3F9AD67AC85882FE92 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				9B072105DF4FF6063C82C358 /* adventure.yaml */,
+				F53B343C0C70546624446317 /* bridge_harness.c */,
+				D3A8B800FFD9386DC4A7AEC6 /* bridge_lifecycle_test.c */,
+				ED7F9AAC750D7F4F784D6FA4 /* cheat.c */,
+				161803DF0E7BEACB1249E648 /* check_map.py */,
+				2B3F09E51F708E2F0F05683B /* layout_sa.c */,
+				533944016D1CDD0509B5C213 /* make_dungeon.py */,
+				FBFD5468575F6FCA527790DB /* make_map.py */,
+				0336240F925EF2FA3A0DB6ED /* make_xcodeproj.py */,
+				4499DC63CAA03C739BB8A689 /* map_layout.txt */,
+				8F2E4B461139201B68A6D1CD /* mapdata.py */,
+				5830CF825005EE063CE10731 /* run_engine_tests.sh */,
+				70C47BCBA083C7851DE7EFF1 /* solve_layout.py */,
+				DC037D980E84ED72703C972B /* templates */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		CD66DC36D52D2A664FC86EE5 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				9EB473B5D1521EF835CF1EB0 /* NotepadView.swift */,
+			);
+			name = Notes;
+			sourceTree = "<group>";
+		};
+		DC037D980E84ED72703C972B /* templates */ = {
+			isa = PBXGroup;
+			children = (
+				7F22922FE369AE4871886AE5 /* coverage_dungeon.html.tpl */,
+				FDA3C8856AC8C1CD3DD31C9D /* dungeon.c.tpl */,
+				5AA959A6C4425123452D9513 /* dungeon.h.tpl */,
+			);
+			name = templates;
+			sourceTree = "<group>";
+		};
+		E0AF4AA78E97F72284EE3912 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FF8ED0FB0A62AF07536C48F2 /* SettingsView.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		E5EA8C486BA962AB77F566E8 /* Monitor */ = {
+			isa = PBXGroup;
+			children = (
+				3385EFC0305ADC7CFAD8D9D9 /* CRT.metal */,
+				19841BF4EBF0F8D4A07AF31D /* CRTEffect.swift */,
+				22E4AB8FF0992D44E3C928F3 /* CRTSettings.swift */,
+				F2D5620EFE5D6A51F2D82F0D /* MonitorView.swift */,
+			);
+			name = Monitor;
+			sourceTree = "<group>";
+		};
+		FE8ED862C3436A39D68A89EE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FFE5CB7571A7B7EA1DD618D4 /* OpenAdventure-LICENSE.txt */,
+				A86C05322D543587384F86CB /* cave_map.json */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42AEFBAE01D2DFD981F7DA7D /* OpenAdventure */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAE61E3E2E1D2C3C20C63DD1 /* Build configuration list for PBXNativeTarget "OpenAdventure" */;
+			buildPhases = (
+				C4D5163706E5908DC9E032F3 /* Sources */,
+				C18F88D444D8FE65E18D39E9 /* Frameworks */,
+				4FDAD6DB49035FA75C21467D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenAdventure;
+			productName = OpenAdventure;
+			productReference = F5BF48AA40CAD7891EB709FC /* OpenAdventure.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 2720;
+				TargetAttributes = {
+					42AEFBAE01D2DFD981F7DA7D = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = F1BD16AC042ADC70C47A3592 /* Build configuration list for PBXProject "OpenAdventure" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4EAE695AD1F489F78EA3E1C6;
+			productRefGroup = 2AC8BA37DAC32D5437812408 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42AEFBAE01D2DFD981F7DA7D /* OpenAdventure */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4FDAD6DB49035FA75C21467D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9D9684244400A42BB3F7024 /* Assets.xcassets in Resources */,
+				46571267216219B605047220 /* OpenAdventure-LICENSE.txt in Resources */,
+				0067FD67CA3D45FA780970B5 /* cave_map.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C4D5163706E5908DC9E032F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70B370F367710FC5DB115B40 /* OpenAdventureApp.swift in Sources */,
+				090155F409A280D1AC0D12F0 /* RootView.swift in Sources */,
+				D93459C20490A23FFDC1599E /* GameEngine.swift in Sources */,
+				4C3E96D4105D54C64FE429EA /* SaveStore.swift in Sources */,
+				468675ABEE95A53491D6EE15 /* KeyboardView.swift in Sources */,
+				03E3A250F2D1517173B26E2F /* CaveMap.swift in Sources */,
+				CF8F1310D016348382C612C3 /* MapView.swift in Sources */,
+				05CF9A04EEBDC98646753839 /* CRT.metal in Sources */,
+				768C33532C5D37F8237E8CB3 /* CRTEffect.swift in Sources */,
+				99ECD75E617C6D1531EC6292 /* CRTSettings.swift in Sources */,
+				3FF3715DC3A6FBCB851FC19B /* MonitorView.swift in Sources */,
+				A78C481B95EC6F9D856FB78A /* NotepadView.swift in Sources */,
+				2CFBE90FE66B5131DE3F8650 /* SettingsView.swift in Sources */,
+				63FC823CD9D0B9039474E71E /* GameScreenView.swift in Sources */,
+				A0D680A921E7312C1EC6439B /* PixelFont.swift in Sources */,
+				22F9CB4EB55CA2012E207651 /* ScreenRenderer.swift in Sources */,
+				69ADC82AFD61F497E8ECDF86 /* TextLayout.swift in Sources */,
+				29556DEB2579895C8E83F05F /* advent_bridge.c in Sources */,
+				463EEF82A975252F8BC3ADE9 /* actions_ios.c in Sources */,
+				8E00C17A34613942E7135C97 /* dungeon_ios.c in Sources */,
+				3FBD075C805794C05BEC168E /* init_ios.c in Sources */,
+				11CB9F94828297C2F0A05B63 /* main_ios.c in Sources */,
+				0C23DB4B050024327977A57E /* misc_ios.c in Sources */,
+				511C1E28B1F5B2EFC569805B /* saveresume_ios.c in Sources */,
+				EBB38CE39C6334AC4F9826C8 /* score_ios.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C551B2C03298D59B5FCF0B13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AEVB7NGLRT;
+				ENABLE_PREVIEWS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Engine/shim",
+					"$(SRCROOT)/Engine/upstream",
+				);
+				INFOPLIST_KEY_CFBundleDisplayName = Adventure;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.adventure-games";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIFileSharingEnabled = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rellis.OpenAdventure;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenAdventure/OpenAdventure-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD133EDCC76AC9754B53493F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EFB20550C5E6D656DE8192A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AEVB7NGLRT;
+				ENABLE_PREVIEWS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Engine/shim",
+					"$(SRCROOT)/Engine/upstream",
+				);
+				INFOPLIST_KEY_CFBundleDisplayName = Adventure;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.adventure-games";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIFileSharingEnabled = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rellis.OpenAdventure;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenAdventure/OpenAdventure-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F5436A48943AF275A949A835 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CAE61E3E2E1D2C3C20C63DD1 /* Build configuration list for PBXNativeTarget "OpenAdventure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C551B2C03298D59B5FCF0B13 /* Debug */,
+				EFB20550C5E6D656DE8192A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1BD16AC042ADC70C47A3592 /* Build configuration list for PBXProject "OpenAdventure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD133EDCC76AC9754B53493F /* Debug */,
+				F5436A48943AF275A949A835 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+}

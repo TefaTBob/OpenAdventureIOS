@@ -1,0 +1,7779 @@
+{
+ "source": "Generated from Open Adventure 1.22 adventure.yaml by Tools/make_map.py",
+ "box": {
+  "w": 0.74,
+  "h": 0.52
+ },
+ "bounds": {
+  "x0": -19.0,
+  "y0": -15.0,
+  "x1": 5.0,
+  "y1": 10.0
+ },
+ "rooms": [
+  {
+   "id": 1,
+   "locs": [
+    1
+   ],
+   "label": "Outside Building",
+   "region": "surface",
+   "x": 2.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 2,
+     "words": [
+      "road",
+      "west",
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 3,
+     "words": [
+      "enter",
+      "building",
+      "in",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 4,
+     "words": [
+      "downstream",
+      "gully",
+      "stream",
+      "south",
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 145,
+     "words": [
+      "forest",
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 8,
+     "words": [
+      "depression"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "locs": [
+    2
+   ],
+   "label": "Hill in Road",
+   "region": "surface",
+   "x": 1.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 1,
+     "words": [
+      "building",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 5,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 164,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 157,
+     "words": [
+      "south",
+      "forest"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "locs": [
+    3
+   ],
+   "label": "Well House",
+   "region": "surface",
+   "x": 3.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 1,
+     "words": [
+      "out",
+      "outdoors",
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "locs": [
+    4
+   ],
+   "label": "Valley",
+   "region": "surface",
+   "x": 2.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 1,
+     "words": [
+      "upstream",
+      "building",
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 150,
+     "words": [
+      "east",
+      "forest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 156,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 7,
+     "words": [
+      "downstream",
+      "south",
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 8,
+     "words": [
+      "depression"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "locs": [
+    5
+   ],
+   "label": "End of Road",
+   "region": "surface",
+   "x": 0.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 2,
+     "words": [
+      "road",
+      "east",
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 1,
+     "words": [
+      "building"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 158,
+     "words": [
+      "south",
+      "forest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 159,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 165,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "locs": [
+    6
+   ],
+   "label": "Cliff",
+   "region": "surface",
+   "x": 1.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 161,
+     "words": [
+      "south",
+      "forest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 163,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 167,
+     "words": [
+      "fly (on the rug)"
+     ],
+     "conditional": true
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "locs": [
+    7
+   ],
+   "label": "Slit in Streambed",
+   "region": "surface",
+   "x": 2.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 1,
+     "words": [
+      "building"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 4,
+     "words": [
+      "upstream",
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 150,
+     "words": [
+      "east",
+      "forest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 154,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 8,
+     "words": [
+      "downstream",
+      "bed",
+      "south",
+      "depression"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "locs": [
+    8
+   ],
+   "label": "Outside Grate",
+   "region": "surface",
+   "x": 2.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 151,
+     "words": [
+      "east",
+      "forest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 154,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 153,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 1,
+     "words": [
+      "building"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 7,
+     "words": [
+      "upstream",
+      "gully",
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 9,
+     "words": [
+      "enter",
+      "in",
+      "down"
+     ],
+     "conditional": true
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "locs": [
+    9
+   ],
+   "label": "Below the Grate",
+   "region": "cave",
+   "x": 0.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 8,
+     "words": [
+      "out",
+      "up"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 10,
+     "words": [
+      "crawl",
+      "cobble",
+      "in",
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 14,
+     "words": [
+      "pit"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 11,
+     "words": [
+      "debris"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "locs": [
+    10
+   ],
+   "label": "Cobble Crawl",
+   "region": "cave",
+   "x": -1.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 9,
+     "words": [
+      "out",
+      "surface",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 11,
+     "words": [
+      "in",
+      "dark",
+      "west",
+      "debris"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 14,
+     "words": [
+      "pit"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "locs": [
+    11
+   ],
+   "label": "Debris Room",
+   "region": "cave",
+   "x": -2.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 8,
+     "words": [
+      "depression"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 9,
+     "words": [
+      "entrance"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 10,
+     "words": [
+      "crawl",
+      "cobble",
+      "passage",
+      "low",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 12,
+     "words": [
+      "canyon",
+      "in",
+      "up",
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 14,
+     "words": [
+      "pit"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "locs": [
+    12
+   ],
+   "label": "Awkward Canyon",
+   "region": "cave",
+   "x": -3.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 8,
+     "words": [
+      "depression"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 9,
+     "words": [
+      "entrance"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 11,
+     "words": [
+      "down",
+      "east",
+      "debris"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 13,
+     "words": [
+      "in",
+      "up",
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 14,
+     "words": [
+      "pit"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "locs": [
+    13
+   ],
+   "label": "Bird Chamber",
+   "region": "cave",
+   "x": -4.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 8,
+     "words": [
+      "depression"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 9,
+     "words": [
+      "entrance"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 11,
+     "words": [
+      "debris"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 12,
+     "words": [
+      "canyon",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 14,
+     "words": [
+      "passage",
+      "pit",
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "locs": [
+    14
+   ],
+   "label": "Top of Small Pit",
+   "region": "cave",
+   "x": -5.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 8,
+     "words": [
+      "depression"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 9,
+     "words": [
+      "entrance"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 11,
+     "words": [
+      "debris"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 13,
+     "words": [
+      "passage",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 15,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "locs": [
+    15
+   ],
+   "label": "Hall of Mists",
+   "region": "cave",
+   "x": -3.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 18,
+     "words": [
+      "left",
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 17,
+     "words": [
+      "forward",
+      "hall",
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 19,
+     "words": [
+      "stairs",
+      "down",
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 14,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 34,
+     "words": [
+      "y2"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "locs": [
+    17
+   ],
+   "label": "East Bank of Fissure",
+   "region": "cave",
+   "x": -4.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 15,
+     "words": [
+      "hall",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 27,
+     "words": [
+      "over"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "locs": [
+    18
+   ],
+   "label": "Nugget of Gold Room",
+   "region": "cave",
+   "x": -3.0,
+   "y": 0.0,
+   "exits": [
+    {
+     "to": 15,
+     "words": [
+      "hall",
+      "out",
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "locs": [
+    19
+   ],
+   "label": "Hall of the Mountain King",
+   "region": "cave",
+   "x": -5.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 15,
+     "words": [
+      "stairs",
+      "up",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 28,
+     "words": [
+      "north",
+      "right"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 29,
+     "words": [
+      "south",
+      "left"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 30,
+     "words": [
+      "west",
+      "forward"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 74,
+     "words": [
+      "southwest"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 74,
+     "words": [
+      "secret"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 23,
+   "locs": [
+    23
+   ],
+   "label": "West End of Twopit Room",
+   "region": "cave",
+   "x": -15.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 67,
+     "words": [
+      "east",
+      "across"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 68,
+     "words": [
+      "west",
+      "slab"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 25,
+     "words": [
+      "down",
+      "pit"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 24,
+   "locs": [
+    24
+   ],
+   "label": "East Pit",
+   "region": "cave",
+   "x": -14.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 67,
+     "words": [
+      "up",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 25,
+   "locs": [
+    25
+   ],
+   "label": "West Pit",
+   "region": "cave",
+   "x": -15.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 23,
+     "words": [
+      "up",
+      "out"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 88,
+     "words": [
+      "climb"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 27,
+   "locs": [
+    27
+   ],
+   "label": "West Bank of Fissure",
+   "region": "cave",
+   "x": -5.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 17,
+     "words": [
+      "over"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 41,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 41,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 28,
+   "locs": [
+    28
+   ],
+   "label": "Low N/S Passage",
+   "region": "cave",
+   "x": -5.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 19,
+     "words": [
+      "hall",
+      "out",
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 33,
+     "words": [
+      "north",
+      "y2"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 36,
+     "words": [
+      "down",
+      "hole"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 29,
+   "locs": [
+    29
+   ],
+   "label": "South Side Chamber",
+   "region": "cave",
+   "x": -5.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 19,
+     "words": [
+      "hall",
+      "out",
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 30,
+   "locs": [
+    30
+   ],
+   "label": "West Side Chamber",
+   "region": "cave",
+   "x": -6.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 19,
+     "words": [
+      "hall",
+      "out",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 62,
+     "words": [
+      "west",
+      "up"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 33,
+   "locs": [
+    33
+   ],
+   "label": "Y2",
+   "region": "cave",
+   "x": -4.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 28,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 34,
+     "words": [
+      "east",
+      "wall",
+      "broken"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 35,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 34,
+   "locs": [
+    34
+   ],
+   "label": "Rock Jumble",
+   "region": "cave",
+   "x": -3.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 33,
+     "words": [
+      "down",
+      "y2"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 15,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 35,
+   "locs": [
+    35
+   ],
+   "label": "Window on Pit",
+   "region": "cave",
+   "x": -5.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 33,
+     "words": [
+      "east",
+      "y2"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 36,
+   "locs": [
+    36
+   ],
+   "label": "Dirty Passage",
+   "region": "cave",
+   "x": -7.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 37,
+     "words": [
+      "east",
+      "crawl"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 28,
+     "words": [
+      "up",
+      "hole"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 39,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 65,
+     "words": [
+      "bedquilt"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 37,
+   "locs": [
+    37
+   ],
+   "label": "Brink of Small Pit",
+   "region": "cave",
+   "x": -6.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 36,
+     "words": [
+      "west",
+      "crawl"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 38,
+     "words": [
+      "down",
+      "pit",
+      "climb"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 38,
+   "locs": [
+    38
+   ],
+   "label": "Small Pit Bottom",
+   "region": "cave",
+   "x": -6.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 37,
+     "words": [
+      "climb",
+      "up",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 39,
+   "locs": [
+    39
+   ],
+   "label": "Dusty Rock Room",
+   "region": "cave",
+   "x": -9.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 36,
+     "words": [
+      "east",
+      "passage"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 64,
+     "words": [
+      "down",
+      "hole",
+      "floor"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 65,
+     "words": [
+      "bedquilt"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 41,
+   "locs": [
+    41
+   ],
+   "label": "West End of Hall of Mists",
+   "region": "cave",
+   "x": -6.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 42,
+     "words": [
+      "south",
+      "up",
+      "passage",
+      "climb"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 27,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 27,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 60,
+     "words": [
+      "west",
+      "crawl"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 42,
+   "locs": [
+    42
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -6.0,
+   "y": 3.0,
+   "exits": [
+    {
+     "to": 41,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 42,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 43,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 45,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 80,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 43,
+   "locs": [
+    43
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -5.0,
+   "y": 3.0,
+   "exits": [
+    {
+     "to": 42,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 44,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 45,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 44,
+   "locs": [
+    44
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -6.0,
+   "y": 5.0,
+   "exits": [
+    {
+     "to": 43,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 48,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 50,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 82,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 45,
+   "locs": [
+    45
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -4.0,
+   "y": 4.0,
+   "exits": [
+    {
+     "to": 42,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 43,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 46,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 47,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 87,
+     "words": [
+      "up",
+      "down"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 46,
+   "locs": [
+    46
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -3.0,
+   "y": 4.0,
+   "exits": [
+    {
+     "to": 45,
+     "words": [
+      "west",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 47,
+   "locs": [
+    47
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -5.0,
+   "y": 5.0,
+   "exits": [
+    {
+     "to": 45,
+     "words": [
+      "east",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 48,
+   "locs": [
+    48
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -7.0,
+   "y": 5.0,
+   "exits": [
+    {
+     "to": 44,
+     "words": [
+      "up",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 49,
+   "locs": [
+    49
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -7.0,
+   "y": 6.0,
+   "exits": [
+    {
+     "to": 50,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 51,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 50,
+   "locs": [
+    50
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -6.0,
+   "y": 6.0,
+   "exits": [
+    {
+     "to": 44,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 49,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 51,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 52,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 51,
+   "locs": [
+    51
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -7.0,
+   "y": 7.0,
+   "exits": [
+    {
+     "to": 49,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 50,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 52,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 53,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 52,
+   "locs": [
+    52
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -6.0,
+   "y": 7.0,
+   "exits": [
+    {
+     "to": 50,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 51,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 52,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 53,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 55,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 86,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 53,
+   "locs": [
+    53
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -6.0,
+   "y": 8.0,
+   "exits": [
+    {
+     "to": 51,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 52,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 54,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 54,
+   "locs": [
+    54
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -6.0,
+   "y": 9.0,
+   "exits": [
+    {
+     "to": 53,
+     "words": [
+      "west",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 55,
+   "locs": [
+    55
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -4.0,
+   "y": 6.0,
+   "exits": [
+    {
+     "to": 52,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 55,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 56,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 57,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 56,
+   "locs": [
+    56
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -4.0,
+   "y": 7.0,
+   "exits": [
+    {
+     "to": 55,
+     "words": [
+      "up",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 57,
+   "locs": [
+    57
+   ],
+   "label": "Brink of Pit",
+   "region": "maze-alike",
+   "x": -2.0,
+   "y": 6.0,
+   "exits": [
+    {
+     "to": 13,
+     "words": [
+      "down",
+      "climb"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 55,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 58,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 83,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 84,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 58,
+   "locs": [
+    58
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -2.0,
+   "y": 7.0,
+   "exits": [
+    {
+     "to": 57,
+     "words": [
+      "east",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 60,
+   "locs": [
+    60
+   ],
+   "label": "East End of Long Hall",
+   "region": "cave",
+   "x": -8.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 41,
+     "words": [
+      "east",
+      "up",
+      "crawl"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 61,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 62,
+     "words": [
+      "north",
+      "down",
+      "hole"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 61,
+   "locs": [
+    61
+   ],
+   "label": "West End of Long Hall",
+   "region": "cave",
+   "x": -9.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 60,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 62,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 107,
+     "words": [
+      "south"
+     ],
+     "conditional": true
+    }
+   ]
+  },
+  {
+   "id": 62,
+   "locs": [
+    62
+   ],
+   "label": "Crossover",
+   "region": "cave",
+   "x": -7.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 60,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 63,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 30,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 61,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 63,
+   "locs": [
+    63
+   ],
+   "label": "Dead End",
+   "region": "cave",
+   "x": -7.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 62,
+     "words": [
+      "south",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 64,
+   "locs": [
+    64
+   ],
+   "label": "Complex Junction",
+   "region": "cave",
+   "x": -11.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 39,
+     "words": [
+      "up",
+      "climb",
+      "room"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 65,
+     "words": [
+      "west",
+      "bedquilt"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 103,
+     "words": [
+      "north",
+      "shell"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 106,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 65,
+   "locs": [
+    65
+   ],
+   "label": "Bedquilt",
+   "region": "cave",
+   "x": -12.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 64,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 66,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 68,
+     "words": [
+      "slab"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 70,
+     "words": [
+      "up"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 39,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 72,
+     "words": [
+      "north"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 71,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 106,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 66,
+   "locs": [
+    66
+   ],
+   "label": "Swiss Cheese Room",
+   "region": "cave",
+   "x": -13.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 65,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 67,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 77,
+     "words": [
+      "canyon"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 96,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 97,
+     "words": [
+      "oriental"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 67,
+   "locs": [
+    67
+   ],
+   "label": "East End of Twopit Room",
+   "region": "cave",
+   "x": -14.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 66,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 23,
+     "words": [
+      "west",
+      "across"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 24,
+     "words": [
+      "down",
+      "pit"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 68,
+   "locs": [
+    68
+   ],
+   "label": "Slab Room",
+   "region": "cave",
+   "x": -13.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 23,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 69,
+     "words": [
+      "up",
+      "climb"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 65,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 69,
+   "locs": [
+    69
+   ],
+   "label": "Secret N/S Canyon",
+   "region": "cave",
+   "x": -10.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 68,
+     "words": [
+      "down",
+      "slab"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 119,
+     "words": [
+      "south"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 119,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 109,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 113,
+     "words": [
+      "reservoir"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 70,
+   "locs": [
+    70
+   ],
+   "label": "Secret Canyon",
+   "region": "cave",
+   "x": -13.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 71,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 65,
+     "words": [
+      "down",
+      "passage"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 111,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 71,
+   "locs": [
+    71
+   ],
+   "label": "Junction of Three Canyons",
+   "region": "cave",
+   "x": -13.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 65,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 70,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 110,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 72,
+   "locs": [
+    72
+   ],
+   "label": "Large Low Room",
+   "region": "cave",
+   "x": -16.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 65,
+     "words": [
+      "bedquilt"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 118,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 73,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 97,
+     "words": [
+      "southeast",
+      "oriental"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 73,
+   "locs": [
+    73
+   ],
+   "label": "Dead-End Crawl",
+   "region": "cave",
+   "x": -16.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 72,
+     "words": [
+      "south",
+      "crawl",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 74,
+   "locs": [
+    74
+   ],
+   "label": "Secret E/W Canyon",
+   "region": "cave",
+   "x": -8.0,
+   "y": 0.0,
+   "exits": [
+    {
+     "to": 19,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 119,
+     "words": [
+      "west"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 119,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 75,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 75,
+   "locs": [
+    75
+   ],
+   "label": "Wide Place",
+   "region": "cave",
+   "x": -10.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 76,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 77,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 76,
+   "locs": [
+    76
+   ],
+   "label": "Tight Canyon",
+   "region": "cave",
+   "x": -10.0,
+   "y": 2.0,
+   "exits": [
+    {
+     "to": 75,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 77,
+   "locs": [
+    77
+   ],
+   "label": "Tall E/W Canyon",
+   "region": "cave",
+   "x": -11.0,
+   "y": 0.0,
+   "exits": [
+    {
+     "to": 75,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 78,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 66,
+     "words": [
+      "north",
+      "crawl"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 78,
+   "locs": [
+    78
+   ],
+   "label": "Boulders",
+   "region": "cave",
+   "x": -13.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 77,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 80,
+   "locs": [
+    80
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -8.0,
+   "y": 4.0,
+   "exits": [
+    {
+     "to": 42,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 80,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 80,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 81,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 81,
+   "locs": [
+    81
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -7.0,
+   "y": 4.0,
+   "exits": [
+    {
+     "to": 80,
+     "words": [
+      "west",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 82,
+   "locs": [
+    82
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -6.0,
+   "y": 4.0,
+   "exits": [
+    {
+     "to": 44,
+     "words": [
+      "south",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 83,
+   "locs": [
+    83
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -2.0,
+   "y": 5.0,
+   "exits": [
+    {
+     "to": 57,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 84,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 85,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 84,
+   "locs": [
+    84
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -1.0,
+   "y": 6.0,
+   "exits": [
+    {
+     "to": 57,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 83,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 114,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 85,
+   "locs": [
+    85
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -3.0,
+   "y": 5.0,
+   "exits": [
+    {
+     "to": 83,
+     "words": [
+      "east",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 86,
+   "locs": [
+    86
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -5.0,
+   "y": 7.0,
+   "exits": [
+    {
+     "to": 52,
+     "words": [
+      "up",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 87,
+   "locs": [
+    87
+   ],
+   "label": "Maze",
+   "region": "maze-alike",
+   "x": -3.0,
+   "y": 3.0,
+   "exits": [
+    {
+     "to": 45,
+     "words": [
+      "up",
+      "down"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 88,
+   "locs": [
+    88
+   ],
+   "label": "Narrow Corridor",
+   "region": "cave",
+   "x": -16.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 25,
+     "words": [
+      "down",
+      "climb",
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 92,
+     "words": [
+      "west",
+      "giant"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 91,
+   "locs": [
+    91
+   ],
+   "label": "Steep Incline",
+   "region": "cave",
+   "x": -18.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 95,
+     "words": [
+      "north",
+      "cavern",
+      "passage"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 72,
+     "words": [
+      "down",
+      "climb"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 92,
+   "locs": [
+    92
+   ],
+   "label": "Giant Room",
+   "region": "cave",
+   "x": -17.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 88,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 93,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 94,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 93,
+   "locs": [
+    93
+   ],
+   "label": "Cave-In",
+   "region": "cave",
+   "x": -16.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 92,
+     "words": [
+      "south",
+      "giant",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 94,
+   "locs": [
+    94
+   ],
+   "label": "Immense N/S Passage",
+   "region": "cave",
+   "x": -17.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 92,
+     "words": [
+      "south",
+      "giant",
+      "passage"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 95,
+     "words": [
+      "north",
+      "enter",
+      "cavern"
+     ],
+     "conditional": true
+    }
+   ]
+  },
+  {
+   "id": 95,
+   "locs": [
+    95
+   ],
+   "label": "Cavern with Waterfall",
+   "region": "cave",
+   "x": -17.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 94,
+     "words": [
+      "south",
+      "out"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 92,
+     "words": [
+      "giant"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 91,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 96,
+   "locs": [
+    96
+   ],
+   "label": "Soft Room",
+   "region": "cave",
+   "x": -12.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 66,
+     "words": [
+      "west",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 97,
+   "locs": [
+    97
+   ],
+   "label": "Oriental Room",
+   "region": "cave",
+   "x": -15.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 66,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 72,
+     "words": [
+      "west",
+      "crawl"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 98,
+     "words": [
+      "up",
+      "north",
+      "cavern"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 98,
+   "locs": [
+    98
+   ],
+   "label": "Misty Cavern",
+   "region": "cave",
+   "x": -15.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 97,
+     "words": [
+      "south",
+      "oriental"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 99,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 99,
+   "locs": [
+    99
+   ],
+   "label": "Alcove",
+   "region": "cave",
+   "x": -16.0,
+   "y": -8.0,
+   "exits": [
+    {
+     "to": 98,
+     "words": [
+      "northwest",
+      "cavern"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 100,
+     "words": [
+      "east",
+      "passage"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 100,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 100,
+   "locs": [
+    100
+   ],
+   "label": "Plover Room",
+   "region": "cave",
+   "x": -15.0,
+   "y": -8.0,
+   "exits": [
+    {
+     "to": 99,
+     "words": [
+      "west",
+      "passage",
+      "out"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 99,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 101,
+     "words": [
+      "northeast",
+      "dark"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 101,
+   "locs": [
+    101
+   ],
+   "label": "Dark Room",
+   "region": "cave",
+   "x": -14.0,
+   "y": -9.0,
+   "exits": [
+    {
+     "to": 100,
+     "words": [
+      "south",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 102,
+   "locs": [
+    102
+   ],
+   "label": "Arched Hall",
+   "region": "cave",
+   "x": -10.0,
+   "y": -8.0,
+   "exits": [
+    {
+     "to": 103,
+     "words": [
+      "down",
+      "shell",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 103,
+   "locs": [
+    103
+   ],
+   "label": "Shell Room",
+   "region": "cave",
+   "x": -11.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 102,
+     "words": [
+      "up",
+      "hall"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 104,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 64,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 104,
+   "locs": [
+    104
+   ],
+   "label": "Sloping Corridor",
+   "region": "cave",
+   "x": -12.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 103,
+     "words": [
+      "up",
+      "shell"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 105,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 105,
+   "locs": [
+    105
+   ],
+   "label": "Cul-de-Sac",
+   "region": "cave",
+   "x": -11.0,
+   "y": -8.0,
+   "exits": [
+    {
+     "to": 104,
+     "words": [
+      "up",
+      "out"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 103,
+     "words": [
+      "shell"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 106,
+   "locs": [
+    106
+   ],
+   "label": "Anteroom",
+   "region": "cave",
+   "x": -10.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 64,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 65,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 108,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 107,
+   "locs": [
+    107
+   ],
+   "label": "Twisty Maze 1",
+   "region": "maze-different",
+   "x": -14.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 131,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 61,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 108,
+   "locs": [
+    108
+   ],
+   "label": "Witt's End",
+   "region": "cave",
+   "x": -9.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 106,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 109,
+   "locs": [
+    109
+   ],
+   "label": "Mirror Canyon",
+   "region": "cave",
+   "x": -10.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 69,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 113,
+     "words": [
+      "north",
+      "reservoir"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 110,
+   "locs": [
+    110
+   ],
+   "label": "Window on Pit",
+   "region": "cave",
+   "x": -13.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 71,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 111,
+   "locs": [
+    111
+   ],
+   "label": "Top of Stalactite",
+   "region": "cave",
+   "x": -14.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 70,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 50,
+     "words": [
+      "down",
+      "jump",
+      "climb"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 53,
+     "words": [
+      "down"
+     ],
+     "conditional": true
+    },
+    {
+     "to": 45,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 112,
+   "locs": [
+    112
+   ],
+   "label": "Twisty Maze 2",
+   "region": "maze-different",
+   "x": -15.0,
+   "y": 3.0,
+   "exits": [
+    {
+     "to": 131,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 140,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 113,
+   "locs": [
+    113
+   ],
+   "label": "Reservoir",
+   "region": "cave",
+   "x": -8.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 109,
+     "words": [
+      "south",
+      "out"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 168,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 114,
+   "locs": [
+    114
+   ],
+   "label": "Dead End",
+   "region": "maze-alike",
+   "x": -1.0,
+   "y": 5.0,
+   "exits": [
+    {
+     "to": 84,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 115,
+   "locs": [
+    115
+   ],
+   "label": "Repository NE End",
+   "region": "repository",
+   "x": -11.0,
+   "y": 4.0,
+   "exits": [
+    {
+     "to": 116,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 116,
+   "locs": [
+    116
+   ],
+   "label": "Repository SW End",
+   "region": "repository",
+   "x": -12.0,
+   "y": 5.0,
+   "exits": [
+    {
+     "to": 115,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 117,
+   "locs": [
+    117
+   ],
+   "label": "SW Side of Chasm",
+   "region": "cave",
+   "x": -16.0,
+   "y": -9.0,
+   "exits": [
+    {
+     "to": 118,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 122,
+     "words": [
+      "over"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 118,
+   "locs": [
+    118
+   ],
+   "label": "Winding Corridor",
+   "region": "cave",
+   "x": -18.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 72,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 117,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 119,
+   "locs": [
+    119,
+    120,
+    121
+   ],
+   "label": "Secret Canyon",
+   "region": "cave",
+   "x": -9.0,
+   "y": 0.0,
+   "exits": [
+    {
+     "to": 69,
+     "words": [
+      "north",
+      "out"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 69,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 74,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 74,
+     "words": [
+      "east",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 122,
+   "locs": [
+    122
+   ],
+   "label": "NE Side of Chasm",
+   "region": "cave",
+   "x": -18.0,
+   "y": -11.0,
+   "exits": [
+    {
+     "to": 123,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 117,
+     "words": [
+      "over"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 124,
+     "words": [
+      "fork"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 126,
+     "words": [
+      "view"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 129,
+     "words": [
+      "barren"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 123,
+   "locs": [
+    123
+   ],
+   "label": "Long E/W Corridor",
+   "region": "cave",
+   "x": -17.0,
+   "y": -12.0,
+   "exits": [
+    {
+     "to": 122,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 124,
+     "words": [
+      "east",
+      "fork"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 126,
+     "words": [
+      "view"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 129,
+     "words": [
+      "barren"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 124,
+   "locs": [
+    124
+   ],
+   "label": "Fork in Path",
+   "region": "cave",
+   "x": -16.0,
+   "y": -12.0,
+   "exits": [
+    {
+     "to": 123,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 125,
+     "words": [
+      "northeast",
+      "left"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 128,
+     "words": [
+      "southeast",
+      "right",
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 126,
+     "words": [
+      "view"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 129,
+     "words": [
+      "barren"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 125,
+   "locs": [
+    125
+   ],
+   "label": "Warm Junction",
+   "region": "cave",
+   "x": -15.0,
+   "y": -13.0,
+   "exits": [
+    {
+     "to": 124,
+     "words": [
+      "south",
+      "fork"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 126,
+     "words": [
+      "north",
+      "view"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 127,
+     "words": [
+      "east",
+      "crawl"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 126,
+   "locs": [
+    126
+   ],
+   "label": "Breath-Taking View",
+   "region": "cave",
+   "x": -15.0,
+   "y": -14.0,
+   "exits": [
+    {
+     "to": 125,
+     "words": [
+      "south",
+      "passage",
+      "out"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 124,
+     "words": [
+      "fork"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 127,
+   "locs": [
+    127
+   ],
+   "label": "Chamber of Boulders",
+   "region": "cave",
+   "x": -14.0,
+   "y": -13.0,
+   "exits": [
+    {
+     "to": 125,
+     "words": [
+      "west",
+      "out",
+      "crawl"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 124,
+     "words": [
+      "fork"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 126,
+     "words": [
+      "view"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 128,
+   "locs": [
+    128
+   ],
+   "label": "Limestone Passage",
+   "region": "cave",
+   "x": -15.0,
+   "y": -11.0,
+   "exits": [
+    {
+     "to": 124,
+     "words": [
+      "north",
+      "up",
+      "fork"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 129,
+     "words": [
+      "south",
+      "down",
+      "barren"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 126,
+     "words": [
+      "view"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 129,
+   "locs": [
+    129
+   ],
+   "label": "Front of Barren Room",
+   "region": "cave",
+   "x": -14.0,
+   "y": -10.0,
+   "exits": [
+    {
+     "to": 128,
+     "words": [
+      "west",
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 124,
+     "words": [
+      "fork"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 130,
+     "words": [
+      "east",
+      "in",
+      "barren",
+      "enter"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 126,
+     "words": [
+      "view"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 130,
+   "locs": [
+    130
+   ],
+   "label": "Barren Room",
+   "region": "cave",
+   "x": -13.0,
+   "y": -10.0,
+   "exits": [
+    {
+     "to": 129,
+     "words": [
+      "west",
+      "out"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 124,
+     "words": [
+      "fork"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 126,
+     "words": [
+      "view"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 131,
+   "locs": [
+    131
+   ],
+   "label": "Twisty Maze 3",
+   "region": "maze-different",
+   "x": -15.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 107,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 112,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 132,
+   "locs": [
+    132
+   ],
+   "label": "Twisty Maze 4",
+   "region": "maze-different",
+   "x": -16.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 107,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 131,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 112,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 133,
+   "locs": [
+    133
+   ],
+   "label": "Twisty Maze 5",
+   "region": "maze-different",
+   "x": -17.0,
+   "y": 1.0,
+   "exits": [
+    {
+     "to": 107,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 131,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 112,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 134,
+   "locs": [
+    134
+   ],
+   "label": "Twisty Maze 6",
+   "region": "maze-different",
+   "x": -14.0,
+   "y": 2.0,
+   "exits": [
+    {
+     "to": 107,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 131,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 112,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 135,
+   "locs": [
+    135
+   ],
+   "label": "Twisty Maze 7",
+   "region": "maze-different",
+   "x": -15.0,
+   "y": 2.0,
+   "exits": [
+    {
+     "to": 107,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 131,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 112,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 136,
+   "locs": [
+    136
+   ],
+   "label": "Twisty Maze 8",
+   "region": "maze-different",
+   "x": -16.0,
+   "y": 2.0,
+   "exits": [
+    {
+     "to": 107,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 131,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 112,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 137,
+   "locs": [
+    137
+   ],
+   "label": "Twisty Maze 9",
+   "region": "maze-different",
+   "x": -17.0,
+   "y": 2.0,
+   "exits": [
+    {
+     "to": 107,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 131,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 112,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 138,
+   "locs": [
+    138
+   ],
+   "label": "Twisty Maze 10",
+   "region": "maze-different",
+   "x": -14.0,
+   "y": 3.0,
+   "exits": [
+    {
+     "to": 107,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 131,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 139,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 112,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 139,
+   "locs": [
+    139
+   ],
+   "label": "Twisty Maze 11",
+   "region": "maze-different",
+   "x": -16.0,
+   "y": 3.0,
+   "exits": [
+    {
+     "to": 107,
+     "words": [
+      "southwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 131,
+     "words": [
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 132,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 133,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 134,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 135,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 136,
+     "words": [
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 137,
+     "words": [
+      "up"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 138,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 112,
+     "words": [
+      "northeast"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 140,
+   "locs": [
+    140
+   ],
+   "label": "Dead End",
+   "region": "cave",
+   "x": -15.0,
+   "y": 4.0,
+   "exits": [
+    {
+     "to": 112,
+     "words": [
+      "north",
+      "out"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 141,
+     "words": [
+      "south"
+     ],
+     "conditional": true
+    }
+   ]
+  },
+  {
+   "id": 141,
+   "locs": [
+    141
+   ],
+   "label": "Rough-Hewn Corridor",
+   "region": "cave",
+   "x": -15.0,
+   "y": 5.0,
+   "exits": [
+    {
+     "to": 140,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 143,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 143,
+   "locs": [
+    143
+   ],
+   "label": "Large Chamber",
+   "region": "cave",
+   "x": -14.0,
+   "y": 5.0,
+   "exits": [
+    {
+     "to": 141,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 144,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 144,
+   "locs": [
+    144
+   ],
+   "label": "Ogre's Storeroom",
+   "region": "cave",
+   "x": -14.0,
+   "y": 4.0,
+   "exits": [
+    {
+     "to": 143,
+     "words": [
+      "south",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 145,
+   "locs": [
+    145
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 2.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 1,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 157,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 146,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 147,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 146,
+   "locs": [
+    146
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 3.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 145,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 163,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 147,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 162,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 147,
+   "locs": [
+    147
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 4.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 148,
+     "words": [
+      "east",
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 146,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 145,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 148,
+   "locs": [
+    148
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 4.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 147,
+     "words": [
+      "east",
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 149,
+     "words": [
+      "west",
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 149,
+   "locs": [
+    149
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 4.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 148,
+     "words": [
+      "east",
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 151,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 150,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 150,
+   "locs": [
+    150
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 3.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 149,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 151,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 4,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 7,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 151,
+   "locs": [
+    151
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 3.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 149,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 150,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 8,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 152,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 152,
+   "locs": [
+    152
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 0.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 153,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 155,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 166,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 151,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 153,
+   "locs": [
+    153
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 2.0,
+   "y": 0.0,
+   "exits": [
+    {
+     "to": 155,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 152,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 154,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 8,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 154,
+   "locs": [
+    154
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 1.0,
+   "y": -1.0,
+   "exits": [
+    {
+     "to": 7,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 155,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 153,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 8,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 155,
+   "locs": [
+    155
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 0.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 154,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 152,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 166,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 153,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 156,
+   "locs": [
+    156
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 1.0,
+   "y": -2.0,
+   "exits": [
+    {
+     "to": 157,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 158,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 166,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 4,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 157,
+   "locs": [
+    157
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 1.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 145,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 156,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 164,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 2,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 158,
+   "locs": [
+    158
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 0.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 5,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 160,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 159,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 156,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 159,
+   "locs": [
+    159
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": -1.0,
+   "y": -4.0,
+   "exits": [
+    {
+     "to": 160,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 166,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 5,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 158,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 160,
+   "locs": [
+    160
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": -1.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 161,
+     "words": [
+      "east",
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 158,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 159,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 161,
+   "locs": [
+    161
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 1.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 162,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 160,
+     "words": [
+      "west",
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 6,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 162,
+   "locs": [
+    162
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 3.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 163,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 161,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 146,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 165,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 163,
+   "locs": [
+    163
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 2.0,
+   "y": -6.0,
+   "exits": [
+    {
+     "to": 146,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 162,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 6,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 164,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 164,
+   "locs": [
+    164
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 1.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 2,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 165,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 163,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 157,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 165,
+   "locs": [
+    165
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": 0.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 164,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 5,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 162,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 165,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 166,
+   "locs": [
+    166
+   ],
+   "label": "Forest",
+   "region": "forest",
+   "x": -1.0,
+   "y": -3.0,
+   "exits": [
+    {
+     "to": 152,
+     "words": [
+      "east"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 155,
+     "words": [
+      "west"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 159,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 156,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 167,
+   "locs": [
+    167
+   ],
+   "label": "Ledge",
+   "region": "surface",
+   "x": 1.0,
+   "y": -8.0,
+   "exits": [
+    {
+     "to": 6,
+     "words": [
+      "fly (on the rug)"
+     ],
+     "conditional": true
+    }
+   ]
+  },
+  {
+   "id": 168,
+   "locs": [
+    168
+   ],
+   "label": "Bottom of Reservoir",
+   "region": "cave",
+   "x": -8.0,
+   "y": -5.0,
+   "exits": [
+    {
+     "to": 169,
+     "words": [
+      "north"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 113,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 169,
+   "locs": [
+    169
+   ],
+   "label": "North of Reservoir",
+   "region": "cave",
+   "x": -8.0,
+   "y": -7.0,
+   "exits": [
+    {
+     "to": 168,
+     "words": [
+      "south"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 170,
+     "words": [
+      "northwest",
+      "up",
+      "out"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 170,
+   "locs": [
+    170
+   ],
+   "label": "Rocky Passage",
+   "region": "cave",
+   "x": -9.0,
+   "y": -8.0,
+   "exits": [
+    {
+     "to": 171,
+     "words": [
+      "up",
+      "northwest"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 169,
+     "words": [
+      "down",
+      "southeast"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 171,
+   "locs": [
+    171
+   ],
+   "label": "Steep Incline",
+   "region": "cave",
+   "x": -10.0,
+   "y": -9.0,
+   "exits": [
+    {
+     "to": 170,
+     "words": [
+      "down",
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 172,
+     "words": [
+      "up",
+      "northwest"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 172,
+   "locs": [
+    172
+   ],
+   "label": "Base of Cliff",
+   "region": "cave",
+   "x": -11.0,
+   "y": -10.0,
+   "exits": [
+    {
+     "to": 171,
+     "words": [
+      "down",
+      "southeast"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 173,
+     "words": [
+      "up",
+      "climb"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 173,
+   "locs": [
+    173
+   ],
+   "label": "Vertical Cliff",
+   "region": "cave",
+   "x": -12.0,
+   "y": -11.0,
+   "exits": [
+    {
+     "to": 172,
+     "words": [
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 176,
+     "words": [
+      "up"
+     ],
+     "conditional": true
+    }
+   ]
+  },
+  {
+   "id": 176,
+   "locs": [
+    176
+   ],
+   "label": "Clifftop",
+   "region": "cave",
+   "x": -13.0,
+   "y": -11.0,
+   "exits": [
+    {
+     "to": 173,
+     "words": [
+      "climb",
+      "down"
+     ],
+     "conditional": false
+    },
+    {
+     "to": 177,
+     "words": [
+      "northeast",
+      "crawl"
+     ],
+     "conditional": false
+    }
+   ]
+  },
+  {
+   "id": 177,
+   "locs": [
+    177
+   ],
+   "label": "Dead End",
+   "region": "cave",
+   "x": -12.0,
+   "y": -12.0,
+   "exits": [
+    {
+     "to": 176,
+     "words": [
+      "southwest",
+      "out",
+      "crawl"
+     ],
+     "conditional": false
+    }
+   ]
+  }
+ ],
+ "connections": [
+  {
+   "a": 2,
+   "b": 1,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "up",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 3,
+   "b": 1,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 1,
+   "b": 4,
+   "aLabel": "down",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 145,
+   "b": 1,
+   "aLabel": "east",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "s"
+  },
+  {
+   "a": 2,
+   "b": 5,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "up",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 164,
+   "b": 2,
+   "aLabel": "east",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "s"
+  },
+  {
+   "a": 157,
+   "b": 2,
+   "aLabel": "south",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "n"
+  },
+  {
+   "a": 150,
+   "b": 4,
+   "aLabel": "north",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "w"
+  },
+  {
+   "a": 156,
+   "b": 4,
+   "aLabel": "south",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "ne"
+  },
+  {
+   "a": 7,
+   "b": 4,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "down",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 158,
+   "b": 5,
+   "aLabel": "east",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "n"
+  },
+  {
+   "a": 159,
+   "b": 5,
+   "aLabel": "north",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "e"
+  },
+  {
+   "a": 165,
+   "b": 5,
+   "aLabel": "west",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "s"
+  },
+  {
+   "a": 6,
+   "b": 161,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 6,
+   "b": 163,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 150,
+   "b": 7,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 154,
+   "b": 7,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 8,
+   "b": 7,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 151,
+   "b": 8,
+   "aLabel": "north",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "w"
+  },
+  {
+   "a": 154,
+   "b": 8,
+   "aLabel": "south",
+   "bLabel": "south",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "ne",
+   "bPort": "w"
+  },
+  {
+   "a": 153,
+   "b": 8,
+   "aLabel": "south",
+   "bLabel": "west",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "n",
+   "bPort": "s"
+  },
+  {
+   "a": 9,
+   "b": 8,
+   "aLabel": "up",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "ne",
+   "bPort": "sw"
+  },
+  {
+   "a": 9,
+   "b": 10,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 10,
+   "b": 11,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 12,
+   "b": 11,
+   "aLabel": "down",
+   "aPort": "e",
+   "bLabel": "up",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 12,
+   "b": 13,
+   "aLabel": "up",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 13,
+   "b": 14,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 15,
+   "b": 14,
+   "aLabel": "up",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "sw",
+   "bPort": "ne"
+  },
+  {
+   "a": 15,
+   "b": 18,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 17,
+   "b": 15,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 19,
+   "b": 15,
+   "aLabel": "up",
+   "aPort": "e",
+   "bLabel": "down",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 17,
+   "b": 27,
+   "aLabel": "over",
+   "bLabel": "over",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "w",
+   "bPort": "e"
+  },
+  {
+   "a": 28,
+   "b": 19,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 19,
+   "b": 29,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 19,
+   "b": 30,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 19,
+   "b": 74,
+   "aLabel": "",
+   "aPort": "sw",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 67,
+   "b": 23,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 68,
+   "b": 23,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "west",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "ne"
+  },
+  {
+   "a": 23,
+   "b": 25,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "s",
+   "bPort": "n"
+  },
+  {
+   "a": 67,
+   "b": 24,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "s",
+   "bPort": "n"
+  },
+  {
+   "a": 88,
+   "b": 25,
+   "aLabel": "down",
+   "aPort": "e",
+   "bLabel": "climb",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "w"
+  },
+  {
+   "a": 41,
+   "b": 27,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 28,
+   "b": 33,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 36,
+   "b": 28,
+   "aLabel": "up",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "se",
+   "bPort": "nw"
+  },
+  {
+   "a": 62,
+   "b": 30,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "up",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 34,
+   "b": 33,
+   "aLabel": "down",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "nw"
+  },
+  {
+   "a": 35,
+   "b": 33,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 34,
+   "b": 15,
+   "aLabel": "up",
+   "bLabel": "",
+   "aToB": true,
+   "bToA": false,
+   "portal": false,
+   "aPort": "s",
+   "bPort": "ne"
+  },
+  {
+   "a": 36,
+   "b": 37,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 36,
+   "b": 39,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 38,
+   "b": 37,
+   "aLabel": "up",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "s",
+   "bPort": "n"
+  },
+  {
+   "a": 64,
+   "b": 39,
+   "aLabel": "up",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "ne",
+   "bPort": "w"
+  },
+  {
+   "a": 42,
+   "b": 41,
+   "aLabel": "up",
+   "bLabel": "up",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "ne"
+  },
+  {
+   "a": 60,
+   "b": 41,
+   "aLabel": "up",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 42,
+   "b": 42,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 42,
+   "b": 43,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 42,
+   "b": 45,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 42,
+   "b": 80,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 43,
+   "b": 44,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 43,
+   "b": 45,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 44,
+   "b": 48,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "w",
+   "bPort": "e"
+  },
+  {
+   "a": 44,
+   "b": 50,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "east",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "n"
+  },
+  {
+   "a": 44,
+   "b": 82,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 45,
+   "b": 46,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 45,
+   "b": 47,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 87,
+   "b": 45,
+   "aLabel": "up",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "sw",
+   "bPort": "ne"
+  },
+  {
+   "a": 49,
+   "b": 50,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 49,
+   "b": 51,
+   "aLabel": "west",
+   "bLabel": "west",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "s",
+   "bPort": "n"
+  },
+  {
+   "a": 50,
+   "b": 51,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "sw",
+   "bPort": "ne"
+  },
+  {
+   "a": 50,
+   "b": 52,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "west",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "ne"
+  },
+  {
+   "a": 51,
+   "b": 52,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "east",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "w"
+  },
+  {
+   "a": 51,
+   "b": 53,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 52,
+   "b": 52,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 52,
+   "b": 53,
+   "aLabel": "up",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "sw"
+  },
+  {
+   "a": 55,
+   "b": 52,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 52,
+   "b": 86,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "e",
+   "bPort": "w"
+  },
+  {
+   "a": 53,
+   "b": 54,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "west",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "n"
+  },
+  {
+   "a": 55,
+   "b": 55,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 55,
+   "b": 56,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "s",
+   "bPort": "n"
+  },
+  {
+   "a": 55,
+   "b": 57,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 13,
+   "b": 57,
+   "aLabel": "",
+   "bLabel": "down",
+   "aToB": false,
+   "bToA": true,
+   "portal": true,
+   "aPort": "s",
+   "bPort": "nw"
+  },
+  {
+   "a": 58,
+   "b": 57,
+   "aLabel": "east",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "n"
+  },
+  {
+   "a": 83,
+   "b": 57,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 84,
+   "b": 57,
+   "aLabel": "north",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "sw"
+  },
+  {
+   "a": 60,
+   "b": 61,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 62,
+   "b": 60,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "down",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 62,
+   "b": 61,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 107,
+   "b": 61,
+   "aLabel": "down",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": true,
+   "aPort": "e"
+  },
+  {
+   "a": 62,
+   "b": 63,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 65,
+   "b": 64,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 64,
+   "b": 103,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 106,
+   "b": 64,
+   "aLabel": "up",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "nw"
+  },
+  {
+   "a": 65,
+   "b": 66,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "ne",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 65,
+   "b": 70,
+   "aLabel": "up",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "nw",
+   "bPort": "e"
+  },
+  {
+   "a": 65,
+   "b": 39,
+   "aLabel": "up",
+   "bLabel": "",
+   "aToB": true,
+   "bToA": false,
+   "portal": false,
+   "aPort": "ne",
+   "bPort": "sw"
+  },
+  {
+   "a": 65,
+   "b": 72,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "aToB": true,
+   "bToA": false,
+   "portal": false,
+   "bPort": "e"
+  },
+  {
+   "a": 65,
+   "b": 71,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "se",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 106,
+   "b": 65,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "se"
+  },
+  {
+   "a": 67,
+   "b": 66,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 96,
+   "b": 66,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 69,
+   "b": 68,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "nw",
+   "bPort": "se"
+  },
+  {
+   "a": 65,
+   "b": 68,
+   "aLabel": "",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": false,
+   "bToA": true,
+   "portal": false,
+   "aPort": "sw"
+  },
+  {
+   "a": 69,
+   "b": 119,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 109,
+   "b": 69,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 70,
+   "b": 71,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 70,
+   "b": 111,
+   "aLabel": "south",
+   "bLabel": "north",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "w",
+   "bPort": "e"
+  },
+  {
+   "a": 71,
+   "b": 110,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "west",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "s"
+  },
+  {
+   "a": 72,
+   "b": 118,
+   "aLabel": "",
+   "aPort": "sw",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "se"
+  },
+  {
+   "a": 73,
+   "b": 72,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 72,
+   "b": 97,
+   "aLabel": "",
+   "aPort": "se",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 74,
+   "b": 119,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 74,
+   "b": 75,
+   "aLabel": "down",
+   "bLabel": "",
+   "aToB": true,
+   "bToA": false,
+   "portal": false,
+   "aPort": "sw",
+   "bPort": "ne"
+  },
+  {
+   "a": 76,
+   "b": 75,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 77,
+   "b": 75,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 78,
+   "b": 77,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 66,
+   "b": 77,
+   "aLabel": "",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": false,
+   "bToA": true,
+   "portal": false,
+   "aPort": "se"
+  },
+  {
+   "a": 80,
+   "b": 80,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 80,
+   "b": 81,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 83,
+   "b": 84,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 83,
+   "b": 85,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 84,
+   "b": 114,
+   "aLabel": "",
+   "aPort": "nw",
+   "bLabel": "",
+   "bPort": "se",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 92,
+   "b": 88,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 91,
+   "b": 95,
+   "aLabel": "north",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "e"
+  },
+  {
+   "a": 91,
+   "b": 72,
+   "aLabel": "down",
+   "bLabel": "",
+   "aToB": true,
+   "bToA": false,
+   "portal": false,
+   "aPort": "ne",
+   "bPort": "w"
+  },
+  {
+   "a": 93,
+   "b": 92,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 92,
+   "b": 94,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 94,
+   "b": 95,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 97,
+   "b": 66,
+   "aLabel": "",
+   "aPort": "se",
+   "bLabel": "",
+   "aToB": true,
+   "bToA": false,
+   "portal": false,
+   "bPort": "nw"
+  },
+  {
+   "a": 98,
+   "b": 97,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "up",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 99,
+   "b": 98,
+   "aLabel": "northwest",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "se"
+  },
+  {
+   "a": 99,
+   "b": 100,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 101,
+   "b": 100,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "ne",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 102,
+   "b": 103,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "sw",
+   "bPort": "ne"
+  },
+  {
+   "a": 103,
+   "b": 104,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "w",
+   "bPort": "e"
+  },
+  {
+   "a": 105,
+   "b": 104,
+   "aLabel": "up",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "sw",
+   "bPort": "ne"
+  },
+  {
+   "a": 106,
+   "b": 108,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "east",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "w"
+  },
+  {
+   "a": 109,
+   "b": 113,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 50,
+   "b": 111,
+   "aLabel": "",
+   "bLabel": "down",
+   "aToB": false,
+   "bToA": true,
+   "portal": true,
+   "aPort": "nw",
+   "bPort": "se"
+  },
+  {
+   "a": 53,
+   "b": 111,
+   "aLabel": "",
+   "bLabel": "down",
+   "aToB": false,
+   "bToA": true,
+   "portal": true,
+   "aPort": "nw",
+   "bPort": "s"
+  },
+  {
+   "a": 45,
+   "b": 111,
+   "aLabel": "",
+   "bLabel": "down",
+   "aToB": false,
+   "bToA": true,
+   "portal": true,
+   "aPort": "nw",
+   "bPort": "se"
+  },
+  {
+   "a": 140,
+   "b": 112,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 168,
+   "b": 113,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 115,
+   "b": 116,
+   "aLabel": "",
+   "aPort": "sw",
+   "bLabel": "",
+   "bPort": "ne",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 117,
+   "b": 118,
+   "aLabel": "",
+   "aPort": "sw",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "ne"
+  },
+  {
+   "a": 122,
+   "b": 117,
+   "aLabel": "over",
+   "bLabel": "over",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "se",
+   "bPort": "nw"
+  },
+  {
+   "a": 123,
+   "b": 122,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "ne",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 123,
+   "b": 124,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 124,
+   "b": 125,
+   "aLabel": "",
+   "aPort": "ne",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 124,
+   "b": 128,
+   "aLabel": "down",
+   "aPort": "se",
+   "bLabel": "up",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 126,
+   "b": 125,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 127,
+   "b": 125,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "",
+   "bPort": "e",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 129,
+   "b": 128,
+   "aLabel": "up",
+   "aPort": "w",
+   "bLabel": "down",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 129,
+   "b": 130,
+   "aLabel": "",
+   "aPort": "e",
+   "bLabel": "",
+   "bPort": "w",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 140,
+   "b": 141,
+   "aLabel": "",
+   "aPort": "s",
+   "bLabel": "",
+   "bPort": "n",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 143,
+   "b": 141,
+   "aLabel": "",
+   "aPort": "w",
+   "bLabel": "south",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "bPort": "e"
+  },
+  {
+   "a": 143,
+   "b": 144,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 168,
+   "b": 169,
+   "aLabel": "",
+   "aPort": "n",
+   "bLabel": "",
+   "bPort": "s",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 169,
+   "b": 170,
+   "aLabel": "up",
+   "aPort": "nw",
+   "bLabel": "down",
+   "bPort": "se",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 171,
+   "b": 170,
+   "aLabel": "down",
+   "aPort": "se",
+   "bLabel": "up",
+   "bPort": "nw",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 172,
+   "b": 171,
+   "aLabel": "down",
+   "aPort": "se",
+   "bLabel": "up",
+   "bPort": "nw",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 173,
+   "b": 172,
+   "aLabel": "down",
+   "bLabel": "up",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "se",
+   "bPort": "nw"
+  },
+  {
+   "a": 173,
+   "b": 176,
+   "aLabel": "up",
+   "bLabel": "down",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "w",
+   "bPort": "e"
+  },
+  {
+   "a": 176,
+   "b": 177,
+   "aLabel": "",
+   "aPort": "ne",
+   "bLabel": "",
+   "bPort": "sw",
+   "aToB": true,
+   "bToA": true,
+   "portal": false
+  },
+  {
+   "a": 6,
+   "b": 167,
+   "aLabel": "fly",
+   "bLabel": "fly",
+   "aToB": true,
+   "bToA": true,
+   "portal": false,
+   "aPort": "n",
+   "bPort": "s"
+  }
+ ],
+ "regions": [
+  {
+   "region": "maze-alike",
+   "title": "Maze of twisty little passages, all alike",
+   "x0": -8.5,
+   "y0": 2.5,
+   "x1": -0.5,
+   "y1": 9.5
+  },
+  {
+   "region": "maze-different",
+   "title": "Maze of twisty passages, all different \u2014 tap a room for its exits",
+   "x0": -17.5,
+   "y0": 0.5,
+   "x1": -13.5,
+   "y1": 3.5
+  },
+  {
+   "region": "forest",
+   "title": "Forest \u2014 the paths all look alike; tap a clearing for its exits",
+   "x0": -1.5,
+   "y0": -7.5,
+   "x1": 4.5,
+   "y1": 0.5
+  },
+  {
+   "region": "repository",
+   "title": "Repository (endgame)",
+   "x0": -12.5,
+   "y0": 3.5,
+   "x1": -10.5,
+   "y1": 5.5
+  }
+ ]
+}

@@ -29,18 +29,19 @@ details, not design problems. The C engine is verified (see *Tests*).
 | **Gear key** (bottom left) | Settings: save/load slots, new game, text size, screen look, controls |
 | Hardware keyboard | Works on iPad / with a Bluetooth keyboard; arrows walk N/S/E/W, Tab recalls, Esc clears |
 
-- **Map** is drawn Trizbort-style on graph paper: named boxes, and each line
-  leaves a box from the side matching its direction (north = top edge).
-  `up`/`down`/`in`/`out` are labelled at the line's end; an arrowhead marks a
-  one-way passage; where the game's directions contradict the map (the cave
-  isn't flat — Witt's End, the Alcove) the label says which way you really go.
-  Dotted `?` stubs are exits you haven't followed; blue "to …" stubs are
-  off-page connectors for passages that would otherwise cross the whole map.
-  Only places you have *seen* (lit) appear, and the pulsing red ring is you.
-  **Tap a room** to list all its exits — including the forest and the
-  all-different maze, which are drawn as blocks of boxes because their paths
-  are a deliberate tangle. Pinch to zoom, drag to pan, double-tap to
-  re-center, swipe in from the right edge to return.
+- **Map** is pencilled Trizbort-style onto graph paper: hand-drawn boxes
+  with handwritten names, and each line leaves a box from the side matching
+  its direction (north = top edge). Beside each end of a line is the command
+  that takes you along it, the game's way — `N`, `NE`, `U`, `IN`, or `N/D`
+  when both work, or a word like `climb` or `fly`. A pencilled chevron marks
+  a one-way passage (only its starting end has a command). Dotted `?` stubs
+  are exits you haven't followed; "to …" stubs are off-page connectors for
+  passages that would otherwise cross the whole map. Only places you have
+  *seen* (lit) appear, and the red-pencil ring is you.
+  **Tap a room** to list all its exits with the exact commands — including
+  the forest and the all-different maze, which are drawn as blocks of boxes
+  because their paths are a deliberate tangle. Pinch to zoom, drag to pan,
+  double-tap to re-center, swipe in from the right edge to return.
 - **Notepad** saves to `Notes.txt`; `+ Room` drops in the current room name.
 - **Saves**: six slots plus an autosave (written whenever the app leaves the
   foreground, and resumed on launch). Slot saves don't end the game or cost

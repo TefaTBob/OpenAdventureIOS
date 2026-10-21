@@ -1,10 +1,11 @@
 import SwiftUI
 
-/// The explorer's map, drawn like a Trizbort map on graph paper.
+/// The explorer's map, pencilled Trizbort-style onto graph paper.
 ///
 /// - Rooms appear once you've seen them (lit). Boxes are named; lines leave
 ///   each box from the side matching the exit's direction, so "north" really
-///   is the top edge. up/down/in/out are labelled at the line's end.
+///   is the top edge. Beside each end of a line is the command that takes
+///   you along it, the game's way: N, NE, U, IN… ("N/D" when both work).
 /// - Arrowheads mark one-way passages. Short dotted stubs are exits you
 ///   haven't followed yet.
 /// - The pulsing red ring is you.
@@ -29,11 +30,14 @@ struct MapView: View {
 
     private let paper = Color(red: 0.975, green: 0.965, blue: 0.93)
     private let gridLine = Color(red: 0.55, green: 0.68, blue: 0.85)
-    private let ink = Color(red: 0.13, green: 0.15, blue: 0.24)
-    private let pencil = Color(red: 0.45, green: 0.47, blue: 0.52)
-    private let wordInk = Color(red: 0.62, green: 0.16, blue: 0.14)
-    private let here = Color(red: 0.86, green: 0.12, blue: 0.1)
-    private let portalInk = Color(red: 0.12, green: 0.33, blue: 0.6)
+    /// Graphite: a soft, slightly warm dark grey.
+    private let ink = Color(red: 0.22, green: 0.22, blue: 0.25)
+    private let pencil = Color(red: 0.45, green: 0.45, blue: 0.48)
+    private let wordInk = Color(red: 0.32, green: 0.32, blue: 0.36)
+    private let here = Color(red: 0.82, green: 0.14, blue: 0.12)   // red pencil
+    private let portalInk = Color(red: 0.32, green: 0.32, blue: 0.36)
+    private let hand = "Noteworthy-Light"
+    private let handBold = "Noteworthy-Bold"
 
     var body: some View {
         VStack(spacing: 0) {
@@ -79,9 +83,9 @@ struct MapView: View {
         HStack {
             VStack(alignment: .leading, spacing: 1) {
                 Text("Cave Map")
-                    .font(.system(size: 17, weight: .bold, design: .serif))
+                    .font(.custom(handBold, size: 20))
                 Text("\(seenCount) of \(map.mappableCount) places seen")
-                    .font(.system(size: 11, design: .serif))
+                    .font(.custom(hand, size: 12))
                     .foregroundStyle(pencil)
             }
             Spacer()
@@ -170,22 +174,27 @@ struct MapView: View {
                 let p0 = toScreen(CGPoint(x: region.x0, y: region.y0))
                 let p1 = toScreen(CGPoint(x: region.x1, y: region.y1))
                 let rect = CGRect(x: p0.x, y: p0.y, width: p1.x - p0.x, height: p1.y - p0.y)
-                ctx.stroke(Path(roundedRect: rect, cornerRadius: 8), with: .color(pencil.opacity(0.5)),
-                           style: StrokeStyle(lineWidth: 1, dash: [5, 4]))
+                let corners = [CGPoint(x: rect.minX, y: rect.minY), CGPoint(x: rect.maxX, y: rect.minY),
+                               CGPoint(x: rect.maxX, y: rect.maxY), CGPoint(x: rect.minX, y: rect.maxY),
+                               CGPoint(x: rect.minX, y: rect.minY)]
+                Pencil.stroke(ctx, corners, seed: region.title.count &* 31, width: 1,
+                              color: pencil.opacity(0.7), dash: [6, 5])
                 if detail {
                     ctx.draw(Text(region.title)
-                                .font(.system(size: 11 * min(zoom, 1.3), weight: .medium, design: .serif))
-                                .italic()
+                                .font(.custom(hand, size: 12 * min(zoom, 1.3)))
                                 .foregroundColor(pencil),
-                             at: CGPoint(x: rect.minX + 8, y: rect.minY + 6), anchor: .topLeading)
+                             at: CGPoint(x: rect.minX + 8, y: rect.minY + 4), anchor: .topLeading)
                 }
             }
 
             // Passages
-            let lineWidth = max(1, 1.6 * min(zoom, 1.4))
+            let lineWidth = max(1, 1.3 * min(zoom, 1.4))
+            // Command tags: (text, port point, direction out of the box, which side of the line).
+            var tags: [(text: String, at: CGPoint, out: CGVector, flip: Bool)] = []
             for c in map.connections {
                 guard let ra = map.room(c.a), let rb = map.room(c.b) else { continue }
                 let seenA = seen.contains(ra.id), seenB = seen.contains(rb.id)
+                let seed = c.a &* 1009 &+ c.b
                 if c.portal {
                     // Off-page connector: a stub at each known end, saying
                     // where it leads.
@@ -195,17 +204,14 @@ struct MapView: View {
                         let v = CaveMap.vector(port)
                         let len = hypot(v.dx, v.dy)
                         let q = CGPoint(x: p.x + v.dx / len * 0.26, y: p.y + v.dy / len * 0.26)
-                        var path = Path()
-                        path.move(to: toScreen(p))
-                        path.addLine(to: toScreen(q))
-                        ctx.stroke(path, with: .color(ink), lineWidth: lineWidth)
+                        Pencil.stroke(ctx, [toScreen(p), toScreen(q)], seed: seed &+ room.id,
+                                      width: lineWidth, color: ink)
                         if detail {
                             let name = seenThere ? other.label : "?"
                             ctx.draw(Text("to " + name)
-                                        .font(.system(size: 9.5 * min(max(zoom, 0.8), 1.5), weight: .semibold,
-                                                      design: .serif))
+                                        .font(.custom(hand, size: 10.5 * min(max(zoom, 0.8), 1.5)))
                                         .foregroundColor(portalInk),
-                                     at: toScreen(CGPoint(x: q.x + v.dx / len * 0.1, y: q.y + v.dy / len * 0.1)),
+                                     at: toScreen(CGPoint(x: q.x + v.dx / len * 0.08, y: q.y + v.dy / len * 0.08)),
                                      anchor: v.dx > 0 ? .leading : (v.dx < 0 ? .trailing : .center))
                         }
                     }
@@ -218,42 +224,64 @@ struct MapView: View {
                     let v = CaveMap.vector(c.aPort)
                     let r = 0.09 * s
                     let center = CGPoint(x: p.x + v.dx * r, y: p.y + v.dy * r)
-                    ctx.stroke(Path(ellipseIn: CGRect(x: center.x - r, y: center.y - r,
-                                                      width: r * 2, height: r * 2)),
-                               with: .color(ink), lineWidth: lineWidth)
+                    Pencil.stroke(ctx, Pencil.loop(center: center, rx: r, ry: r, seed: seed),
+                                  seed: seed, width: lineWidth, color: ink)
                     continue
                 }
 
                 if seenA && seenB {
                     guard let pts = map.route(c)?.map(toScreen) else { continue }
-                    var path = Path()
-                    path.addLines(pts)
-                    ctx.stroke(path, with: .color(ink),
-                               style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
-                    if c.oneWay { drawArrow(ctx, pts: pts, toB: c.aToB, size: 0.075 * s) }
+                    Pencil.stroke(ctx, pts, seed: seed, width: lineWidth, color: ink)
+                    if c.oneWay { drawArrow(ctx, pts: pts, toB: c.aToB, size: 0.07 * s, seed: seed) }
                     if detail {
-                        drawWord(ctx, c.aLabel, room: ra, port: c.aPort, toScreen: toScreen, s: s)
-                        drawWord(ctx, c.bLabel, room: rb, port: c.bPort, toScreen: toScreen, s: s)
+                        // The command at each end, on opposite sides of the
+                        // line so two tags never land on each other.
+                        if !c.aTag.isEmpty { tags.append((c.aTag, pts[0], unit(pts[0], pts[1]), false)) }
+                        if !c.bTag.isEmpty { tags.append((c.bTag, pts[3], unit(pts[3], pts[2]), true)) }
                     }
                 } else if showStubs && ((seenA && c.aToB) || (seenB && c.bToA)) {
                     // An exit from a known room into the unknown.
-                    let (room, port, label) = seenA ? (ra, c.aPort, c.aLabel) : (rb, c.bPort, c.bLabel)
+                    let (room, port) = seenA ? (ra, c.aPort) : (rb, c.bPort)
                     let p = map.portPoint(room, port)
                     let v = CaveMap.vector(port)
                     let len = hypot(v.dx, v.dy)
                     let q = CGPoint(x: p.x + v.dx / len * 0.3, y: p.y + v.dy / len * 0.3)
-                    var path = Path()
-                    path.move(to: toScreen(p))
-                    path.addLine(to: toScreen(q))
-                    ctx.stroke(path, with: .color(ink.opacity(0.55)),
-                               style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, dash: [2, 3]))
+                    Pencil.stroke(ctx, [toScreen(p), toScreen(q)], seed: seed &+ room.id,
+                                  width: lineWidth, color: ink.opacity(0.7), dash: [3, 3])
                     if detail {
-                        ctx.draw(Text("?").font(.system(size: 10 * min(zoom, 1.4), weight: .bold, design: .serif))
-                                    .foregroundColor(ink.opacity(0.6)),
-                                 at: toScreen(CGPoint(x: q.x + v.dx / len * 0.06, y: q.y + v.dy / len * 0.06)))
-                        drawWord(ctx, label, room: room, port: port, toScreen: toScreen, s: s)
+                        ctx.draw(Text("?").font(.custom(handBold, size: 12 * min(zoom, 1.4)))
+                                    .foregroundColor(ink.opacity(0.7)),
+                                 at: toScreen(CGPoint(x: q.x + v.dx / len * 0.07, y: q.y + v.dy / len * 0.07)))
+                        let tag = seenA ? c.aTag : c.bTag
+                        if !tag.isEmpty {
+                            let a = toScreen(p)
+                            tags.append((tag, a, unit(a, toScreen(q)), false))
+                        }
                     }
                 }
+            }
+
+            // Commands go on last, beside their lines just outside the box,
+            // on a scrap of clean paper so no line ever runs through them.
+            for tag in tags {
+                let text = ctx.resolve(Text(tag.text)
+                                        .font(.custom(hand, size: 10.5 * min(max(zoom, 0.8), 1.5)))
+                                        .foregroundColor(wordInk))
+                let size = text.measure(in: CGSize(width: 200, height: 40))
+                let ux = tag.out.dx, uy = tag.out.dy
+                // Along the line: far enough out that the text clears the box.
+                let along = 3 + abs(ux) * size.width / 2 + abs(uy) * size.height / 2
+                // Across the line: to one side, far enough to clear the line.
+                var nx = -uy, ny = ux
+                if ny > 0.2 || (abs(ny) <= 0.2 && nx < 0) { nx = -nx; ny = -ny }   // above / right
+                if tag.flip { nx = -nx; ny = -ny }                                 // other end: below / left
+                let clear = abs(nx) * (size.width / 2 + 3) + abs(ny) * (size.height / 2 + 1)
+                let center = CGPoint(x: tag.at.x + ux * along + nx * clear,
+                                     y: tag.at.y + uy * along + ny * clear)
+                let backing = CGRect(x: center.x - size.width / 2 - 2, y: center.y - size.height / 2,
+                                     width: size.width + 4, height: size.height)
+                ctx.fill(Path(roundedRect: backing, cornerRadius: 3), with: .color(paper.opacity(0.92)))
+                ctx.draw(text, at: center)
             }
 
             // Rooms
@@ -263,17 +291,19 @@ struct MapView: View {
                 let rect = CGRect(x: c.x - w / 2, y: c.y - h / 2, width: w, height: h)
                 guard rect.intersects(CGRect(origin: .zero, size: canvasSize).insetBy(dx: -20, dy: -20))
                 else { continue }
-                let shape = Path(roundedRect: rect, cornerRadius: 3)
                 let isHere = room.id == current?.id
                 let isSelected = room.id == selected
-                ctx.fill(shape, with: .color(isSelected ? Color(red: 1, green: 0.96, blue: 0.75) : .white))
-                ctx.stroke(shape, with: .color(ink), lineWidth: isHere ? 2.4 : 1.4)
+                // Paper inside the box (the grid shows faintly through);
+                // a yellow highlighter wash when the room is selected.
+                ctx.fill(Path(rect), with: .color(isSelected ? Color(red: 1, green: 0.93, blue: 0.45).opacity(0.55)
+                                                            : paper.opacity(0.8)))
+                Pencil.box(ctx, rect, seed: room.id, width: isHere ? 2.0 : 1.3, color: ink)
                 if detail {
-                    let size = 9.5 * min(max(zoom, 0.85), 1.7)
+                    let size = 10.5 * min(max(zoom, 0.85), 1.7)
                     // In the dark, an unseen room's name stays a mystery.
                     let label = seen.contains(room.id) ? room.label : "?"
                     let lines = wrapLabel(label, maxWidth: w - 8, ctx: ctx, size: size, bold: isHere)
-                    let lineH = size * 1.18
+                    let lineH = size * 1.12
                     let top = c.y - lineH * CGFloat(lines.count - 1) / 2
                     for (i, line) in lines.enumerated() {
                         ctx.draw(line, at: CGPoint(x: c.x, y: top + lineH * CGFloat(i)))
@@ -284,14 +314,14 @@ struct MapView: View {
             let hereSeen = current.map({ seen.contains($0.id) }) ?? false
             if engine.isDark && !hereSeen {
                 ctx.draw(Text("It is pitch dark. You can't see where you are.")
-                            .font(.system(size: 13, weight: .semibold, design: .serif))
+                            .font(.custom(handBold, size: 14))
                             .foregroundColor(here),
                          at: CGPoint(x: canvasSize.width / 2, y: 22))
             }
 
             if seen.isEmpty {
                 ctx.draw(Text("Nothing explored yet.")
-                            .font(.system(size: 14, design: .serif)).italic()
+                            .font(.custom(hand, size: 16))
                             .foregroundColor(pencil),
                          at: CGPoint(x: canvasSize.width / 2, y: canvasSize.height / 2 + 70))
             }
@@ -307,18 +337,27 @@ struct MapView: View {
         return Canvas { ctx, _ in
             guard let me else { return }
             let c = toScreen(me.center)
-            let r = max(w, h) * 0.62 + CGFloat(pulse) * 6
-            ctx.stroke(Path(ellipseIn: CGRect(x: c.x - r, y: c.y - r * 0.78, width: r * 2, height: r * 1.56)),
-                       with: .color(here.opacity(0.85 - pulse * 0.35)), lineWidth: 2.5)
-            let tag = ctx.resolve(Text("YOU ARE HERE")
-                                    .font(.system(size: 9.5, weight: .heavy, design: .rounded))
-                                    .foregroundColor(.white))
-            let tagSize = tag.measure(in: CGSize(width: 200, height: 40))
-            let tagRect = CGRect(x: c.x - tagSize.width / 2 - 6, y: c.y - h / 2 - tagSize.height - 14,
-                                 width: tagSize.width + 12, height: tagSize.height + 5)
-            ctx.fill(Path(roundedRect: tagRect, cornerRadius: tagRect.height / 2), with: .color(here))
-            ctx.draw(tag, at: CGPoint(x: tagRect.midX, y: tagRect.midY))
+            // A red-pencil ring, drawn round twice like a quick hand would.
+            let grow = 1 + CGFloat(pulse) * 0.05
+            let rx = (w / 2 + 9) * grow, ry = (h / 2 + 8) * grow
+            let ring = Pencil.loop(center: c, rx: rx, ry: ry, seed: me.id, turns: 1.15)
+            Pencil.stroke(ctx, ring, seed: me.id, width: 2.2, color: here.opacity(0.9 - pulse * 0.3))
+            let note = ctx.resolve(Text("you are here")
+                                    .font(.custom(handBold, size: 13))
+                                    .foregroundColor(here))
+            let size = note.measure(in: CGSize(width: 200, height: 40))
+            let at = CGPoint(x: c.x, y: c.y - ry - size.height / 2 - 2)
+            ctx.fill(Path(roundedRect: CGRect(x: at.x - size.width / 2 - 3, y: at.y - size.height / 2,
+                                              width: size.width + 6, height: size.height), cornerRadius: 3),
+                     with: .color(paper.opacity(0.85)))
+            ctx.draw(note, at: at)
         }
+    }
+
+    /// Unit vector from a to b (zero if they coincide).
+    private func unit(_ a: CGPoint, _ b: CGPoint) -> CGVector {
+        let d = hypot(b.x - a.x, b.y - a.y)
+        return d > 0.001 ? CGVector(dx: (b.x - a.x) / d, dy: (b.y - a.y) / d) : CGVector(dx: 0, dy: -1)
     }
 
     /// Greedy word wrap into at most three centred lines.
@@ -326,7 +365,7 @@ struct MapView: View {
                            size: CGFloat, bold: Bool) -> [GraphicsContext.ResolvedText] {
         func resolve(_ s: String) -> GraphicsContext.ResolvedText {
             ctx.resolve(Text(s)
-                .font(.system(size: size, weight: bold ? .bold : .regular, design: .serif))
+                .font(.custom(bold ? handBold : hand, size: size))
                 .foregroundColor(ink))
         }
         func width(_ s: String) -> CGFloat {
@@ -351,32 +390,16 @@ struct MapView: View {
         return lines.map(resolve)
     }
 
-    private func drawArrow(_ ctx: GraphicsContext, pts: [CGPoint], toB: Bool, size: CGFloat) {
+    /// A pencilled chevron halfway along a one-way passage.
+    private func drawArrow(_ ctx: GraphicsContext, pts: [CGPoint], toB: Bool, size: CGFloat, seed: Int) {
         var a = pts[1], b = pts[2]
         if !toB { swap(&a, &b) }
         let mid = CGPoint(x: (a.x + b.x) / 2, y: (a.y + b.y) / 2)
         let ang = atan2(b.y - a.y, b.x - a.x)
-        var tri = Path()
-        tri.move(to: CGPoint(x: mid.x + cos(ang) * size, y: mid.y + sin(ang) * size))
-        tri.addLine(to: CGPoint(x: mid.x + cos(ang + 2.5) * size, y: mid.y + sin(ang + 2.5) * size))
-        tri.addLine(to: CGPoint(x: mid.x + cos(ang - 2.5) * size, y: mid.y + sin(ang - 2.5) * size))
-        tri.closeSubpath()
-        ctx.fill(tri, with: .color(ink))
-    }
-
-    private func drawWord(_ ctx: GraphicsContext, _ word: String, room: CaveMap.Room, port: String,
-                          toScreen: (CGPoint) -> CGPoint, s: CGFloat) {
-        guard !word.isEmpty else { return }
-        let p = map.portPoint(room, port)
-        let v = CaveMap.vector(port)
-        // Beside the line, just outside the box.
-        let side = CGPoint(x: v.dy == 0 ? 0 : 0.09, y: v.dx == 0 ? 0 : -0.07)
-        let at = CGPoint(x: p.x + v.dx * 0.1 + side.x, y: p.y + v.dy * 0.1 + side.y)
-        ctx.draw(Text(word)
-                    .font(.system(size: 9 * min(max(zoom, 0.8), 1.5), weight: .semibold, design: .serif))
-                    .italic()
-                    .foregroundColor(wordInk),
-                 at: toScreen(at))
+        let tip = CGPoint(x: mid.x + cos(ang) * size * 0.6, y: mid.y + sin(ang) * size * 0.6)
+        let left = CGPoint(x: tip.x + cos(ang + 2.6) * size, y: tip.y + sin(ang + 2.6) * size)
+        let right = CGPoint(x: tip.x + cos(ang - 2.6) * size, y: tip.y + sin(ang - 2.6) * size)
+        Pencil.stroke(ctx, [left, tip, right], seed: seed &+ 5, width: 1.6, color: ink)
     }
 
     // MARK: Inspector
@@ -393,7 +416,7 @@ struct MapView: View {
         }
         return VStack(alignment: .leading, spacing: 6) {
             HStack {
-                Text(room.label).font(.system(size: 16, weight: .bold, design: .serif))
+                Text(room.label).font(.custom(handBold, size: 18))
                 Spacer()
                 Button {
                     withAnimation(.snappy) { selected = nil }
@@ -403,7 +426,7 @@ struct MapView: View {
                 .accessibilityLabel("Close")
             }
             if rows.isEmpty {
-                Text("No known way out.").font(.system(size: 13, design: .serif)).italic()
+                Text("No known way out.").font(.custom(hand, size: 14))
             }
             ScrollView {
                 VStack(alignment: .leading, spacing: 3) {
@@ -411,13 +434,12 @@ struct MapView: View {
                         let row = rows[i]
                         HStack(alignment: .firstTextBaseline, spacing: 6) {
                             Text(row.0)
-                                .font(.system(size: 13, weight: .semibold, design: .serif))
-                                .italic()
+                                .font(.custom(handBold, size: 14))
                                 .foregroundStyle(wordInk)
                             Image(systemName: "arrow.right").font(.system(size: 10)).foregroundStyle(pencil)
-                            Text(row.1).font(.system(size: 13, design: .serif))
+                            Text(row.1).font(.custom(hand, size: 14))
                             if row.2 {
-                                Text("(sometimes)").font(.system(size: 11, design: .serif)).foregroundStyle(pencil)
+                                Text("(sometimes)").font(.custom(hand, size: 12)).foregroundStyle(pencil)
                             }
                         }
                     }
@@ -483,5 +505,84 @@ struct MapView: View {
     private var accessibilitySummary: String {
         let where_ = map.room(forLocation: engine.location)?.label ?? "an unknown place"
         return "You are at \(where_). \(seenCount) places seen."
+    }
+}
+
+/// Hand-drawn pencil strokes. The wobble comes from a hash of a seed, not
+/// a random generator, so every line looks the same each time the map is
+/// redrawn instead of shimmering.
+enum Pencil {
+    /// Deterministic noise in -0.5…0.5.
+    static func noise(_ seed: Int, _ i: Int) -> CGFloat {
+        var h = UInt64(truncatingIfNeeded: seed &* 73_856_093 ^ i &* 19_349_663 ^ 0x5bd1e995)
+        h ^= h >> 33
+        h = h &* 0xff51_afd7_ed55_8ccd
+        h ^= h >> 33
+        h = h &* 0xc4ce_b9fe_1a85_ec53
+        h ^= h >> 33
+        return CGFloat(h % 10_000) / 10_000 - 0.5
+    }
+
+    /// A slightly wavering path through the points.
+    static func path(_ pts: [CGPoint], seed: Int, wobble: CGFloat, step: CGFloat = 16) -> Path {
+        var path = Path()
+        guard pts.count > 1 else { return path }
+        path.move(to: pts[0])
+        var k = 0
+        for i in 1..<pts.count {
+            let a = pts[i - 1], b = pts[i]
+            let len = hypot(b.x - a.x, b.y - a.y)
+            guard len > 0.01 else { continue }
+            let nx = -(b.y - a.y) / len, ny = (b.x - a.x) / len
+            let n = max(1, Int(len / step))
+            for j in 1...n {
+                let t = CGFloat(j) / CGFloat(n)
+                let last = j == n
+                let off = last ? noise(seed, 10_000 + i) * wobble * 0.4 : noise(seed, k) * wobble
+                k += 1
+                path.addLine(to: CGPoint(x: a.x + (b.x - a.x) * t + nx * off,
+                                         y: a.y + (b.y - a.y) * t + ny * off))
+            }
+        }
+        return path
+    }
+
+    /// Pencil line: a firm stroke plus a fainter second pass beside it, the
+    /// way graphite catches the paper's grain.
+    static func stroke(_ ctx: GraphicsContext, _ pts: [CGPoint], seed: Int, width: CGFloat,
+                       color: Color, dash: [CGFloat] = []) {
+        ctx.stroke(path(pts, seed: seed, wobble: 1.3), with: .color(color.opacity(0.85)),
+                   style: StrokeStyle(lineWidth: width, lineCap: .round, lineJoin: .round, dash: dash))
+        ctx.stroke(path(pts, seed: seed &+ 7_919, wobble: 2.0), with: .color(color.opacity(0.22)),
+                   style: StrokeStyle(lineWidth: width * 0.7, lineCap: .round, lineJoin: .round, dash: dash))
+    }
+
+    /// A box drawn as four separate strokes that overshoot the corners a
+    /// little, as hand-ruled boxes do.
+    static func box(_ ctx: GraphicsContext, _ r: CGRect, seed: Int, width: CGFloat, color: Color) {
+        let o: CGFloat = 2.5
+        let sides: [[CGPoint]] = [
+            [CGPoint(x: r.minX - o, y: r.minY), CGPoint(x: r.maxX + o * 0.6, y: r.minY)],
+            [CGPoint(x: r.maxX, y: r.minY - o * 0.6), CGPoint(x: r.maxX, y: r.maxY + o)],
+            [CGPoint(x: r.maxX + o * 0.4, y: r.maxY), CGPoint(x: r.minX - o, y: r.maxY)],
+            [CGPoint(x: r.minX, y: r.maxY + o * 0.5), CGPoint(x: r.minX, y: r.minY - o)],
+        ]
+        for (i, side) in sides.enumerated() {
+            stroke(ctx, side, seed: seed &* 4 &+ i, width: width, color: color)
+        }
+    }
+
+    /// Points round an ellipse, with a little irregularity; `turns` above 1
+    /// carries the line past its start, like a circle drawn in one go.
+    static func loop(center: CGPoint, rx: CGFloat, ry: CGFloat, seed: Int, turns: CGFloat = 1.08) -> [CGPoint] {
+        let steps = 40
+        var pts: [CGPoint] = []
+        let start = noise(seed, 99) * .pi
+        for i in 0...steps {
+            let t = start + CGFloat(i) / CGFloat(steps) * 2 * .pi * turns
+            let wob = 1 + noise(seed, 200 + i % 9) * 0.06
+            pts.append(CGPoint(x: center.x + cos(t) * rx * wob, y: center.y + sin(t) * ry * wob))
+        }
+        return pts
     }
 }

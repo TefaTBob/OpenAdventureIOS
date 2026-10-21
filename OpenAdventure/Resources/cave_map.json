@@ -5946,7 +5946,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "E",
+   "bTag": "W/U"
   },
   {
    "a": 3,
@@ -5957,7 +5961,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 1,
@@ -5968,7 +5976,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "down",
+   "labelEnd": "a",
+   "aTag": "S/D",
+   "bTag": "N"
   },
   {
    "a": 145,
@@ -5979,7 +5991,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "s"
+   "aPort": "s",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "N"
   },
   {
    "a": 2,
@@ -5990,7 +6006,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "W",
+   "bTag": "E/U"
   },
   {
    "a": 164,
@@ -6001,7 +6021,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "s"
+   "aPort": "s",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "N"
   },
   {
    "a": 157,
@@ -6012,7 +6036,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "n"
+   "aPort": "n",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "S"
   },
   {
    "a": 150,
@@ -6023,7 +6051,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "w"
+   "aPort": "w",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "E"
   },
   {
    "a": 156,
@@ -6034,7 +6066,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "ne"
+   "aPort": "ne",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "W"
   },
   {
    "a": 7,
@@ -6045,7 +6081,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "down",
+   "labelEnd": "b",
+   "aTag": "N",
+   "bTag": "S/D"
   },
   {
    "a": 158,
@@ -6056,7 +6096,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "n"
+   "aPort": "n",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "S"
   },
   {
    "a": 159,
@@ -6067,7 +6111,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "e"
+   "aPort": "e",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "W"
   },
   {
    "a": 165,
@@ -6078,7 +6126,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "s"
+   "aPort": "s",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "N"
   },
   {
    "a": 6,
@@ -6089,7 +6141,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 6,
@@ -6100,7 +6156,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "N"
   },
   {
    "a": 150,
@@ -6111,7 +6171,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "E"
   },
   {
    "a": 154,
@@ -6122,7 +6186,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 8,
@@ -6133,7 +6201,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 151,
@@ -6144,7 +6216,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "w"
+   "aPort": "w",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "E"
   },
   {
    "a": 154,
@@ -6155,7 +6231,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "ne",
-   "bPort": "w"
+   "bPort": "w",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "S"
   },
   {
    "a": 153,
@@ -6166,7 +6246,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "n",
-   "bPort": "s"
+   "bPort": "s",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "W"
   },
   {
    "a": 9,
@@ -6177,7 +6261,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "ne",
-   "bPort": "sw"
+   "bPort": "sw",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "D"
   },
   {
    "a": 9,
@@ -6188,7 +6276,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 10,
@@ -6199,7 +6291,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 12,
@@ -6210,7 +6306,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "E/D",
+   "bTag": "W/U"
   },
   {
    "a": 12,
@@ -6221,7 +6321,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "W/U",
+   "bTag": "E"
   },
   {
    "a": 13,
@@ -6232,7 +6336,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 15,
@@ -6243,7 +6351,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "sw",
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "D"
   },
   {
    "a": 15,
@@ -6254,7 +6366,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 17,
@@ -6265,7 +6381,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 19,
@@ -6276,7 +6396,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "E/U",
+   "bTag": "N/D"
   },
   {
    "a": 17,
@@ -6287,7 +6411,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "w",
-   "bPort": "e"
+   "bPort": "e",
+   "label": "over",
+   "labelEnd": "a",
+   "aTag": "over",
+   "bTag": "over"
   },
   {
    "a": 28,
@@ -6298,7 +6426,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 19,
@@ -6309,7 +6441,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 19,
@@ -6320,7 +6456,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 19,
@@ -6331,7 +6471,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "SW",
+   "bTag": "E"
   },
   {
    "a": 67,
@@ -6342,7 +6486,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 68,
@@ -6353,7 +6501,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "W"
   },
   {
    "a": 23,
@@ -6364,7 +6516,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "s",
-   "bPort": "n"
+   "bPort": "n",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 67,
@@ -6375,7 +6531,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "s",
-   "bPort": "n"
+   "bPort": "n",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 88,
@@ -6386,7 +6546,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "w"
+   "bPort": "w",
+   "label": "down",
+   "labelEnd": "a",
+   "aTag": "E/D",
+   "bTag": "climb"
   },
   {
    "a": 41,
@@ -6397,7 +6561,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 28,
@@ -6408,7 +6576,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 36,
@@ -6419,7 +6591,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "se",
-   "bPort": "nw"
+   "bPort": "nw",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "D"
   },
   {
    "a": 62,
@@ -6430,7 +6606,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "E",
+   "bTag": "W/U"
   },
   {
    "a": 34,
@@ -6441,7 +6621,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "nw"
+   "aPort": "nw",
+   "label": "down",
+   "labelEnd": "a",
+   "aTag": "D",
+   "bTag": "E"
   },
   {
    "a": 35,
@@ -6452,7 +6636,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 34,
@@ -6463,7 +6651,11 @@
    "bToA": false,
    "portal": false,
    "aPort": "s",
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": ""
   },
   {
    "a": 36,
@@ -6474,7 +6666,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 36,
@@ -6485,7 +6681,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 38,
@@ -6496,7 +6696,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "s",
-   "bPort": "n"
+   "bPort": "n",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "D"
   },
   {
    "a": 64,
@@ -6507,7 +6711,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "ne",
-   "bPort": "w"
+   "bPort": "w",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "D"
   },
   {
    "a": 42,
@@ -6518,7 +6726,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "ne"
+   "aPort": "ne",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "S/U"
   },
   {
    "a": 60,
@@ -6529,7 +6741,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "E/U",
+   "bTag": "W"
   },
   {
    "a": 42,
@@ -6540,7 +6756,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "N"
   },
   {
    "a": 42,
@@ -6551,7 +6771,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 42,
@@ -6562,7 +6786,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "W"
   },
   {
    "a": 42,
@@ -6573,7 +6801,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "N"
   },
   {
    "a": 43,
@@ -6584,7 +6816,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "E"
   },
   {
    "a": 43,
@@ -6595,7 +6831,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "N"
   },
   {
    "a": 44,
@@ -6606,7 +6846,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "w",
-   "bPort": "e"
+   "bPort": "e",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 44,
@@ -6617,7 +6861,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "n"
+   "bPort": "n",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "E"
   },
   {
    "a": 44,
@@ -6628,7 +6876,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 45,
@@ -6639,7 +6891,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 45,
@@ -6650,7 +6906,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "E"
   },
   {
    "a": 87,
@@ -6661,7 +6921,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "sw",
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "U"
   },
   {
    "a": 49,
@@ -6672,7 +6936,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 49,
@@ -6683,7 +6951,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "s",
-   "bPort": "n"
+   "bPort": "n",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "W"
   },
   {
    "a": 50,
@@ -6694,7 +6966,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "sw",
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 50,
@@ -6705,7 +6981,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "W"
   },
   {
    "a": 51,
@@ -6716,7 +6996,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "w"
+   "bPort": "w",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "E"
   },
   {
    "a": 51,
@@ -6727,7 +7011,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "W"
   },
   {
    "a": 52,
@@ -6738,7 +7026,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "S"
   },
   {
    "a": 52,
@@ -6749,7 +7041,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "sw"
+   "aPort": "sw",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "N"
   },
   {
    "a": 55,
@@ -6760,7 +7056,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "N"
   },
   {
    "a": 52,
@@ -6771,7 +7071,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "e",
-   "bPort": "w"
+   "bPort": "w",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 53,
@@ -6782,7 +7086,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "n"
+   "bPort": "n",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "W"
   },
   {
    "a": 55,
@@ -6793,7 +7101,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "N"
   },
   {
    "a": 55,
@@ -6804,7 +7116,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "s",
-   "bPort": "n"
+   "bPort": "n",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 55,
@@ -6815,7 +7131,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 13,
@@ -6826,7 +7146,11 @@
    "bToA": true,
    "portal": true,
    "aPort": "s",
-   "bPort": "nw"
+   "bPort": "nw",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "",
+   "bTag": ""
   },
   {
    "a": 58,
@@ -6837,7 +7161,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "n"
+   "aPort": "n",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "S"
   },
   {
    "a": 83,
@@ -6848,7 +7176,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 84,
@@ -6859,7 +7191,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "sw"
+   "aPort": "sw",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "E"
   },
   {
    "a": 60,
@@ -6870,7 +7206,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 62,
@@ -6881,7 +7221,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "down",
+   "labelEnd": "b",
+   "aTag": "W",
+   "bTag": "N/D"
   },
   {
    "a": 62,
@@ -6892,7 +7236,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 107,
@@ -6903,7 +7251,11 @@
    "aToB": true,
    "bToA": true,
    "portal": true,
-   "aPort": "e"
+   "aPort": "e",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "",
+   "bTag": ""
   },
   {
    "a": 62,
@@ -6914,7 +7266,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 65,
@@ -6925,7 +7281,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 64,
@@ -6936,7 +7296,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 106,
@@ -6947,7 +7311,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "nw"
+   "aPort": "nw",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "E"
   },
   {
    "a": 65,
@@ -6958,7 +7326,11 @@
    "bPort": "ne",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "NE"
   },
   {
    "a": 65,
@@ -6969,7 +7341,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "nw",
-   "bPort": "e"
+   "bPort": "e",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "D"
   },
   {
    "a": 65,
@@ -6980,7 +7356,11 @@
    "bToA": false,
    "portal": false,
    "aPort": "ne",
-   "bPort": "sw"
+   "bPort": "sw",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": ""
   },
   {
    "a": 65,
@@ -6991,7 +7371,11 @@
    "aToB": true,
    "bToA": false,
    "portal": false,
-   "bPort": "e"
+   "bPort": "e",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": ""
   },
   {
    "a": 65,
@@ -7002,7 +7386,11 @@
    "bPort": "se",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "SE"
   },
   {
    "a": 106,
@@ -7013,7 +7401,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "se"
+   "bPort": "se",
+   "label": "down",
+   "labelEnd": "b",
+   "aTag": "W",
+   "bTag": "D"
   },
   {
    "a": 67,
@@ -7024,7 +7416,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 96,
@@ -7035,7 +7431,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 69,
@@ -7046,7 +7446,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "nw",
-   "bPort": "se"
+   "bPort": "se",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 65,
@@ -7057,7 +7461,11 @@
    "aToB": false,
    "bToA": true,
    "portal": false,
-   "aPort": "sw"
+   "aPort": "sw",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "",
+   "bTag": "N"
   },
   {
    "a": 69,
@@ -7068,7 +7476,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 109,
@@ -7079,7 +7491,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 70,
@@ -7090,7 +7506,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 70,
@@ -7101,7 +7521,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "w",
-   "bPort": "e"
+   "bPort": "e",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 71,
@@ -7112,7 +7536,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "s"
+   "bPort": "s",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "W"
   },
   {
    "a": 72,
@@ -7123,7 +7551,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "se"
+   "bPort": "se",
+   "label": "down",
+   "labelEnd": "b",
+   "aTag": "SW",
+   "bTag": "D"
   },
   {
    "a": 73,
@@ -7134,7 +7566,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 72,
@@ -7145,7 +7581,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "SE",
+   "bTag": "W"
   },
   {
    "a": 74,
@@ -7156,7 +7596,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 74,
@@ -7167,7 +7611,11 @@
    "bToA": false,
    "portal": false,
    "aPort": "sw",
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "down",
+   "labelEnd": "a",
+   "aTag": "D",
+   "bTag": ""
   },
   {
    "a": 76,
@@ -7178,7 +7626,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 77,
@@ -7189,7 +7641,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "N"
   },
   {
    "a": 78,
@@ -7200,7 +7656,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "W"
   },
   {
    "a": 66,
@@ -7211,7 +7671,11 @@
    "aToB": false,
    "bToA": true,
    "portal": false,
-   "aPort": "se"
+   "aPort": "se",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "",
+   "bTag": "N"
   },
   {
    "a": 80,
@@ -7222,7 +7686,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "W"
   },
   {
    "a": 80,
@@ -7233,7 +7701,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 83,
@@ -7244,7 +7716,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 83,
@@ -7255,7 +7731,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 84,
@@ -7266,7 +7746,11 @@
    "bPort": "se",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "NW",
+   "bTag": "SE"
   },
   {
    "a": 92,
@@ -7277,7 +7761,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "W"
   },
   {
    "a": 91,
@@ -7288,7 +7776,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "e"
+   "aPort": "e",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "W"
   },
   {
    "a": 91,
@@ -7299,7 +7791,11 @@
    "bToA": false,
    "portal": false,
    "aPort": "ne",
-   "bPort": "w"
+   "bPort": "w",
+   "label": "down",
+   "labelEnd": "a",
+   "aTag": "D",
+   "bTag": ""
   },
   {
    "a": 93,
@@ -7310,7 +7806,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "E"
   },
   {
    "a": 92,
@@ -7321,7 +7821,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 94,
@@ -7332,7 +7836,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 97,
@@ -7343,7 +7851,11 @@
    "aToB": true,
    "bToA": false,
    "portal": false,
-   "bPort": "nw"
+   "bPort": "nw",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "SE",
+   "bTag": ""
   },
   {
    "a": 98,
@@ -7354,7 +7866,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "S",
+   "bTag": "N/U"
   },
   {
    "a": 99,
@@ -7365,7 +7881,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "aPort": "se"
+   "aPort": "se",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "NW",
+   "bTag": "W"
   },
   {
    "a": 99,
@@ -7376,7 +7896,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 101,
@@ -7387,7 +7911,11 @@
    "bPort": "ne",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "NE"
   },
   {
    "a": 102,
@@ -7398,7 +7926,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "sw",
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 103,
@@ -7409,7 +7941,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "w",
-   "bPort": "e"
+   "bPort": "e",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 105,
@@ -7420,7 +7956,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "sw",
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "D"
   },
   {
    "a": 106,
@@ -7431,7 +7971,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "w"
+   "bPort": "w",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "E"
   },
   {
    "a": 109,
@@ -7442,7 +7986,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 50,
@@ -7453,7 +8001,11 @@
    "bToA": true,
    "portal": true,
    "aPort": "nw",
-   "bPort": "se"
+   "bPort": "se",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "",
+   "bTag": ""
   },
   {
    "a": 53,
@@ -7464,7 +8016,11 @@
    "bToA": true,
    "portal": true,
    "aPort": "nw",
-   "bPort": "s"
+   "bPort": "s",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "",
+   "bTag": ""
   },
   {
    "a": 45,
@@ -7475,7 +8031,11 @@
    "bToA": true,
    "portal": true,
    "aPort": "nw",
-   "bPort": "se"
+   "bPort": "se",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "",
+   "bTag": ""
   },
   {
    "a": 140,
@@ -7486,7 +8046,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 168,
@@ -7497,7 +8061,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 115,
@@ -7508,7 +8076,11 @@
    "bPort": "ne",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "SW",
+   "bTag": "NE"
   },
   {
    "a": 117,
@@ -7519,7 +8091,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "ne"
+   "bPort": "ne",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "SW",
+   "bTag": "U"
   },
   {
    "a": 122,
@@ -7530,7 +8106,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "se",
-   "bPort": "nw"
+   "bPort": "nw",
+   "label": "over",
+   "labelEnd": "a",
+   "aTag": "over",
+   "bTag": "over"
   },
   {
    "a": 123,
@@ -7541,7 +8121,11 @@
    "bPort": "ne",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "NE"
   },
   {
    "a": 123,
@@ -7552,7 +8136,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 124,
@@ -7563,7 +8151,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "NE",
+   "bTag": "S"
   },
   {
    "a": 124,
@@ -7574,7 +8166,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "SE/D",
+   "bTag": "N/U"
   },
   {
    "a": 126,
@@ -7585,7 +8181,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 127,
@@ -7596,7 +8196,11 @@
    "bPort": "e",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "E"
   },
   {
    "a": 129,
@@ -7607,7 +8211,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "W/U",
+   "bTag": "S/D"
   },
   {
    "a": 129,
@@ -7618,7 +8226,11 @@
    "bPort": "w",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "E",
+   "bTag": "W"
   },
   {
    "a": 140,
@@ -7629,7 +8241,11 @@
    "bPort": "n",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "S",
+   "bTag": "N"
   },
   {
    "a": 143,
@@ -7640,7 +8256,11 @@
    "aToB": true,
    "bToA": true,
    "portal": false,
-   "bPort": "e"
+   "bPort": "e",
+   "label": "",
+   "labelEnd": "",
+   "aTag": "W",
+   "bTag": "S"
   },
   {
    "a": 143,
@@ -7651,7 +8271,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 168,
@@ -7662,7 +8286,11 @@
    "bPort": "s",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "N",
+   "bTag": "S"
   },
   {
    "a": 169,
@@ -7673,7 +8301,11 @@
    "bPort": "se",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "NW/U",
+   "bTag": "SE/D"
   },
   {
    "a": 171,
@@ -7684,7 +8316,11 @@
    "bPort": "nw",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "SE/D",
+   "bTag": "NW/U"
   },
   {
    "a": 172,
@@ -7695,7 +8331,11 @@
    "bPort": "nw",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "SE/D",
+   "bTag": "NW/U"
   },
   {
    "a": 173,
@@ -7706,7 +8346,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "se",
-   "bPort": "nw"
+   "bPort": "nw",
+   "label": "up",
+   "labelEnd": "b",
+   "aTag": "D",
+   "bTag": "U"
   },
   {
    "a": 173,
@@ -7717,7 +8361,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "w",
-   "bPort": "e"
+   "bPort": "e",
+   "label": "up",
+   "labelEnd": "a",
+   "aTag": "U",
+   "bTag": "D"
   },
   {
    "a": 176,
@@ -7728,7 +8376,11 @@
    "bPort": "sw",
    "aToB": true,
    "bToA": true,
-   "portal": false
+   "portal": false,
+   "label": "",
+   "labelEnd": "",
+   "aTag": "NE",
+   "bTag": "SW"
   },
   {
    "a": 6,
@@ -7739,7 +8391,11 @@
    "bToA": true,
    "portal": false,
    "aPort": "n",
-   "bPort": "s"
+   "bPort": "s",
+   "label": "fly",
+   "labelEnd": "a",
+   "aTag": "fly",
+   "bTag": "fly"
   }
  ],
  "regions": [

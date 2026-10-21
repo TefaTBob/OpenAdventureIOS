@@ -16,7 +16,7 @@ import math
 import sys
 from pathlib import Path
 
-from mapdata import VEC, CaveData, VERB_WORDS
+from mapdata import MOVES, VEC, CaveData, VERB_WORDS
 
 HERE = Path(__file__).parent
 YAML = HERE / "adventure.yaml"
@@ -120,7 +120,65 @@ def resolve_ports(data, pos):
         port = min(ANGLE, key=score)
         out[end + "Port"] = port
         taken.add(port)
+    for out, c in zip(conns, data.connections):
+        out["label"], out["labelEnd"] = map_label(out)
+        out["aTag"] = command_tag(c["aVerbs"]) if out["aToB"] and not out["portal"] else ""
+        out["bTag"] = command_tag(c["bVerbs"]) if out["bToA"] and not out["portal"] else ""
     return conns
+
+
+SHORT = {"NORTH": "N", "SOUTH": "S", "EAST": "E", "WEST": "W",
+         "NE": "NE", "NW": "NW", "SE": "SE", "SW": "SW",
+         "UPWAR": "U", "DOWN": "D", "INWAR": "IN", "ENTER": "IN", "OUT": "OUT", "OUTDO": "OUT"}
+OTHER_MOVES = ["CLIMB", "OVER", "FLY", "CRAWL", "JUMP", "ACROS", "CROSS", "UPSTR", "DOWNS"]
+
+
+def command_tag(verbs):
+    """What you type at this end, the game's way: N, NE, U, IN… ("N/D" when
+    both work); a word such as "climb" or "fly" when no direction does."""
+    if not verbs:
+        return ""
+    compass = next((SHORT[v] for v in verbs if v in ("NORTH", "SOUTH", "EAST", "WEST",
+                                                     "NE", "NW", "SE", "SW")), None)
+    vertical = next((SHORT[v] for v in verbs if v in ("UPWAR", "DOWN")), None)
+    parts = [p for p in (compass, vertical) if p]
+    if not parts:
+        inout = next((SHORT[v] for v in verbs if v in ("INWAR", "ENTER", "OUT", "OUTDO")), None)
+        if inout:
+            parts = [inout]
+    if not parts:
+        word = next((v for v in verbs if v in OTHER_MOVES), None)
+        if word:
+            parts = [MOVES.get(word, word.lower())]
+    return "/".join(parts)
+
+
+# Words worth writing on the map. Compass words are left off: the side a
+# line leaves its box already says which way, and the room's exit list (tap
+# a room in the app) gives the exact command where the cave isn't flat.
+MAP_WORDS = ["up", "down", "in", "out", "climb", "crawl", "over", "across",
+             "cross", "jump", "upstream", "downstream", "fly"]
+
+
+def map_label(conn):
+    """One label per passage, at the end you travel from ("up" beats "down").
+
+    Returns (text, "a" | "b" | "")."""
+    def word(end):
+        for w in conn[end + "Label"].split():
+            if w in MAP_WORDS:
+                return w
+        return None
+    wa = word("a") if conn["aToB"] else None
+    wb = word("b") if conn["bToA"] else None
+    if conn["a"] == conn["b"] or conn["portal"]:
+        return "", ""
+    for preferred in MAP_WORDS:
+        if wa == preferred:
+            return wa, "a"
+        if wb == preferred:
+            return wb, "b"
+    return "", ""
 
 
 def endpoints(conn, pos_by_id):

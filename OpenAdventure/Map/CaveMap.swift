@@ -39,6 +39,14 @@ final class CaveMap: Sendable {
         /// Drawn as a labelled stub at each end ("to Twisty Maze 1")
         /// instead of a line across the map.
         let portal: Bool
+        /// The one word written beside the line ("up", "over", …) and the
+        /// end ("a" or "b") you travel from; empty when the line says it all.
+        let label: String
+        let labelEnd: String
+        /// The command you type at each end ("N", "NE", "W/U", "IN", "climb");
+        /// empty for an end you can't leave by (one-way passages).
+        let aTag: String
+        let bTag: String
 
         var isLoop: Bool { a == b }
         var oneWay: Bool { aToB != bToA }

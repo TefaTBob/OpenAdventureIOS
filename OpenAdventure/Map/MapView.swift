@@ -169,6 +169,10 @@ struct MapView: View {
         let detail = zoom >= 0.55
         let fine = zoom >= 0.4          // hatching and terrain marks
         let selectedID = selected
+        // Read here, not inside the drawing closure, so SwiftUI redraws the
+        // map when they change.
+        let itemsSeen = engine.itemsSeen
+        let dwarvesHere = engine.dwarvesHere
         // Art is in points at zoom 1; this puts it on screen.
         let origin = toScreen(.zero)
         let artToScreen = CGAffineTransform(a: z, b: 0, c: 0, d: z, tx: origin.x, ty: origin.y)
@@ -340,30 +344,38 @@ struct MapView: View {
 
             // 4. The sketches: hatching round the walls, what's there, and
             //    the lie of the land.
+            let slotSize = art.slotSize
             for room in roomsShown {
                 guard let ra = art.rooms[room.id] else { continue }
+                // What you last saw lying here, and any dwarves here now.
+                let lying = lyingAbout(room, slots: ra.slots.count, itemsSeen: itemsSeen,
+                                        dwarves: room.id == current?.id ? dwarvesHere : 0)
+                let usedSlots = ra.slots.prefix(lying.things.count).map {
+                    CGRect(x: $0.x - slotSize.width / 2, y: $0.y - slotSize.height / 2,
+                           width: slotSize.width, height: slotSize.height)
+                }
                 if fine {
                     draw(ra.hatch)
                     for m in ra.marks where art.symbols.indices.contains(m.symbol) {
                         let sym = art.symbols[m.symbol]
-                        guard sym.bounds.offsetBy(dx: m.at.x, dy: m.at.y).intersects(visible) else { continue }
+                        let markBox = sym.bounds.offsetBy(dx: m.at.x, dy: m.at.y)
+                        guard markBox.intersects(visible),
+                              !usedSlots.contains(where: { $0.intersects(markBox) }) else { continue }
                         var c = ink
                         c.translateBy(x: m.at.x, y: m.at.y)
                         draw(sym.groups, in: c)
                     }
                 }
                 draw(ra.art)
+                for part in ra.parts where lying.objects.contains(part.object) {
+                    draw(part.groups)
+                    if detail { drawLabels(part.labels, in: ink) }
+                }
+                for (thing, rect) in zip(lying.things, usedSlots) {
+                    drawThing(thing, in: rect, context: ink, pen: pen / z, labels: detail)
+                }
                 if detail {
-                    for l in ra.labels {
-                        var c = ink
-                        c.translateBy(x: l.at.x, y: l.at.y)
-                        c.rotate(by: l.rotation)
-                        // Noteworthy runs wider than the tool's stand-in hand.
-                        c.draw(Text(l.text)
-                                .font(.custom(l.bold ? handBold : hand, size: l.size * 1.1))
-                                .foregroundColor(l.ink.color),
-                               at: .zero)
-                    }
+                    drawLabels(ra.labels, in: ink)
                 }
             }
 
@@ -371,9 +383,10 @@ struct MapView: View {
             //    clean paper, clear of the tunnel walls.
             let tunnelHalf = art.tunnelHalfWidth * z
             for tag in tags {
+                // Bold and in full ink, so they stand out from the sketches.
                 let text = ctx.resolve(Text(tag.text)
-                                        .font(.custom(hand, size: 10.5 * min(max(z, 0.8), 1.5)))
-                                        .foregroundColor(wordInk))
+                                        .font(.custom(handBold, size: 11 * min(max(z, 0.8), 1.5)))
+                                        .foregroundColor(MapArt.Ink.ink.color))
                 let size = text.measure(in: CGSize(width: 200, height: 40))
                 let ux = tag.out.dx, uy = tag.out.dy
                 let along = 4 + abs(ux) * size.width / 2 + abs(uy) * size.height / 2
@@ -422,6 +435,88 @@ struct MapView: View {
                             .foregroundColor(pencil),
                          at: CGPoint(x: canvasSize.width / 2, y: canvasSize.height / 2 + 70))
             }
+        }
+    }
+
+    /// One thing drawn in a slot: an item's sketch, a dwarf, or "+3 more".
+    private enum Thing {
+        case item(MapArt.ItemArt, caption: String)
+        case more(Int)
+    }
+
+    /// What to draw lying about a room: everything you last saw in any of
+    /// its locations (creatures are drawn as parts, not in slots), plus the
+    /// dwarves in your own location right now. The last slot becomes
+    /// "+N more" when there are more things than slots.
+    private func lyingAbout(_ room: CaveMap.Room, slots: Int, itemsSeen: [Int: [Int]],
+                            dwarves: Int) -> (objects: Set<Int>, things: [Thing]) {
+        var objects: [Int] = []
+        for loc in room.locs {
+            for o in itemsSeen[loc] ?? [] where !objects.contains(o) { objects.append(o) }
+        }
+        let present = Set(objects)
+        var things: [Thing] = []
+        if dwarves > 0, let dwarf = art.items[art.dwarf] {
+            let n = dwarves
+            things.append(.item(dwarf, caption: n == 1 ? "dwarf" : "\(n) dwarves"))
+        }
+        for o in objects {
+            guard let item = art.items[o], o != art.water, o != art.oil, o != art.bear,
+                  o != art.dwarf, !(o == art.rug && present.contains(art.dragon)) else { continue }
+            things.append(.item(item, caption: item.caption))
+        }
+        if things.count > slots, slots > 0 {
+            let extra = things.count - slots + 1
+            things = Array(things.prefix(slots - 1)) + [.more(extra)]
+        }
+        return (present, things)
+    }
+
+    /// Draws a thing into its slot (art coordinates): the sketch scaled to
+    /// fit, its name underneath.
+    private func drawThing(_ thing: Thing, in rect: CGRect, context: GraphicsContext, pen: CGFloat, labels: Bool) {
+        let captionH: CGFloat = 9
+        switch thing {
+        case .more(let n):
+            guard labels else { return }
+            context.draw(Text("+\(n) more").font(.custom(handBold, size: 8))
+                            .foregroundColor(MapArt.Ink.soft.color),
+                         at: CGPoint(x: rect.midX, y: rect.midY))
+        case .item(let item, let caption):
+            let box = CGRect(x: rect.minX + 2, y: rect.minY + 1, width: rect.width - 4, height: rect.height - captionH - 2)
+            let b = item.bounds.isNull ? CGRect(x: -12, y: -12, width: 24, height: 24) : item.bounds
+            let k = min(box.width / max(b.width, 1), box.height / max(b.height, 1), 1.2)
+            var c = context
+            c.translateBy(x: box.midX, y: box.midY)
+            c.scaleBy(x: k, y: k)
+            c.translateBy(x: -b.midX, y: -b.midY)
+            for g in item.groups {
+                c.stroke(g.path, with: .color(g.ink.color),
+                         style: StrokeStyle(lineWidth: g.width * pen / k, lineCap: .round,
+                                            lineJoin: .round, dash: g.dash))
+            }
+            if labels {
+                drawLabels(item.labels, in: c)
+                if !caption.isEmpty {
+                    context.draw(Text(caption).font(.custom(hand, size: 7.5))
+                                    .foregroundColor(MapArt.Ink.soft.color),
+                                 at: CGPoint(x: rect.midX, y: rect.maxY - captionH / 2))
+                }
+            }
+        }
+    }
+
+    /// Handwriting inside a sketch, in art coordinates.
+    private func drawLabels(_ labels: [MapArt.Label], in context: GraphicsContext) {
+        for l in labels {
+            var c = context
+            c.translateBy(x: l.at.x, y: l.at.y)
+            c.rotate(by: l.rotation)
+            // Noteworthy runs wider than the tool's stand-in hand.
+            c.draw(Text(l.text)
+                    .font(.custom(l.bold ? handBold : hand, size: l.size * 1.1))
+                    .foregroundColor(l.ink.color),
+                   at: .zero)
         }
     }
 

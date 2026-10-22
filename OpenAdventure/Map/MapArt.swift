@@ -46,11 +46,21 @@ final class MapArt: @unchecked Sendable {
         let bounds: CGRect
     }
 
-    /// A carryable thing, drawn on its own for the inventory.
+    /// A carryable thing, drawn on its own: in the inventory, and on the
+    /// map wherever you last saw it lying.
     struct ItemArt {
         let groups: [Group]
         let labels: [Label]
         let bounds: CGRect
+        let caption: String
+    }
+
+    /// A creature drawn beside its room, shown only while you last saw
+    /// that object there.
+    struct Part {
+        let object: Int
+        let groups: [Group]
+        let labels: [Label]
     }
 
     struct Mark {
@@ -66,6 +76,10 @@ final class MapArt: @unchecked Sendable {
         let art: [Group]
         let labels: [Label]
         let marks: [Mark]
+        let parts: [Part]
+        /// Clear spots round the room (centres) where things lying here are
+        /// drawn, nearest first.
+        let slots: [CGPoint]
         /// Everything this room draws, for skipping rooms off screen.
         let bounds: CGRect
     }
@@ -99,6 +113,10 @@ final class MapArt: @unchecked Sendable {
     let passages: [PassageArt]
     /// Inventory sketches by engine object index.
     let items: [Int: ItemArt]
+    /// Size of an item slot, in points at zoom 1.
+    let slotSize: CGSize
+    /// Engine object indices the map treats specially.
+    let dwarf: Int, water: Int, oil: Int, rug: Int, dragon: Int, bear: Int
 
     private init() {
         var unit: CGFloat = 128, tunnel: CGFloat = 5
@@ -106,6 +124,8 @@ final class MapArt: @unchecked Sendable {
         var rooms: [Int: RoomArt] = [:]
         var passages: [PassageArt] = []
         var items: [Int: ItemArt] = [:]
+        var slotSize = CGSize(width: 34, height: 36)
+        var special: [String: Int] = [:]
         if let url = Bundle.main.url(forResource: "map_art", withExtension: "json"),
            let data = try? Data(contentsOf: url),
            let doc = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
@@ -136,6 +156,17 @@ final class MapArt: @unchecked Sendable {
                 for l in labels {
                     box = box.union(CGRect(x: l.at.x - 40, y: l.at.y - 10, width: 80, height: 20))
                 }
+                let parts: [Part] = (r["parts"] as? [Any] ?? []).compactMap { v in
+                    guard let p = v as? [String: Any], let obj = Self.num(p["obj"]) else { return nil }
+                    let strokes = p["strokes"] as? [Any] ?? []
+                    box = box.union(reader.bounds(strokes))
+                    return Part(object: Int(obj), groups: reader.groups(strokes),
+                                labels: (p["text"] as? [Any] ?? []).compactMap { reader.label($0) })
+                }
+                let slots = reader.points((r["slots"] as? [Any] ?? []).flatMap { $0 as? [Any] ?? [] })
+                for c in slots {
+                    box = box.union(CGRect(x: c.x - 20, y: c.y - 20, width: 40, height: 40))
+                }
                 rooms[id] = RoomArt(surface: (r["kind"] as? String) == "surface",
                                     outline: Reader.polygon(outlinePts),
                                     fill: Reader.polygon(reader.points(r["fill"])),
@@ -143,6 +174,8 @@ final class MapArt: @unchecked Sendable {
                                     art: reader.groups(art),
                                     labels: labels,
                                     marks: marks,
+                                    parts: parts,
+                                    slots: slots,
                                     bounds: box)
             }
             for case let c as [String: Any] in doc["connections"] as? [Any] ?? [] {
@@ -182,7 +215,14 @@ final class MapArt: @unchecked Sendable {
                 let strokes = item["strokes"] as? [Any] ?? []
                 items[id] = ItemArt(groups: reader.groups(strokes),
                                     labels: (item["text"] as? [Any] ?? []).compactMap { reader.label($0) },
-                                    bounds: reader.bounds(strokes))
+                                    bounds: reader.bounds(strokes),
+                                    caption: item["caption"] as? String ?? "")
+            }
+            if let s = doc["slot"] as? [Any], s.count == 2, let w = Self.num(s[0]), let h = Self.num(s[1]) {
+                slotSize = CGSize(width: CGFloat(w) / scale, height: CGFloat(h) / scale)
+            }
+            for (k, v) in doc["objects"] as? [String: Any] ?? [:] {
+                if let n = Self.num(v) { special[k] = Int(n) }
             }
         }
         self.unit = unit
@@ -191,6 +231,13 @@ final class MapArt: @unchecked Sendable {
         self.rooms = rooms
         self.passages = passages
         self.items = items
+        self.slotSize = slotSize
+        dwarf = special["dwarf"] ?? 17
+        water = special["water"] ?? 21
+        oil = special["oil"] ?? 22
+        rug = special["rug"] ?? 62
+        dragon = special["dragon"] ?? 31
+        bear = special["bear"] ?? 35
     }
 
     fileprivate static func num(_ v: Any?) -> Double? {

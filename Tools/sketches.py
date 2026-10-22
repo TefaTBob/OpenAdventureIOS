@@ -536,12 +536,7 @@ ITEMS = {
     'OBJ_63': it_spices, 'CHAIN': it_chain, 'RUBY': it_ruby, 'SAPPH': it_sapphire,
     'OBJ_69': it_statuette,
 }
-# Everything else you can carry: drawn in the inventory, not on the map.
-CARRY_ONLY = {
-    'WATER': it_water, 'OIL': it_oil, 'AMBER': it_amber, 'PEARL': it_pearl, 'JADE': it_jade,
-    'CHEST': it_chest, 'RUG': it_rug, 'AXE': it_axe, 'BATTERY': it_batteries, 'OYSTER': it_oyster,
-    'ROD2': it_rod, 'CHAIN': it_chain,
-}
+
 ITEM_CAPTION = {
     'KEYS': 'keys', 'LAMP': 'lamp', 'FOOD': 'food', 'BOTTLE': 'bottle', 'CAGE': 'cage', 'ROD': 'rod',
     'BIRD': 'bird', 'PILLOW': 'pillow', 'CLAM': 'clam', 'MAGAZINE': 'magazine', 'URN': 'urn',
@@ -549,6 +544,9 @@ ITEM_CAPTION = {
     'OBJ_53': 'jewelry', 'COINS': 'coins', 'EGGS': 'golden eggs', 'TRIDENT': 'trident',
     'VASE': 'Ming vase', 'EMERALD': 'emerald', 'PYRAMID': 'pyramid', 'OBJ_63': 'spices',
     'CHAIN': 'gold chain', 'RUBY': 'ruby', 'SAPPH': 'sapphire', 'OBJ_69': 'statuette',
+    'WATER': 'water', 'OIL': 'oil', 'AMBER': 'amber', 'PEARL': 'pearl', 'JADE': 'jade necklace',
+    'CHEST': 'treasure chest', 'RUG': 'Persian rug', 'AXE': 'axe', 'BATTERY': 'batteries',
+    'OYSTER': 'oyster', 'ROD2': 'rod', 'DWARF': 'dwarf',
 }
 
 
@@ -623,6 +621,48 @@ def sc_well(p):
     p.seg(-10, -12, 10, -12, 0.8)
     p.seg(2, -12, 2, -5, 0.5)
     p.line([(0, -5), (4, -5), (3.6, -2.5), (0.4, -2.5)], 0.7, BROWN, closed=True, wob=0.1)
+
+
+def sc_mountain_hall(p):
+    # the Hall of the Mountain King: passages off in all directions
+    p.line([(-26, 12), (26, 12)], 0.8, SOFT, 0.4)
+    for k, x in enumerate((-18, -6, 6, 18)):
+        h = 14 + (k % 2) * 4
+        p.line([(x - 4, 12), (x - 4, 12 - h + 4)], 0.9, wob=0.2)
+        p.ell(x, 12 - h + 4, 4, 4, 180, 360, 0.9)
+        p.line([(x + 4, 12 - h + 4), (x + 4, 12)], 0.9, wob=0.2)
+        p.hatch([(x - 3.6, 12 - h + 4), (x + 3.6, 12 - h + 4), (x + 3.6, 11.6), (x - 3.6, 11.6)], 90, 1.2, c=INK, w=0.4)
+    p.line([(-26, -16), (-10, -20), (10, -20), (26, -16)], 0.8, wob=0.5)
+
+
+def it_dwarf(p):
+    # a nasty little dwarf with his axe
+    p.ell(0, -8, 3, 3, w=0.9)
+    p.line([(-3, -10), (0, -14.5), (3, -10)], 0.9, RED, 0.1)           # pointed hood
+    p.line([(-2.4, -6.5), (0, -1.5), (2.4, -6.5)], 0.7, SOFT, 0.2)     # beard
+    p.line([(-3, -5), (-5, 3), (5, 3), (3, -5)], 1.0, wob=0.2)
+    p.line([(-2.5, 3), (-3, 8)], 1.0); p.line([(2.5, 3), (3, 8)], 1.0)
+    p.line([(-4, -3), (-8, 1)], 0.9)
+    p.line([(4, -3), (8, -6)], 0.9)
+    p.seg(8, -6, 9, -12, 1.0, BROWN)
+    p.line([(7, -12), (11, -13.5), (12, -10), (9, -9.5)], 0.9, closed=True, wob=0.1)
+    p.hatch([(0.5, -4.6), (3, -4.6), (4.6, 2.6), (0.5, 2.6)], 60, 1.1)
+
+
+def cr_snake(p):
+    sc_snake(p)
+
+
+def cr_dragon(p):
+    sc_dragon(p)
+
+
+def cr_bear(p):
+    sc_bear(p)
+
+
+def cr_ogre(p):
+    sc_ogre(p)
 
 
 def sc_hill_road(p):
@@ -1209,8 +1249,12 @@ def sc_troll_bridge(p, troll=True):
         p.seg(x, y, x, y - 5, 0.5, BROWN)
     p.mist(0, 10, 22, 2)
     if troll:
-        # a burly troll at the bridge head
-        x, y = -20, -6
+        cr_troll(p, -20, -6)
+
+
+def cr_troll(p, x=0.0, y=4.0):
+    # a burly troll
+    if True:
         p.ell(x, y - 8, 3, 3.2, w=1.0)
         p.line([(x - 2.4, y - 10.5), (x - 4.5, y - 13)], 0.8)
         p.line([(x + 2.4, y - 10.5), (x + 4.5, y - 13)], 0.8)
@@ -1326,14 +1370,6 @@ def sc_bear(p):
     p.seg(-14, 6, 11, 8, 0.7, BROWN)
     for k in range(8):
         p.seg(-8 + k * 2.6, -7 + (k % 3), -7 + k * 2.6, -4 + (k % 3), 0.5, BROWN, 0.05)
-    # golden chain from collar to the wall
-    for k in range(5):
-        xx = 6 + k * 3.6
-        if k % 2 == 0:
-            p.ell(xx + 8, -10 + k * 0.5, 1.8, 1, w=0.8, c=GOLD)
-        else:
-            p.ell(xx + 8, -10 + k * 0.5, 0.6, 1.2, w=0.8, c=GOLD)
-    p.line([(28, -18), (28, 10)], 1.0, wob=0.4)
     p.text('bear', -4, 15, 5, 0, SOFT)
 
 
@@ -1537,7 +1573,7 @@ SCENES = {
     'ROADEND': sc_road_end, 'CLIFF': sc_cliff, 'SLIT': sc_slit, 'GRATE': sc_grate,
     'BELOWGRATE': sc_below_grate, 'COBBLE': sc_cobbles, 'DEBRIS': sc_debris, 'AWKWARD': sc_awkward,
     'BIRDCHAMBER': sc_flowstone, 'PITTOP': sc_steps_pit, 'MISTHALL': sc_staircase,
-    'EASTBANK': sc_fissure, 'WESTBANK': sc_fissure, 'NUGGET': sc_note, 'KINGHALL': sc_snake,
+    'EASTBANK': sc_fissure, 'WESTBANK': sc_fissure, 'NUGGET': sc_note, 'KINGHALL': sc_mountain_hall,
     'WESTEND': lambda p: sc_twopit(p), 'EASTEND': lambda p: sc_twopit(p, slabs=True),
     'EASTPIT': sc_oil_pool, 'WESTPIT': it_plant, 'FLOORHOLE': sc_hole_floor, 'Y2': sc_y2,
     'JUMBLE': sc_jumble, 'WINDOW1': sc_window, 'WINDOW2': sc_window, 'BROKEN': sc_hole_floor,
@@ -1551,11 +1587,10 @@ SCENES = {
     'ANTEROOM': sc_construction, 'WITTSEND': sc_witts_end, 'MIRRORCANYON': sc_mirror,
     'TOPSTALACTITE': sc_stalactite, 'RESERVOIR': sc_reservoir, 'RESBOTTOM': sc_res_bottom,
     'RESNORTH': sc_shore, 'NE': sc_repository_ne, 'SW': sc_repository_sw,
-    'SWCHASM': sc_troll_bridge, 'NECHASM': lambda p: sc_troll_bridge(p, False),
-    'SECRET4': sc_dragon, 'CORRIDOR': sc_rumble, 'FORK': sc_fork,
+    'SWCHASM': lambda p: sc_troll_bridge(p, False), 'NECHASM': lambda p: sc_troll_bridge(p, False), 'CORRIDOR': sc_rumble, 'FORK': sc_fork,
     'WARMWALLS': lambda p: sc_rumble(p, True), 'BREATHTAKING': sc_volcano, 'BOULDERS2': sc_boulders,
     'BOULDERS1': sc_boulders, 'LIMESTONE': sc_limestone, 'BARRENFRONT': sc_bear_sign,
-    'BARRENROOM': sc_bear, 'DEADEND13': sc_vending, 'LARGE': sc_ogre, 'CLIFFBASE': sc_bones,
+    'DEADEND13': sc_vending, 'CLIFFBASE': sc_bones,
     'CLIFFACE': sc_cliff_face, 'CLIFFLEDGE': sc_ledge, 'LEDGE': sc_ledge, 'NARROW': sc_narrow,
     'INCLINE': sc_incline, 'STEEP': sc_steep, 'TREACHEROUS': sc_slope, 'ROUGHHEWN': sc_hewn,
     'TALL': sc_tall_canyon, 'WIDEPLACE': sc_wide_place, 'TIGHTPLACE': sc_dead_end,
@@ -1591,6 +1626,19 @@ def bounds(p, pad=1.0):
         ys += [t[2] - t[3] / 2, t[2] + t[3] / 2]
     return (min(xs) - pad, min(ys) - pad, max(xs) + pad, max(ys) + pad)
 
+
+# Creatures, drawn full size beside their rooms for as long as you last saw
+# them there (the snake leaves when the bird drives it off, and so on).
+CREATURES = {'SNAKE': cr_snake, 'DRAGON': cr_dragon, 'TROLL': cr_troll, 'BEAR': cr_bear, 'OGRE': cr_ogre}
+
+# Everything else you can carry (and the dwarves): drawn in the inventory,
+# and on the map wherever you last saw it.
+CARRY_ONLY = {
+    'DWARF': it_dwarf,
+    'WATER': it_water, 'OIL': it_oil, 'AMBER': it_amber, 'PEARL': it_pearl, 'JADE': it_jade,
+    'CHEST': it_chest, 'RUG': it_rug, 'AXE': it_axe, 'BATTERY': it_batteries, 'OYSTER': it_oyster,
+    'ROD2': it_rod, 'CHAIN': it_chain,
+}
 
 # ======================================================================
 # Small terrain marks scattered round explored places

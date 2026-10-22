@@ -152,6 +152,20 @@ static void fill_snapshot(advent_snapshot_t *s) {
 		s->carried[s->carried_count++] = i;
 	}
 	s->bear_following = TOTING(BEAR);
+	s->object_count = NOBJECTS < ADVENT_MAX_OBJECTS ? NOBJECTS : ADVENT_MAX_OBJECTS;
+	for (int i = 0; i < s->object_count; i++) {
+		s->object_place[i] = game.objects[i].place;
+		s->object_fixed[i] = game.objects[i].fixed;
+	}
+	/* Dwarves only roam once they've been activated; the pirate (the last
+	 * slot) keeps out of sight. */
+	if (game.dflag >= 2) {
+		for (int i = 0; i < PIRATE; i++) {
+			if (game.dwarves[i].loc == game.loc) {
+				s->dwarves_here++;
+			}
+		}
+	}
 }
 
 const char *advent_object_inventory(int obj) {

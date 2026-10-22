@@ -32,6 +32,15 @@ final class GameEngine {
     private(set) var carried: [CarriedItem] = []
     /// The tame bear is following you.
     private(set) var bearFollowing = false
+    /// What you last saw lying in each place: location → object indices.
+    /// Updated whenever you're somewhere lit, like notes in a journal, so
+    /// the map shows a dropped axe or a moved treasure once you've seen it.
+    private(set) var itemsSeen: [Int: [Int]] = [:]
+    /// Dwarves in your location right now (0 in the dark).
+    private(set) var dwarvesHere = 0
+    /// After restoring an older save that didn't record items, fill in the
+    /// places already seen from the game's state on the first prompt.
+    private var fillItemsFromGame = false
     private(set) var askingFilename = false
 
     private var history: [String] = []
@@ -60,15 +69,19 @@ final class GameEngine {
 
     func startNewGame() {
         saves.delete(SaveStore.autosaveID)
-        begin(restoreFrom: nil, visited: [], banner: nil)
+        begin(restoreFrom: nil, visited: [], items: nil, banner: nil)
     }
 
     @discardableResult
     func load(_ id: String, banner: String? = "RESTORING SAVED GAME...") -> Bool {
         let url = saves.fileURL(for: id)
         guard FileManager.default.fileExists(atPath: url.path) else { return false }
-        let known = Set(saves.meta(for: id)?.visited ?? [])
-        begin(restoreFrom: url, visited: known, banner: banner)
+        let meta = saves.meta(for: id)
+        let known = Set(meta?.visited ?? [])
+        let items = meta?.items.map { stored in
+            Dictionary(uniqueKeysWithValues: stored.compactMap { k, v in Int(k).map { ($0, v) } })
+        }
+        begin(restoreFrom: url, visited: known, items: items, banner: banner)
         return true
     }
 
@@ -78,7 +91,8 @@ final class GameEngine {
         guard prompt != nil, !isOver else { return false }
         let room = CaveMap.shared.room(forLocation: location)?.label ?? "Somewhere"
         let meta = SaveMeta(date: Date(), room: room, score: score,
-                            turns: turns, visited: visited.sorted())
+                            turns: turns, visited: visited.sorted(),
+                            items: Dictionary(uniqueKeysWithValues: itemsSeen.map { (String($0.key), $0.value) }))
         return saves.write(id: id, meta: meta)
     }
 
@@ -86,7 +100,8 @@ final class GameEngine {
         save(to: SaveStore.autosaveID)
     }
 
-    private func begin(restoreFrom url: URL?, visited known: Set<Int>, banner: String?) {
+    private func begin(restoreFrom url: URL?, visited known: Set<Int>, items: [Int: [Int]]?,
+                       banner: String?) {
         advent_stop() // joins any running game thread first
 
         generation += 1
@@ -105,6 +120,9 @@ final class GameEngine {
         visited = known
         carried = []
         bearFollowing = false
+        itemsSeen = items ?? [:]
+        dwarvesHere = 0
+        fillItemsFromGame = url != nil && items == nil
         historyCursor = nil
         if let banner { append(banner + "\n") }
 
@@ -190,6 +208,16 @@ final class GameEngine {
         visited.formUnion(snapshot.seen)
         carried = snapshot.carried
         bearFollowing = snapshot.bearFollowing
+        if fillItemsFromGame {
+            for loc in visited where itemsSeen[loc] == nil {
+                itemsSeen[loc] = snapshot.objects(at: loc)
+            }
+            fillItemsFromGame = false
+        }
+        if !snapshot.dark {
+            itemsSeen[location] = snapshot.objects(at: location)
+        }
+        dwarvesHere = snapshot.dark ? 0 : snapshot.dwarvesHere
     }
 
     fileprivate func receiveEnd(status: Int32, generation gen: Int) {
@@ -246,6 +274,17 @@ struct EngineSnapshot: Sendable {
     var seen: [Int]
     var carried: [CarriedItem]
     var bearFollowing: Bool
+    var objectPlace: [Int]
+    var objectFixed: [Int]
+    var dwarvesHere: Int
+
+    /// Objects lying at a location (or fixed there, like the troll).
+    func objects(at loc: Int) -> [Int] {
+        guard loc > 0 else { return [] }
+        return objectPlace.indices.filter { i in
+            i > 0 && (objectPlace[i] == loc || objectFixed[i] == loc)
+        }
+    }
 }
 
 private func generation(of ctx: UnsafeMutableRawPointer?) -> Int? {
@@ -288,11 +327,23 @@ private func enginePrompt(_ ctx: UnsafeMutableRawPointer?,
             carried.append(CarriedItem(id: Int(obj), name: String(cString: name)))
         }
     }
+    func ints<T>(_ tuple: T, count: Int) -> [Int] {
+        withUnsafeBytes(of: tuple) { raw in
+            let stride = MemoryLayout<Int32>.stride
+            return (0..<min(count, raw.count / stride)).map {
+                Int(raw.load(fromByteOffset: $0 * stride, as: Int32.self))
+            }
+        }
+    }
+    let objectCount = Int(s.object_count)
     let snap = EngineSnapshot(location: Int(s.location), dark: s.dark,
                               askingFilename: s.asking_filename,
                               score: Int(s.score), maxScore: Int(s.max_score),
                               turns: Int(s.turns), seen: seen,
-                              carried: carried, bearFollowing: s.bear_following)
+                              carried: carried, bearFollowing: s.bear_following,
+                              objectPlace: ints(s.object_place, count: objectCount),
+                              objectFixed: ints(s.object_fixed, count: objectCount),
+                              dwarvesHere: Int(s.dwarves_here))
     DispatchQueue.main.async {
         MainActor.assumeIsolated {
             GameEngine.shared.receive(prompt: text, snapshot: snap, generation: gen)

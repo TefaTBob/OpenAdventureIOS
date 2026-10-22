@@ -36,7 +36,12 @@ static void on_prompt(void *ctx, const char *prompt,
 		fprintf(stderr, "INV");
 		for (int i = 0; i < s->carried_count; i++)
 			fprintf(stderr, " [%s]", advent_object_inventory(s->carried[i]));
-		fprintf(stderr, s->bear_following ? " +bear\n" : "\n");
+		if (s->bear_following) fprintf(stderr, " +bear");
+		fprintf(stderr, " here:");
+		for (int i = 1; i < s->object_count; i++)
+			if (s->object_place[i] == s->location || s->object_fixed[i] == s->location)
+				fprintf(stderr, " %d", i);
+		fprintf(stderr, " dwarves=%d\n", s->dwarves_here);
 	}
 	pthread_mutex_lock(&m);
 	prompts_pending++;

@@ -8,6 +8,9 @@ struct SaveMeta: Codable, Sendable {
     var turns: Int
     /// Rooms seen, so the map comes back exactly as it was.
     var visited: [Int]
+    /// What you last saw lying in each place (location → object indices),
+    /// for the map. Missing in saves from before the map showed items.
+    var items: [String: [Int]]? = nil
 }
 
 /// Save files live in Documents/Saves, visible in the Files app.

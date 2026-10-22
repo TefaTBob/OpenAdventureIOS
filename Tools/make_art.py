@@ -186,7 +186,25 @@ def M(p):
     return (p[0] - OX, p[1] - OY)
 
 
+# A NumPy copy of the mask for fast "is this box free?" checks; dropped
+# whenever the picture is drawn into, rebuilt on the next check.
+_occ = None
+
+
+def occ():
+    global _occ
+    if _occ is None:
+        _occ = np.array(mask)
+    return _occ
+
+
+def _dirty():
+    global _occ
+    _occ = None
+
+
 def mpoly(pts, grow=0):
+    _dirty()
     q = [M(p) for p in pts]
     md.polygon(q, fill=255)
     if grow:
@@ -194,12 +212,16 @@ def mpoly(pts, grow=0):
 
 
 def mline(pts, width):
+    _dirty()
     md.line([M(p) for p in pts], fill=255, width=int(width), joint='curve')
 
 
 def mrect(x0, y0, x1, y1):
     a, b = M((x0, y0)), M((x1, y1))
     md.rectangle([a, b], fill=255)
+    if _occ is not None:
+        X0, Y0 = max(0, int(a[0])), max(0, int(a[1]))
+        _occ[Y0:int(b[1]) + 1, X0:int(b[0]) + 1] = 255
 
 
 for r in doc['rooms']:
@@ -256,7 +278,7 @@ def freept(x, y):
 
 
 def free(x0, y0, x1, y1):
-    a = np.asarray(mask)
+    a = occ()
     X0, Y0, X1, Y1 = int(x0 - OX), int(y0 - OY), int(math.ceil(x1 - OX)), int(math.ceil(y1 - OY))
     if X0 < 0 or Y0 < 0 or X1 >= MW or Y1 >= MH:
         return False
@@ -264,17 +286,43 @@ def free(x0, y0, x1, y1):
 
 
 # ------------------------------------------------------------------ sketches beside rooms
-art = {r['id']: [] for r in doc['rooms']}       # (pen, dx, dy)
-items_at = {}
-for o in Y['objects']:
-    k, v = list(o.items())[0] if isinstance(o, dict) else o
-    if k in K.ITEMS and isinstance(v.get('locations'), str):
-        items_at.setdefault(v['locations'], []).append(k)
+art = {r['id']: [] for r in doc['rooms']}       # (pen, (dx, dy)): always drawn
+parts = {r['id']: [] for r in doc['rooms']}     # (object index, pen, (dx, dy)): creatures
+slots = {r['id']: [] for r in doc['rooms']}     # (x, y): where things lying here are drawn
+OBJ_KEYS = [list(o.keys())[0] if isinstance(o, dict) else o[0] for o in Y['objects']]
 room_of_loc = {NAMES[l]: r['id'] for r in doc['rooms'] for l in r['locs']}
-room_items = {}
-for loc, ks in items_at.items():
-    if loc in room_of_loc:
-        room_items.setdefault(room_of_loc[loc], []).extend(ks)
+start_items, creatures_at = {}, {}
+for idx, o in enumerate(Y['objects']):
+    k, v = list(o.items())[0] if isinstance(o, dict) else o
+    locs = v.get('locations')
+    locs = [locs] if isinstance(locs, str) else (locs or [])
+    for loc in locs:
+        rid = room_of_loc.get(loc)
+        if rid is None:
+            continue
+        if k in K.CREATURES:
+            if idx not in [i for i, _ in creatures_at.get(rid, [])]:
+                creatures_at.setdefault(rid, []).append((idx, k))
+        elif k in K.ITEMS:
+            start_items.setdefault(rid, []).append(k)
+
+# Things you can pick up are drawn in "slots" round each room: small clear
+# spots, nearest first. The well house gets plenty, since that's where the
+# treasures end up.
+SLOT_W, SLOT_H = 34.0, 36.0
+
+
+def slot_count(r):
+    if key(r['id']) == 'BUILDING':
+        return 16
+    return max(3, len(start_items.get(r['id'], [])) + 1)
+
+
+class Box:
+    """stands in for a sketch when only its footprint matters"""
+    def __init__(self, w, h):
+        self.strokes = [([(-w / 2, -h / 2), (w / 2, h / 2)], 1, 'ink', None)]
+        self.texts = []
 
 
 def place(r, pen, rings):
@@ -323,10 +371,9 @@ def with_caption(fn, caption, seed):
 
 
 def priority(r):
-    k = key(r['id'])
-    if r['id'] in room_items:
+    if r['id'] in start_items or r['id'] in creatures_at:
         return 0
-    if k in K.SCENES:
+    if key(r['id']) in K.SCENES:
         return 1
     return 2
 
@@ -341,12 +388,18 @@ for r in sorted(doc['rooms'], key=lambda r: (priority(r), r['id'])):
             art[r['id']].append((pen, at))
         else:
             missed.append(('scene', k))
-    for j, item in enumerate(room_items.get(r['id'], [])):
-        pen, at = place_scaled(r, with_caption(K.ITEMS[item], K.ITEM_CAPTION[item], r['id'] * 17 + j), (1.35, 1.15, 0.95, 0.8))
+    for idx, ck in creatures_at.get(r['id'], []):
+        pen, at = place_scaled(r, K.draw(K.CREATURES[ck], r['id'] * 19 + idx), (1.45, 1.25, 1.05, 0.85))
         if at:
-            art[r['id']].append((pen, at))
+            parts[r['id']].append((idx, pen, at))
         else:
-            missed.append(('item', item))
+            missed.append(('creature', ck))
+    for j in range(slot_count(r)):
+        at = place(r, Box(SLOT_W, SLOT_H), (1.0, 1.1, 1.2, 1.35, 1.5, 1.7, 1.9, 2.2))
+        if at:
+            slots[r['id']].append(at)
+    if len(slots[r['id']]) < len(start_items.get(r['id'], [])):
+        missed.append(('slots', k))
 
 # ------------------------------------------------------------------ rock hatching (round whatever the sketches left free)
 amask = np.asarray(mask).copy()
@@ -394,8 +447,16 @@ for e in conns:
     if 'walls' in e:
         hd.line([M(p) for p in densify(e['route'], 4)], fill=255, width=int(TW * 2 + 22), joint='curve')
 mask.paste(255, mask=hm)
+_dirty()
 
 # ------------------------------------------------------------------ terrain marks
+# Marks may sit in an empty slot: the app leaves out any mark under a slot
+# that's in use.
+for rid, ss in slots.items():
+    for x, y in ss:
+        a, b = M((x - SLOT_W / 2, y - SLOT_H / 2)), M((x + SLOT_W / 2, y + SLOT_H / 2))
+        md.rectangle([a, b], fill=0)
+_dirty()
 symbols, sym_index = [], {}
 for kd, fns in K.MARKS.items():
     for j, fn in enumerate(fns):
@@ -469,6 +530,9 @@ for r in doc['rooms']:
         'hatch': [enc_stroke(*s) for s in room_hatch.get(rid, [])],
         'art': strokes,
         'text': texts,
+        'parts': [{'obj': idx, 'strokes': [enc_stroke(*st, dx=x, dy=y) for st in pen.strokes],
+                   'text': [enc_text(t, x, y) for t in pen.texts]} for idx, pen, (x, y) in parts[rid]],
+        'slots': [[q(x), q(y)] for x, y in slots[rid]],
         'marks': [[si, q(x), q(y)] for si, x, y in marks[rid]],
     })
 out_conns = []
@@ -490,13 +554,17 @@ for idx, o in enumerate(Y['objects']):
     fn = K.ITEMS.get(k) or K.CARRY_ONLY.get(k)
     if fn:
         pen = K.draw(fn, 900 + idx)
-        inventory_art[str(idx)] = {'strokes': [enc_stroke(*s) for s in pen.strokes], 'text': [enc_text(t) for t in pen.texts]}
+        inventory_art[str(idx)] = {'strokes': [enc_stroke(*s) for s in pen.strokes], 'text': [enc_text(t) for t in pen.texts],
+                                   'caption': K.ITEM_CAPTION.get(k, '')}
 out = {
     'scale': 10, 'unit': UNIT, 'tunnel': TW, 'diag': DIAG, 'colors': COLORS,
     'symbols': [{'strokes': [enc_stroke(*s) for s in p.strokes], 'text': [enc_text(t) for t in p.texts]} for p in symbols],
     'rooms': out_rooms,
     'connections': out_conns,
     'items': inventory_art,
+    'slot': [q(SLOT_W), q(SLOT_H)],
+    # objects the app treats specially when drawing what's lying about
+    'objects': {k.lower(): OBJ_KEYS.index(k) for k in ('DWARF', 'WATER', 'OIL', 'RUG', 'DRAGON', 'BEAR')},
 }
 path = RES / "map_art.json"
 path.write_text(json.dumps(out, separators=(',', ':')))

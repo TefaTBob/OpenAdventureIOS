@@ -26,6 +26,7 @@ extern "C" {
 
 #define ADVENT_MAX_LOCATIONS 256
 #define ADVENT_MAX_CARRIED 80
+#define ADVENT_MAX_OBJECTS 128
 
 typedef struct {
 	int location;          /* current room index (LOC_*) */
@@ -39,6 +40,13 @@ typedef struct {
 	int carried_count;     /* objects being carried, as INVENTORY lists them */
 	int carried[ADVENT_MAX_CARRIED];          /* object indices (OBJ order in adventure.yaml) */
 	bool bear_following;   /* the tame bear is tagging along */
+	/* Where every object is (for drawing what's lying about on the map):
+	 * a location index, or <= 0 for carried / nowhere. Objects that span
+	 * two locations (the troll, the dragon…) also have a fixed location. */
+	int object_count;
+	int object_place[ADVENT_MAX_OBJECTS];
+	int object_fixed[ADVENT_MAX_OBJECTS];
+	int dwarves_here;      /* dwarves in the player's location right now */
 } advent_snapshot_t;
 
 typedef void (*advent_output_cb)(void *ctx, const char *text, long length);

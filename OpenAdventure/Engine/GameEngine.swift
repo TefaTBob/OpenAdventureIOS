@@ -36,6 +36,10 @@ final class GameEngine {
     /// Updated whenever you're somewhere lit, like notes in a journal, so
     /// the map shows a dropped axe or a moved treasure once you've seen it.
     private(set) var itemsSeen: [Int: [Int]] = [:]
+    /// Words you've typed in each place: location → words (lowercased).
+    /// The map only names an exit's command once you've tried it there
+    /// or seen where it leads.
+    private(set) var triedWords: [Int: Set<String>] = [:]
     /// Dwarves in your location right now (0 in the dark).
     private(set) var dwarvesHere = 0
     /// After restoring an older save that didn't record items, fill in the
@@ -69,7 +73,7 @@ final class GameEngine {
 
     func startNewGame() {
         saves.delete(SaveStore.autosaveID)
-        begin(restoreFrom: nil, visited: [], items: nil, banner: nil)
+        begin(restoreFrom: nil, visited: [], items: nil, tried: nil, banner: nil)
     }
 
     @discardableResult
@@ -81,7 +85,10 @@ final class GameEngine {
         let items = meta?.items.map { stored in
             Dictionary(uniqueKeysWithValues: stored.compactMap { k, v in Int(k).map { ($0, v) } })
         }
-        begin(restoreFrom: url, visited: known, items: items, banner: banner)
+        let tried = meta?.tried.map { stored in
+            Dictionary(uniqueKeysWithValues: stored.compactMap { k, v in Int(k).map { ($0, Set(v)) } })
+        }
+        begin(restoreFrom: url, visited: known, items: items, tried: tried, banner: banner)
         return true
     }
 
@@ -92,7 +99,8 @@ final class GameEngine {
         let room = CaveMap.shared.room(forLocation: location)?.label ?? "Somewhere"
         let meta = SaveMeta(date: Date(), room: room, score: score,
                             turns: turns, visited: visited.sorted(),
-                            items: Dictionary(uniqueKeysWithValues: itemsSeen.map { (String($0.key), $0.value) }))
+                            items: Dictionary(uniqueKeysWithValues: itemsSeen.map { (String($0.key), $0.value) }),
+                            tried: Dictionary(uniqueKeysWithValues: triedWords.map { (String($0.key), $0.value.sorted()) }))
         return saves.write(id: id, meta: meta)
     }
 
@@ -101,7 +109,7 @@ final class GameEngine {
     }
 
     private func begin(restoreFrom url: URL?, visited known: Set<Int>, items: [Int: [Int]]?,
-                       banner: String?) {
+                       tried: [Int: Set<String>]?, banner: String?) {
         advent_stop() // joins any running game thread first
 
         generation += 1
@@ -121,6 +129,7 @@ final class GameEngine {
         carried = []
         bearFollowing = false
         itemsSeen = items ?? [:]
+        triedWords = tried ?? [:]
         dwarvesHere = 0
         fillItemsFromGame = url != nil && items == nil
         historyCursor = nil
@@ -168,6 +177,10 @@ final class GameEngine {
            history.last != line, !askingFilename {
             history.append(line)
             if history.count > 100 { history.removeFirst() }
+        }
+        if !askingFilename {
+            let words = line.lowercased().split(whereSeparator: { !$0.isLetter && !$0.isNumber }).map(String.init)
+            if !words.isEmpty { triedWords[location, default: []].formUnion(words) }
         }
         prompt = nil
         line.withCString { advent_submit($0) }

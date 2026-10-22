@@ -11,6 +11,9 @@ struct SaveMeta: Codable, Sendable {
     /// What you last saw lying in each place (location → object indices),
     /// for the map. Missing in saves from before the map showed items.
     var items: [String: [Int]]? = nil
+    /// Words you've typed in each place (location → words), so the map's
+    /// exit lists only reveal commands you've tried.
+    var tried: [String: [String]]? = nil
 }
 
 /// Save files live in Documents/Saves, visible in the Files app.

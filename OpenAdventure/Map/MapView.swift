@@ -173,6 +173,7 @@ struct MapView: View {
         // map when they change.
         let itemsSeen = engine.itemsSeen
         let dwarvesHere = engine.dwarvesHere
+        let triedWords = engine.triedWords
         // Art is in points at zoom 1; this puts it on screen.
         let origin = toScreen(.zero)
         let artToScreen = CGAffineTransform(a: z, b: 0, c: 0, d: z, tx: origin.x, ty: origin.y)
@@ -310,8 +311,9 @@ struct MapView: View {
                         ctx.draw(Text("?").font(.custom(handBold, size: 12 * min(z, 1.4)))
                                     .foregroundColor(MapArt.Ink.ink.color.opacity(0.75)),
                                  at: toScreen(CGPoint(x: q.x + v.dx / len * 0.36, y: q.y + v.dy / len * 0.36)))
+                        // Name the command only once you've tried it here.
                         let tag = end == 0 ? c.aTag : c.bTag
-                        if !tag.isEmpty {
+                        if !tag.isEmpty, Self.tagTried(tag, words: tried(in: room, from: triedWords)) {
                             let tip = toScreen(CGPoint(x: q.x + v.dx / len * 0.3, y: q.y + v.dy / len * 0.3))
                             tags.append((tag, p, direction(p, tip), false, surface(room.id)))
                         }
@@ -610,16 +612,53 @@ struct MapView: View {
 
     // MARK: Inspector
 
+    /// Common short forms, so typing "n" counts as having tried "north".
+    private static let shortForms: [String: String] = [
+        "n": "north", "s": "south", "e": "east", "w": "west", "ne": "northeast", "nw": "northwest",
+        "se": "southeast", "sw": "southwest", "u": "up", "d": "down", "upward": "up", "downward": "down",
+        "l": "look", "i": "inventory",
+    ]
+
+    private static func expand(_ w: String) -> String {
+        let w = w.lowercased()
+        return shortForms[w] ?? w
+    }
+
+    /// Every word you've typed in any of this box's locations.
+    private func tried(in room: CaveMap.Room, from triedWords: [Int: Set<String>]) -> Set<String> {
+        var out: Set<String> = []
+        for loc in room.locs {
+            for w in triedWords[loc] ?? [] { out.insert(Self.expand(w)) }
+        }
+        return out
+    }
+
+    /// A map tag like "N/D" or "Y2" counts as tried if any part of it was typed.
+    private static func tagTried(_ tag: String, words: Set<String>) -> Bool {
+        tag.split(separator: "/").contains { words.contains(expand(String($0))) }
+    }
+
+    /// The exits of a room, keeping the game's secrets: a destination is
+    /// named once you've seen it, and its commands are listed once you've
+    /// seen it or typed them here. Anything else is "? → ?".
     private func inspector(_ room: CaveMap.Room) -> some View {
+        let typed = tried(in: room, from: engine.triedWords)
         let groups = Dictionary(grouping: room.exits, by: \.to)
         let rows = groups.keys.sorted().compactMap { to -> (String, String, Bool)? in
             guard let exits = groups[to], let dest = map.room(to) else { return nil }
-            let words = exits.flatMap(\.words).reduce(into: [String]()) { out, w in
+            var words = exits.flatMap(\.words).reduce(into: [String]()) { out, w in
                 if !out.contains(w) { out.append(w) }
             }
-            let name = isSeen(dest) ? dest.label : "?"
-            return (words.prefix(4).joined(separator: ", "), name, exits.allSatisfy(\.conditional))
+            let known = isSeen(dest)
+            if !known {
+                words = words.filter { typed.contains(Self.expand($0)) }
+            }
+            let name = known ? dest.label : "?"
+            let command = words.isEmpty ? "?" : words.prefix(4).joined(separator: ", ")
+            return (command, name, known && exits.allSatisfy(\.conditional))
         }
+        // Places you know on top.
+        .sorted { ($0.1 == "?" ? 1 : 0) < ($1.1 == "?" ? 1 : 0) }
         return VStack(alignment: .leading, spacing: 6) {
             HStack {
                 Text(room.label).font(.custom(handBold, size: 18))

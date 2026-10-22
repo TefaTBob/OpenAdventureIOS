@@ -1,3 +1,5 @@
+<img src="docs/images/icon.png" width="96" align="right" alt="App icon: a beige monitor showing > /advent">
+
 # Adventure for iOS
 
 Colossal Cave Adventure on iPhone and iPad, styled as an early-80s home computer:
@@ -5,6 +7,23 @@ a phosphor monitor with real CRT effects on top, an Apple IIe-style keyboard bel
 
 The game itself is **Open Adventure 1.22** (Eric S. Raymond's forward port of
 Crowther & Woods' Adventure 2.5), compiled **unmodified** from upstream C.
+
+## Screenshots
+
+<p>
+  <img src="docs/images/main.jpg" width="200" alt="The game on a green phosphor monitor above an Apple IIe-style keyboard">
+  <img src="docs/images/map1.jpg" width="200" alt="The ink-sketched map of the surface: forest clearings, the well house and the grate">
+  <img src="docs/images/map2.jpg" width="200" alt="The map underground: tunnels, rock hatching and the fissure in the Hall of Mists">
+  <img src="docs/images/inventory.jpg" width="200" alt="The inventory, each item sketched beside its name">
+</p>
+<p>
+  <img src="docs/images/notepad.jpg" width="200" alt="The notepad for your own notes">
+  <img src="docs/images/settings1.jpg" width="200" alt="Settings: score, save slots and loading">
+  <img src="docs/images/settings2.jpg" width="200" alt="Settings: screen look, phosphor colour, text size and CRT effects">
+</p>
+
+*The game · the map above ground and underground · the inventory · notes ·
+save slots · screen settings.*
 
 ## Open and run
 

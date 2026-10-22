@@ -1,5 +1,6 @@
-<img src="docs/images/icon.png" width="96" align="right" alt="App icon: a beige monitor showing > /advent">
-
+<p align="center">
+  <img src="docs/images/icon.png" width="128" alt="App icon: a beige monitor showing > /advent">
+</p>
 
 # Adventure for iOS
 

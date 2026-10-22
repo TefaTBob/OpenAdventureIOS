@@ -13,9 +13,10 @@ Crowther & Woods' Adventure 2.5), compiled **unmodified** from upstream C.
    Change the bundle id from `com.example.OpenAdventure` if you like.
 3. Run on a simulator or device. Deployment target is iOS 18.
 
-This project was written without access to Xcode, so expect the first build to
-surface a few small Swift errors — they'll be typos or API-signature
-details, not design problems. The C engine is verified (see *Tests*).
+The app builds and runs on iPhone with Xcode 27. The game engine and the
+map data are checked by automated tests (see *Tests*); the SwiftUI
+interface has no automated tests, so it has been checked by hand on a
+device.
 
 ## Using it
 
